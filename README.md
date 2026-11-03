@@ -5,18 +5,18 @@
 <!-- [![Paper](https://img.shields.io/badge/Nature%20Medicine-2025-orange.svg)]() -->
 
 ## 🔬 Overview
-**FaceFound** is a facial foundation model that enables non-invasive, multi-system biomarker prediction from facial photographs.  
+**MedicalFaceFound** is a facial foundation model that enables non-invasive, multi-system biomarker prediction from facial photographs.  
 The model adopts a **progressive general-to-clinical pretraining strategy**, transferring knowledge from large-scale general image datasets to clinical biomarker prediction tasks across **62 biomarkers spanning 8 physiological systems**.
 
 This repository provides:
-1. **The pretraining codes of FaceFound**
+1. **The pretraining codes of MedicalFaceFound**
 1. **Analysis pipline of this paper**
 
 
 ## 📄 Abstract
 Most clinical biomarkers require invasive sampling and laboratory testing, limiting accessibility for large-scale screening and continuous monitoring.  
-FaceFound leverages facial photographs—a ubiquitous and non-invasive data source—to estimate systemic biomarker levels with clinical-grade accuracy.  
-Trained through progressive self-supervised and clinical fine-tuning, FaceFound outperformed baseline architectures (ResNet18 and Swin-Large), demonstrated reproducibility across internal and external cohorts, and showed **superior label efficiency** and **real-world deployability** via a smartphone application.
+MedicalFaceFound leverages facial photographs—a ubiquitous and non-invasive data source—to estimate systemic biomarker levels with clinical-grade accuracy.  
+Trained through progressive self-supervised and clinical fine-tuning, MedicalFaceFound outperformed baseline architectures (ResNet18 and Swin-Large), demonstrated reproducibility across internal and external cohorts, and showed **superior label efficiency** and **real-world deployability** via a smartphone application.
 
 
 <!-- ## 🧠 Key Features
@@ -30,7 +30,7 @@ Trained through progressive self-supervised and clinical fine-tuning, FaceFound 
 ## ⚙️ Installation
 
 ```bash
-git clone git@github.com:1511878618/FaceFound.git
+git clone git@github.com:1511878618/MedicalFaceFound.git
 ```
 
 **Dependencies:**
@@ -39,14 +39,14 @@ For Python packages
 - Python ≥ 3.10
 - R ≥ 4.1
 ```
-conda create -n FaceFound python=3.10 pandas numpy seaborn scipy statsmodels plotnine pingouin 
+conda create -n MedicalFaceFound python=3.10 pandas numpy seaborn scipy statsmodels plotnine pingouin 
 conda config --add channels r
 conda install  r-essentials r-base r-relaimpo 
 ```
 
 For pretraining
 ```bash
-conda create -n FaceFoundPretraining python=3.10
+conda create -n MedicalFaceFoundPretraining python=3.10
 pip install -r PretrainingRequirements.txt
 ```
 
@@ -55,13 +55,13 @@ pip install -r PretrainingRequirements.txt
 ### 1. Pretraining (Self-supervised)
 
 ```bash
-bash FaceFound/scripts/pretrain.sh
+bash MedicalFaceFound/scripts/pretrain.sh
 ```
 
 ### 2. Fine-tuning on Biomarkers
 
 ```bash
-bash FaceFound/scripts/finetune.sh
+bash MedicalFaceFound/scripts/finetune.sh
 ```
 
 
@@ -83,7 +83,7 @@ Run the following scripts to reproduce the results in the paper:
 - `02-ModelPerformance.ipynb` Evaluate model performance
 - `03-DiseaseRiskEvaluationModel` Evaluate the clinical utility of the model
 - `04-APP-Evaluation.ipynb` Evaluate the performance with predictions from the app of selfies
-- `05-GeneticsEvaluation.ipynb` Evaluate the performance of FaceFound vs. PRS from the external cohorts with genotype data
+- `05-GeneticsEvaluation.ipynb` Evaluate the performance of MedicalFaceFound vs. PRS from the external cohorts with genotype data
 - `06.x-Partx` Plot the results of the paper 
 - `07-SupplementaryTable.ipynb` Generate Supplementary Table of results used in the paper
 
@@ -91,7 +91,7 @@ Run the following scripts to reproduce the results in the paper:
 ## 📚 Citation
 
 If you use this repository, please cite our work: 
-Minxian Wang, Tingfeng Xu, Huixuan Xu et al. A facial foundation model for multi-system biomarker and disease risk prediction with real-world mobile deployment, 20 January 2026, PREPRINT (Version 1) available at Research Square [https://doi.org/10.21203/rs.3.rs-8110055/v1]
+T. Xu, H. Xu, L. Lin, et al. “ A Facial Foundation Model for Clinical Biomarker Prediction and Real-World Mobile Deployment.” Advanced Science (2026): e77861. https://doi.org/10.1002/advs.77861
 
 
 ## 🧾 License

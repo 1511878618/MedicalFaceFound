@@ -158,7 +158,7 @@ MedicalFaceFound/
 ├── analysis/                         # paper analysis (not installed)
 │   ├── config.py, utils.py
 │   └── 01-Table1.ipynb ... 07-SupplementaryTable.ipynb
-├── weights/                          # optional local copy of the Hugging Face weights
+├── weights/                          # optional local copy of the HF weights (not tracked)
 │   ├── backbone/{config.json, model.safetensors}
 │   ├── tasks/<name>/{config.json, model.safetensors}
 │   └── tasks.json                    # 62-task index

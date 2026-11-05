@@ -14,7 +14,7 @@ Weights are hosted on Hugging Face and downloaded on first use.
 
 from __future__ import annotations
 
-__version__ = "1.0.0"
+__version__ = "1.0.1"
 
 from medicalfacefound.inference import FaceCropper, load_task, load_tasks_index, predict_values  # noqa: E402
 from medicalfacefound.inference.face import crop_square, detect_faces, load_image, square_box, to_model_input  # noqa: E402

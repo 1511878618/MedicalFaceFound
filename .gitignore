@@ -10,6 +10,7 @@ output/
 paper/
 
 # Model weights (hosted on Hugging Face, not in git)
+weights/
 *.pth
 *.pt
 *.safetensors

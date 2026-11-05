@@ -2,6 +2,7 @@
 # Biomarker fine-tuning. Run from anywhere after `pip install .`:
 #   bash medicalfacefound/scripts/finetune.sh
 # Edit LABEL, BLR and the paths for your setup.
+# Add `--ft_mode mlp` for backbone-frozen, head-only training (use BLR=1e-2).
 set -euo pipefail
 
 EPOCHS=100

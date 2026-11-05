@@ -314,6 +314,7 @@ What each flag does:
 | :-- | :-- |
 | `--model swin_large_512to256` | Swin-L with 256 input, `window_size=8` (the released architecture) |
 | `--finetune backbone.pth` | initialise from the released UM-MAE backbone |
+| `--ft_mode full\|mlp` | full fine-tuning (default) or backbone-frozen, head-only training |
 | `--dataset face256_single` | single-biomarker dataset (`'single'` selects `SingleTaskDataset`) |
 | `--data_path` / `--annotation_path` | image root (one folder per `eid`) / CSV with `eid,type,<label>` |
 | `--label Height --type regression --nb_classes 1` | target column, task type, output dim |
@@ -326,6 +327,40 @@ For a classification biomarker (e.g. sex) use
 script through `python -m torch.distributed.run --nproc_per_node 8` (or `torchrun
 --nproc_per_node 8`) and scale `--batch_size` per GPU; `medicalfacefound/scripts/finetune.sh`
 is a template of that loop.
+
+### Fine-tuning modes
+
+`--ft_mode` selects which parameters are optimised:
+
+| `--ft_mode` | Trainable parameters | Behaviour |
+| :-- | :-- | :-- |
+| `full` (default) | whole network (194.9 M) | AdamW with layer-wise lr decay (`--layer_decay`) across `patch_embed`, `blocks` and the head; the setting used for the 62 released models |
+| `mlp` | head only, `fc_norm.*` + `head.*` (4,609 parameters for a regression task) | Swin backbone (`patch_embed`, `blocks`) frozen; the head is optimised with a flat learning rate and `--layer_decay` is ignored |
+
+In `mlp` mode only the readout is adapted: the pretrained features are held fixed, which
+is the appropriate setting for small cohorts and for measuring how linearly separable the
+pretrained representation already is. Stochastic depth is disabled in this mode
+(`--drop_path` is forced to 0) so the frozen features stay deterministic during training.
+The parameter count is small, so a higher base learning rate is recommended, e.g.
+`--blr 1e-2` at `--batch_size 32` (effective lr 1.25e-3).
+
+The checkpoint layout is identical in both modes (`fc_norm.*` + `head.*` on top of the
+backbone), so `mlp` checkpoints load through `load_task` exactly like `full` ones.
+
+```bash
+python -m medicalfacefound.main_finetune \
+  --model swin_large_512to256 \
+  --input_size 256 --batch_size 32 \
+  --finetune backbone.pth \
+  --ft_mode mlp \
+  --dataset face256_single \
+  --data_path /data/face_256/ \
+  --annotation_path /data/face_256/class_map.csv \
+  --label Height --type regression --nb_classes 1 \
+  --epochs 100 --early_stop 12 \
+  --blr 1e-2 --weight_decay 0.05 \
+  --output_dir runs/Height-mlp
+```
 
 ## 🏋️ Pretraining (background)
 

@@ -102,6 +102,11 @@ def get_args_parser():
 
     # * Finetuning params
     parser.add_argument('--finetune', default='', help='finetune from checkpoint')
+    parser.add_argument('--ft_mode', default='full', choices=['full', 'mlp'],
+                        help='fine-tuning mode: "full" updates the whole network with '
+                             'layer-wise lr decay (original behaviour); "mlp" freezes the '
+                             'Swin backbone (patch_embed + blocks) and trains only the head '
+                             '(fc_norm + linear)')
     parser.add_argument('--global_pool', action='store_true')
     parser.set_defaults(global_pool=True)
     parser.add_argument('--cls_token', action='store_false', dest='global_pool',
@@ -167,7 +172,28 @@ class Logger:
         if self.logger is not None:
             self.logger.warning(msg)
 
+def freeze_backbone(model, logger):
+    """Freeze the Swin backbone and keep the head (fc_norm + linear) trainable."""
+    for name, param in model.named_parameters():
+        param.requires_grad = name.startswith(('fc_norm', 'head'))
+
+    trainable = [n for n, p in model.named_parameters() if p.requires_grad]
+    n_trainable = sum(p.numel() for p in model.parameters() if p.requires_grad)
+    n_total = sum(p.numel() for p in model.parameters())
+    logger.info(f'[ft_mode=mlp] backbone frozen, trainable parameters: '
+                f'{n_trainable} / {n_total} ({100. * n_trainable / n_total:.4f}%)')
+    logger.info(f'[ft_mode=mlp] trainable tensors: {trainable}')
+
+
 def main(args):
+
+    if args.ft_mode == 'mlp':
+        if 'swin' not in args.model:
+            raise ValueError(f'--ft_mode mlp supports the swin_* models only, got {args.model}')
+        if args.drop_path > 0:
+            print(f'[ft_mode=mlp] drop_path {args.drop_path} -> 0.0 '
+                  f'(stochastic depth is disabled on a frozen backbone)')
+            args.drop_path = 0.0
 
     # Check if done file exists
     if args.output_dir and os.path.exists(os.path.join(args.output_dir, 'done.txt')):
@@ -415,6 +441,9 @@ def main(args):
 
         # manually initialize fc layer
         trunc_normal_(model.head.weight, std=2e-5)
+
+    if args.ft_mode == 'mlp':
+        freeze_backbone(model, logger)
 
     model.to(device)
     model_without_ddp = model

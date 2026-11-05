@@ -1,0 +1,54 @@
+{
+  "architectures": [
+    "Swin"
+  ],
+  "model_type": "ummae-swin",
+  "img_size": 256,
+  "patch_size": 4,
+  "in_chans": 3,
+  "embed_dim": 192,
+  "depths": [
+    2,
+    2,
+    18,
+    2
+  ],
+  "num_heads": [
+    6,
+    12,
+    24,
+    48
+  ],
+  "mlp_ratio": 4,
+  "window_size": 8,
+  "posmlp_dim": 64,
+  "global_pool": true,
+  "norm_eps": 1e-06,
+  "num_classes": 1,
+  "task": "sdLDL",
+  "task_type": "regression",
+  "target_mean": 0.7510667661320403,
+  "target_std": 0.39543249616850956,
+  "dtype": "float32",
+  "cohort": "anzhen",
+  "finetune_args": {
+    "model": "swin_large_512to256",
+    "input_size": 256,
+    "nb_classes": 1,
+    "epochs": 100,
+    "blr": 0.005,
+    "layer_decay": 0.75,
+    "drop_path": 0.1,
+    "batch_size": 48,
+    "dataset": "face256_single",
+    "seed": 0
+  },
+  "num_tensors": 404,
+  "num_parameters": 194937589,
+  "sha256": "5a1c723fccc326b6020898ccbcfbe1b6dcc074eddf2f257401ec081dcba253c6",
+  "exported_at": "2026-11-05T03:41:31+00:00",
+  "biomarker_abbreviation": "sdLDL",
+  "biomarker_name": "Small Dense LDL Cholesterol",
+  "organ_system": "Cardiovascular",
+  "unit": "mmol/L"
+}

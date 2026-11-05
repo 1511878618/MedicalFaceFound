@@ -1,0 +1,42 @@
+{
+  "architectures": [
+    "Swin"
+  ],
+  "model_type": "ummae-swin",
+  "img_size": 256,
+  "patch_size": 4,
+  "in_chans": 3,
+  "embed_dim": 192,
+  "depths": [
+    2,
+    2,
+    18,
+    2
+  ],
+  "num_heads": [
+    6,
+    12,
+    24,
+    48
+  ],
+  "mlp_ratio": 4,
+  "window_size": 8,
+  "posmlp_dim": 64,
+  "global_pool": true,
+  "norm_eps": 1e-06,
+  "num_classes": 0,
+  "dtype": "float32",
+  "pretrain": {
+    "model": "mae_swin_large_256",
+    "input_size": 256,
+    "token_size": 16,
+    "epochs": 500,
+    "batch_size": 128,
+    "mask_ratio": 0.75,
+    "dataset": "anzhen_pretrain"
+  },
+  "num_tensors": 400,
+  "num_parameters": 194932980,
+  "sha256": "36aa01bd2af8acc1c19e0de2581a682042f0346fea929150d82ca08501e86065",
+  "exported_at": "2026-11-03T14:51:25+00:00"
+}

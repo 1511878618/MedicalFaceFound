@@ -1,0 +1,42 @@
+Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)
+
+Copyright © 2026 Tingfeng Xu, Huixuan Xu, and the MedicalFaceFound contributors.
+
+This license applies to the **source code** in this repository, including the
+`medicalfacefound` Python package (model definitions, training loop, inference
+utilities) and `analysis/`.
+
+You are free to:
+
+- **Share** — copy and redistribute the material in any medium or format;
+- **Adapt** — remix, transform, and build upon the material.
+
+Under the following terms:
+
+- **Attribution** — you must give appropriate credit, provide a link to the
+  license, and indicate if changes were made. Cite the paper:
+  Xu T, Xu H, et al. *A Facial Foundation Model for Clinical Biomarker Prediction
+  and Real-World Mobile Deployment.* Advanced Science (2026),
+  <https://doi.org/10.1002/advs.77861>.
+- **NonCommercial** — you may not use the material for commercial purposes.
+- **No additional restrictions** — you may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+
+Full legal code: <https://creativecommons.org/licenses/by-nc/4.0/legalcode.en>
+Human-readable summary: <https://creativecommons.org/licenses/by-nc/4.0/>
+
+### Scope
+
+- This license covers the code. Parts of the training code are adapted from
+  [UM-MAE](https://github.com/implus/UM-MAE), which is distributed under the same
+  CC BY-NC 4.0 license; see `THIRD_PARTY_NOTICES.md`.
+- The **model weights** are distributed separately from this code and are not covered
+  by this license.
+- The associated article is published by Wiley; see the article page for its
+  license.
+
+### No warranty
+
+The code is provided "AS IS", without warranty of any kind. The authors are not
+liable for any claim, damages or other liability arising from its use. It is
+research software and **not a medical device**.

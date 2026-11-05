@@ -1,0 +1,54 @@
+{
+  "architectures": [
+    "Swin"
+  ],
+  "model_type": "ummae-swin",
+  "img_size": 256,
+  "patch_size": 4,
+  "in_chans": 3,
+  "embed_dim": 192,
+  "depths": [
+    2,
+    2,
+    18,
+    2
+  ],
+  "num_heads": [
+    6,
+    12,
+    24,
+    48
+  ],
+  "mlp_ratio": 4,
+  "window_size": 8,
+  "posmlp_dim": 64,
+  "global_pool": true,
+  "norm_eps": 1e-06,
+  "num_classes": 1,
+  "task": "ALP",
+  "task_type": "regression",
+  "target_mean": 79.2497628833386,
+  "target_std": 23.03347223691429,
+  "dtype": "float32",
+  "cohort": "az_daxing",
+  "finetune_args": {
+    "model": "swin_large_512to256",
+    "input_size": 256,
+    "nb_classes": 1,
+    "epochs": 100,
+    "blr": 0.005,
+    "layer_decay": 0.75,
+    "drop_path": 0.1,
+    "batch_size": 32,
+    "dataset": "face256_single",
+    "seed": 0
+  },
+  "num_tensors": 404,
+  "num_parameters": 194937589,
+  "sha256": "6dfe1bc661445a3ce2e21ff9487c806ad43614e3b6b2c97d28fddd4e40cb6aa2",
+  "exported_at": "2026-11-05T02:46:26+00:00",
+  "biomarker_abbreviation": "ALP",
+  "biomarker_name": "Alkaline Phosphatase",
+  "organ_system": "Digestive",
+  "unit": "U/L"
+}

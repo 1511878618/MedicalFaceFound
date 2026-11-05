@@ -1,0 +1,54 @@
+{
+  "architectures": [
+    "Swin"
+  ],
+  "model_type": "ummae-swin",
+  "img_size": 256,
+  "patch_size": 4,
+  "in_chans": 3,
+  "embed_dim": 192,
+  "depths": [
+    2,
+    2,
+    18,
+    2
+  ],
+  "num_heads": [
+    6,
+    12,
+    24,
+    48
+  ],
+  "mlp_ratio": 4,
+  "window_size": 8,
+  "posmlp_dim": 64,
+  "global_pool": true,
+  "norm_eps": 1e-06,
+  "num_classes": 1,
+  "task": "K",
+  "task_type": "regression",
+  "target_mean": 4.078332305795315,
+  "target_std": 0.36809758437093026,
+  "dtype": "float32",
+  "cohort": "anzhen",
+  "finetune_args": {
+    "model": "swin_large_512to256",
+    "input_size": 256,
+    "nb_classes": 1,
+    "epochs": 100,
+    "blr": 0.005,
+    "layer_decay": 0.75,
+    "drop_path": 0.1,
+    "batch_size": 48,
+    "dataset": "face256_single",
+    "seed": 0
+  },
+  "num_tensors": 404,
+  "num_parameters": 194937589,
+  "sha256": "48dfac7a12356774b7ff557a2eb2857840c5c52b80a3d660d57d99aae4ff4e99",
+  "exported_at": "2026-11-05T03:20:38+00:00",
+  "biomarker_abbreviation": "K",
+  "biomarker_name": "K",
+  "organ_system": "Electrolytes",
+  "unit": "mmol/L"
+}

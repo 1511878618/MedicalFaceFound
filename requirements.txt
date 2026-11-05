@@ -1,0 +1,34 @@
+# MedicalFaceFound runtime dependencies.
+#
+# This is the same set as `[project].dependencies` in pyproject.toml, which stays the
+# source of truth; this file exists so the environment can be created explicitly:
+#
+#   pip install -r requirements.txt      # or: pip install .
+#
+# Install the torch/torchvision build that matches your CUDA driver first, e.g.
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
+#
+# Analysis notebooks under analysis/ have their own list (requirements-analysis.txt)
+# and are not needed for inference or training.
+
+# --- model / tensor ops ---
+torch>=2.1
+torchvision>=0.16
+timm==0.9.16            # model code imports timm.models.layers (moved in timm 1.x)
+einops>=0.7             # rearrange() in the MAE encoder and the mask transform
+numpy>=1.24
+
+# --- image IO / face preprocessing ---
+pillow>=10
+retina-face>=0.0.19     # pulls OpenCV / ONNX Runtime / TensorFlow
+
+# --- weight download / loading ---
+safetensors>=0.4
+huggingface_hub>=0.23
+
+# --- training, fine-tuning and evaluation ---
+pandas>=2.0
+torchmetrics>=1.0
+tensorboard>=2.14
+tqdm>=4.65
+early-stopping-pytorch>=1.0

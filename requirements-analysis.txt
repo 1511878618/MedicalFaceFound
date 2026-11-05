@@ -1,0 +1,18 @@
+# Analysis dependencies (notebooks in analysis/)
+# Python 3.10
+numpy>=1.24
+pandas>=2.0
+scipy>=1.10
+statsmodels>=0.14
+seaborn>=0.12
+matplotlib>=3.7
+plotnine>=0.12
+pingouin>=0.5
+lifelines>=0.27
+tableone>=0.9
+pycirclize>=1.0
+pymare>=0.4
+pypalettes>=0.1
+scikit-misc>=0.3
+jupyterlab>=4.0
+

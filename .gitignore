@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# Analysis outputs (created by analysis/config.py)
+V1/
+data/
+output/
+paper/
+
+# Model weights (hosted on Hugging Face, not in git)
+*.pth
+*.pt
+*.safetensors
+
+# OS / editors
+.DS_Store
+.idea/
+.vscode/
+
+# packaging
+build/
+*.egg-info/
+dist/
+

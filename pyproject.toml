@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "medicalfacefound"
+version = "1.0.0"
+description = "MedicalFaceFound: Swin-L facial foundation model for clinical biomarker prediction (training + inference)"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "CC BY-NC 4.0" }
+authors = [{ name = "Tingfeng Xu" }, { name = "Huixuan Xu" }]
+keywords = ["facial-analysis", "biomarker", "swin", "medical-imaging"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Topic :: Scientific/Engineering :: Medical Science Apps.",
+  "License :: Other/Proprietary License",
+]
+
+dependencies = [
+  "torch>=2.1",
+  "torchvision>=0.16",
+  "timm==0.9.16",
+  "einops>=0.7",
+  "numpy>=1.24",
+  "pandas>=2.0",
+  "pillow>=10",
+  "safetensors>=0.4",
+  "huggingface_hub>=0.23",
+  "torchmetrics>=1.0",
+  "tensorboard>=2.14",
+  "tqdm>=4.65",
+  "early-stopping-pytorch>=1.0",
+  "retina-face>=0.0.19",
+]
+
+[project.scripts]
+mff = "medicalfacefound.inference.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/1511878618/MedicalFaceFound"
+Paper = "https://doi.org/10.1002/advs.77861"
+
+[tool.setuptools.packages.find]
+include = ["medicalfacefound*"]
+namespaces = false

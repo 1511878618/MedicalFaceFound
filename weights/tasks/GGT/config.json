@@ -1,0 +1,54 @@
+{
+  "architectures": [
+    "Swin"
+  ],
+  "model_type": "ummae-swin",
+  "img_size": 256,
+  "patch_size": 4,
+  "in_chans": 3,
+  "embed_dim": 192,
+  "depths": [
+    2,
+    2,
+    18,
+    2
+  ],
+  "num_heads": [
+    6,
+    12,
+    24,
+    48
+  ],
+  "mlp_ratio": 4,
+  "window_size": 8,
+  "posmlp_dim": 64,
+  "global_pool": true,
+  "norm_eps": 1e-06,
+  "num_classes": 1,
+  "task": "GGT",
+  "task_type": "regression",
+  "target_mean": 34.59879860891559,
+  "target_std": 42.61213239442908,
+  "dtype": "float32",
+  "cohort": "az_daxing",
+  "finetune_args": {
+    "model": "swin_large_512to256",
+    "input_size": 256,
+    "nb_classes": 1,
+    "epochs": 100,
+    "blr": 0.005,
+    "layer_decay": 0.75,
+    "drop_path": 0.1,
+    "batch_size": 32,
+    "dataset": "face256_single",
+    "seed": 0
+  },
+  "num_tensors": 404,
+  "num_parameters": 194937589,
+  "sha256": "87a3f49706c81caff54244b8fa44c5ce9933f4d549a4f0a140f1ecf57a0bed0f",
+  "exported_at": "2026-11-05T03:06:16+00:00",
+  "biomarker_abbreviation": "GGT",
+  "biomarker_name": "Gamma-glutamyl Transferase",
+  "organ_system": "Digestive",
+  "unit": "U/L"
+}

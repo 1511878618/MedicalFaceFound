@@ -1,0 +1,54 @@
+{
+  "architectures": [
+    "Swin"
+  ],
+  "model_type": "ummae-swin",
+  "img_size": 256,
+  "patch_size": 4,
+  "in_chans": 3,
+  "embed_dim": 192,
+  "depths": [
+    2,
+    2,
+    18,
+    2
+  ],
+  "num_heads": [
+    6,
+    12,
+    24,
+    48
+  ],
+  "mlp_ratio": 4,
+  "window_size": 8,
+  "posmlp_dim": 64,
+  "global_pool": true,
+  "norm_eps": 1e-06,
+  "num_classes": 1,
+  "task": "TSH",
+  "task_type": "regression",
+  "target_mean": 2.453511235955056,
+  "target_std": 5.857572449768579,
+  "dtype": "float32",
+  "cohort": "az_daxing",
+  "finetune_args": {
+    "model": "swin_large_512to256",
+    "input_size": 256,
+    "nb_classes": 1,
+    "epochs": 100,
+    "blr": 0.005,
+    "layer_decay": 0.75,
+    "drop_path": 0.1,
+    "batch_size": 32,
+    "dataset": "face256_single",
+    "seed": 0
+  },
+  "num_tensors": 404,
+  "num_parameters": 194937589,
+  "sha256": "9823f99bde8499bcc30eb55ea1af611aaabb0ffdde42c74802d8076ffe76d432",
+  "exported_at": "2026-11-05T03:50:04+00:00",
+  "biomarker_abbreviation": "TSH",
+  "biomarker_name": "Thyroid Stimulating Hormone",
+  "organ_system": "Endocrine",
+  "unit": "mIU/L"
+}

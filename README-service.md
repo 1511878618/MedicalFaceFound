@@ -19,16 +19,8 @@
 ```bash
 conda env create -f environment-service.yml
 # 已有环境可用 conda env update -n MedicalFaceFound_api -f environment-service.yml
-conda install -n MedicalFaceFound_api ./tools/conda-packages/retina-face-0.0.19-local_pytorch_0.conda
 conda activate MedicalFaceFound_api
 ```
-
-当前镜像的 conda-forge 只提供 RetinaFace 0.0.18，而仓库要求 >=0.0.19。
-仓库附带的本地 conda 包由官方 0.0.19 wheel 原样封装，未修改 Python 源代码，
-运行依赖选择官方支持的 PyTorch 后端，不使用 pip 安装。构建脚本为
-`tools/package_retina_conda.py`，使用 conda base 环境自带的 conda-package-handling。
-原始 wheel SHA-256：`117c528129963ee6b3c9b3b36991ef11e9f76586868d46132ff7b47e0cbd761c`。
-来源：https://pypi.org/project/retina-face/0.0.19/ ，包内保留上游 MIT 许可。
 
 RetinaFace 官方权重 `retinaface.pth` 放在
 `weights/retinaface-cache/.deepface/weights/retinaface.pth`，来源：
@@ -112,13 +104,3 @@ CSV 导出与手动备份。所有管理 API 均检查 Bearer 密钥。
 论文的队列平均和标准人脸投影属于另一步分析。
 结果随响应返回，数据库不保存这项临时对照。启动脚本默认复用 `fahr-face` conda 环境、
 本地 `external/FAHR-Face` 源码和桌面的 `fahr_faceage.pth`。
-
-## 验证
-
-```bash
-python -m unittest discover -s tests -v
-```
-
-测试使用临时数据库，验证质量拦截、与原有 FaceCropper 的一致性、同意校验、
-提交幂等、分析失败重试、成功复用、记录级权限、管理员权限、删除与备份。
-HTTP 测试模拟模型计算；实际模型及检测器验证另外使用概念图片，不能替代临床验证。

@@ -1,0 +1,21 @@
+name: MedicalFaceFound_api
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - fastapi=0.115.12
+  - starlette=0.46.2
+  - pydantic=2.11.1
+  - uvicorn=0.34.0
+  - python-multipart=0.0.20
+  - pytorch>=2.1
+  - torchvision>=0.16
+  - timm=0.9.16
+  - einops>=0.7
+  - safetensors>=0.4
+  - numpy
+  - pillow
+  - opencv>=4.8,<5
+  - libopencv=*=headless*
+  - gdown
+  - requests

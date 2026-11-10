@@ -1,0 +1,8 @@
+# Capture UI/API only; no model weights or heavy inference dependencies required.
+fastapi==0.115.12
+starlette==0.46.2
+pydantic==2.11.1
+uvicorn==0.34.0
+python-multipart==0.0.20
+Pillow>=10
+numpy>=1.24

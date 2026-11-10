@@ -171,6 +171,9 @@ MedicalFaceFound/
 
 ## 🚀 Inference
 
+For the existing capture frontend and HTTP API, see [the service guide](README-service.md).
+The service supports capture-only operation before model weights are installed.
+
 ### Command line
 
 ```bash
@@ -413,6 +416,10 @@ with the applicable ethics approvals and data-use agreements.
   doi     = {10.1002/advs.77861}
 }
 ```
+
+## External paired robustness evaluation
+
+The CLI `python -m medicalfacefound.robustness` evaluates all locally available tasks on paired HDA Plastic Surgery, Makeup, and FEI images. See [ROBUSTNESS.md](ROBUSTNESS.md) for audited pairing rules, preprocessing, resume support, statistical reports, and commands for the current environment.
 
 ## 🧾 License
 

@@ -36,6 +36,18 @@ dependencies = [
 
 [project.scripts]
 mff = "medicalfacefound.inference.cli:main"
+mff-serve = "medicalfacefound.service.__main__:main"
+mff-robustness = "medicalfacefound.robustness.__main__:main"
+
+[project.optional-dependencies]
+robustness = ["scipy>=1.10", "matplotlib>=3.7"]
+service = [
+  "fastapi==0.115.12",
+  "starlette==0.46.2",
+  "pydantic==2.11.1",
+  "uvicorn==0.34.0",
+  "python-multipart==0.0.20",
+]
 
 [project.urls]
 Homepage = "https://github.com/1511878618/MedicalFaceFound"
@@ -44,3 +56,6 @@ Paper = "https://doi.org/10.1002/advs.77861"
 [tool.setuptools.packages.find]
 include = ["medicalfacefound*"]
 namespaces = false
+
+[tool.setuptools.package-data]
+"medicalfacefound.service" = ["static/*", "static/**/*"]

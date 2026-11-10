@@ -37,10 +37,8 @@ dependencies = [
 [project.scripts]
 mff = "medicalfacefound.inference.cli:main"
 mff-serve = "medicalfacefound.service.__main__:main"
-mff-robustness = "medicalfacefound.robustness.__main__:main"
 
 [project.optional-dependencies]
-robustness = ["scipy>=1.10", "matplotlib>=3.7"]
 service = [
   "fastapi==0.115.12",
   "starlette==0.46.2",

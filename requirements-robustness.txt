@@ -1,3 +1,0 @@
-# In addition to the existing model/RetinaFace inference environment.
-scipy>=1.10
-matplotlib>=3.7

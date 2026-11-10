@@ -417,10 +417,6 @@ with the applicable ethics approvals and data-use agreements.
 }
 ```
 
-## External paired robustness evaluation
-
-The CLI `python -m medicalfacefound.robustness` evaluates all locally available tasks on paired HDA Plastic Surgery, Makeup, and FEI images. See [ROBUSTNESS.md](ROBUSTNESS.md) for audited pairing rules, preprocessing, resume support, statistical reports, and commands for the current environment.
-
 ## 🧾 License
 
 - **Code** (this package, including the training loop adapted from UM-MAE):

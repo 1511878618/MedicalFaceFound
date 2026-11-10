@@ -1,0 +1,12 @@
+Use case: stylized-concept
+Asset type: transparent 3D full-body illustration for a medical AI research website, portrait composition.
+Primary request: An elegant full-length human systems concept sculpture, matching the pale jade glass and refined soft lighting of the supplied face sculpture.
+Input image: a style reference only, not an edit target. Create a new full-body subject.
+Subject: One androgynous adult medical mannequin standing upright, front view with the slightest three-quarter depth, arms slightly away from the body, palms relaxed, legs naturally spaced, complete head and feet visible. Anatomically plausible adult proportions and five fingers. Nonsexual seamless mannequin surface, no nipples, no genital detail, no hair.
+Materials: translucent milky jade glass with subtle frosted surfaces, teal edges, soft ivory highlights. Inside the torso, restrained luminous schematic hints of a heart on the subject's left, liver on the subject's right, a pair of kidneys, digestive tract and delicate branching vascular paths continuing into the limbs. These are beautiful conceptual visual hints, not a clinical anatomical plate. Keep organs integrated, softly colored teal, not red or graphic.
+Composition: entire body centered, fills about 88% of portrait height, generous transparent margins beside the body for HTML labels. All limbs and feet entirely inside frame. No pedestal or floor, no background, genuine alpha transparency.
+Style: premium contemporary science editorial 3D rendering, sophisticated smooth sculptural anatomy, restrained luminous detail, clean soft studio light, calm precise research identity. Detailed but legible at small web sizes.
+Text: none. No lettering, numbers, labels, arrows, badges, chart elements, watermarks, UI or bounding box.
+Constraints: use the reference's jade glass visual language, but show a full-body figure. No glowing sci-fi hologram rings, no exaggerated musculature, no excessive particles, no black background.
+
+Generated with the built-in image_gen tool on 2026-11-06. The existing face sculpture was used as a style reference. This is a conceptual illustration, not an anatomical or diagnostic image.

@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f8fc">
+  <meta name="description" content="MedicalFaceFound：面向临床生物标志物预测的面部基础模型。探索单张面部照片与八类生理系统、62 项临床指标之间的联系。">
+  <title>MedicalFaceFound · 从面部表型，探索健康线索</title>
+  <link rel="stylesheet" href="/ui-assets/theme.css?v=20261106-clinical-blue">
+  <link rel="stylesheet" href="/ui-assets/style.css?v=20261106-clinical-blue">
+  <link rel="stylesheet" href="/ui-assets/home.css?v=20261106-clinical-blue">
+  <script src="/ui-assets/home.js?v=20261108-research-flow" defer></script>
+<link rel="stylesheet" href="/ui-assets/research-flow.css?v=20261108">
+</head>
+<body class="home-page">
+  <a class="skip-link" href="#main">跳转到正文</a>
+  <svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-face" viewBox="0 0 24 24"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5M8 9v2m8-2v2m-8 4c2 2 6 2 8 0"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-external" viewBox="0 0 24 24"><path d="M8 4h12v12M20 4 4 20"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="m9 5 10 7-10 7z"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-measure" viewBox="0 0 24 24"><path d="M8 3H4v18h4M4 7h3m-3 5h3m-3 5h3m7-10v14m-4-10h8m-6 10 2-6 2 6"/><circle cx="14" cy="4" r="2"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20 13c4-7-4-12-8-6-4-6-12-1-8 6l8 8z"/><path d="M3 12h5l2-4 4 8 2-4h5"/></symbol>
+    <symbol id="i-digest" viewBox="0 0 24 24"><path d="M11 3v5c0 3-5 2-6 6-2 7 11 9 14 2 3-7-4-10-5-6-1 3-3 3-3 0V3"/></symbol>
+    <symbol id="i-ions" viewBox="0 0 24 24"><circle cx="8" cy="8" r="5"/><path d="M6 8h4M8 6v4"/><circle cx="16" cy="16" r="5"/><path d="M14 16h4M18 4l2 2M4 18l2 2"/></symbol>
+    <symbol id="i-endocrine" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><circle cx="5" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="m7 7 3 3m4 4 3 3m-3-7 3-3M7 17l3-3"/></symbol>
+    <symbol id="i-blood" viewBox="0 0 24 24"><path d="M12 2S4 11 4 15a8 8 0 0 0 16 0c0-4-8-13-8-13Z"/><path d="M8 15a4 4 0 0 0 4 4"/></symbol>
+    <symbol id="i-immune" viewBox="0 0 24 24"><path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6z"/><path d="M9 12h6m-3-3v6"/></symbol>
+    <symbol id="i-renal" viewBox="0 0 24 24"><path d="M7 4c-5 0-6 14 0 15 4 0 4-5 1-6-3-1 3-8-1-9Zm10 0c5 0 6 14 0 15-4 0-4-5-1-6 3-1-3-8 1-9Z"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 10 5-10 5L2 8zM2 12l10 5 10-5M2 16l10 5 10-5"/></symbol>
+    <symbol id="i-mobile" viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M10 5h4m-3 14h2"/></symbol>
+  </svg>
+  <header class="topbar home-topbar" id="homeHeader"><div class="topbar-inner">
+    <a class="brand" href="/" aria-label="MedicalFaceFound 首页"><span class="brand-mark"><svg class="icon"><use href="#i-face"/></svg></span><span class="brand-wordmark">Medical<span>Face</span>Found<small>面部基础模型 · 多系统健康表型</small></span></a>
+    <nav class="home-nav" id="homeNavigation" aria-label="主导航"><a href="#research">研究介绍</a><a href="#approach">研究方法</a><a href="#film">项目视频</a><a href="#publication">论文</a><a href="#experience">使用说明</a><a href="#institutions">研究单位</a></nav>
+    <div class="nav-actions"><a class="nav-cta" href="/ui-assets/capture.html">开始采集 <svg class="icon"><use href="#i-arrow"/></svg></a><button class="menu-toggle" id="menuToggle" type="button" aria-controls="homeNavigation" aria-expanded="false" aria-label="打开导航菜单"><svg class="icon"><use href="#i-menu"/></svg></button></div>
+  </div></header>
+  <main id="main">
+    <section class="home-hero home-container" aria-labelledby="homeTitle">
+      <div class="hero-copy">
+        <a class="publication-tag" href="https://doi.org/10.1002/advs.77861" target="_blank" rel="noopener noreferrer"><span></span> ADVANCED SCIENCE · 2026 <svg class="icon"><use href="#i-external"/></svg></a>
+        <h1 id="homeTitle">从面部表型，<br>探索<span>健康的线索。</span></h1>
+        <p class="hero-english">A face. A new perspective on health.</p>
+        <p class="home-lead">一张正面照片，连接 <strong>8 类生理系统</strong>与 <strong>62 项临床指标</strong>。MedicalFaceFound 以面部基础模型，探索人工智能与临床研究的新可能。</p>
+        <div class="hero-buttons"><a class="home-button solid" href="/ui-assets/capture.html">开始面部采集 <svg class="icon"><use href="#i-arrow"/></svg></a><a class="home-button quiet" href="#research">探索研究 <span aria-hidden="true">↓</span></a></div>
+        <p class="research-context"><span></span> 面向科研探索 · 非侵入式信息采集</p><div class="availability-note"><strong>论文研究覆盖 62 项指标</strong><span id="liveModelSummary">当前体验开放：年龄估计、HDL-C、血红蛋白。</span><br>研究范围与当前网站开放功能分别展示。</div>
+      </div>
+      <figure class="hero-visual">
+        <div class="hero-orbit" aria-hidden="true"></div>
+        <span class="visual-label">FACIAL FOUNDATION MODEL</span>
+        <img src="/ui-assets/assets/face-sculpture.png" width="1254" height="1254" fetchpriority="high" alt="半透明玉绿色三维面部与数据光点的概念视觉">
+        <div class="visual-chip chip-one"><span class="chip-dot"></span><div><strong>从一张照片开始</strong><small>ONE FRONTAL PHOTOGRAPH</small></div></div>
+        <div class="visual-chip chip-two"><span class="chip-number">8</span><div><strong>系统研究视角</strong><small>RESEARCH SCOPE</small></div></div>
+        <figcaption><span class="figure-index">FIG. 01</span> 面部表型 · AI 概念视觉</figcaption>
+      </figure>
+    </section>
+    <section class="research-numbers home-container" aria-label="研究概览" data-reveal>
+      <div><strong>62<span>项</span></strong><p>临床生物标志物</p></div><div><strong>8<span>类</span></strong><p>生理系统</p></div><div><strong>1,000<span>万+</span></strong><p>图像用于预训练</p></div><div><strong>45<span>/ 62</span></strong><p>内部评估中领先两种基线</p></div>
+    </section>
+    <section id="research" class="research-section home-container" aria-labelledby="systemsTitle">
+      <div class="section-topline" data-reveal><div><p class="eyebrow"><span></span> FROM FACE TO PHENOTYPE</p><h2 id="systemsTitle">一张面孔，<br>连接全身的健康表型。</h2></div><p>面部蕴含丰富的表型信息。<br>从整体形态，到多个生理系统，探索其中的关联。</p></div>
+      <div class="systems-layout">
+        <figure class="body-figure" data-reveal>
+          <div class="figure-topline"><span class="figure-index">FIG. 02 / SYSTEMS AT A GLANCE</span><span class="figure-live"><i></i> 研究覆盖范围</span></div>
+          <div class="body-map" id="bodyMap" data-scope="regional">
+            <div class="body-grid" aria-hidden="true"></div>
+            <img src="/ui-assets/assets/body-systems.png" width="1024" height="1536" alt="玉绿色半透明全身人体，显示器官与循环网络的概念示意" loading="lazy" decoding="async">
+            <span class="body-focus" id="bodyFocus" style="--point-x:56%;--point-y:25%" aria-hidden="true"><i></i></span>
+            <span class="body-annotation" id="bodyAnnotation">心血管 · 区域示意</span>
+            <span class="body-axis" aria-hidden="true">HUMAN PHENOTYPES</span>
+          </div>
+          <figcaption>AI 生成的概念示意，用于说明研究覆盖范围，非精确解剖图或个体分析结果。</figcaption>
+        </figure>
+        <div class="systems-content" data-reveal>
+          <div class="systems-intro"><span class="mini-label">EXPLORE THE SYSTEMS</span><h3>八类系统，共同构成研究视角。</h3><p>选择一个系统，了解对应的研究方向。</p></div>
+          <div class="system-options" role="group" aria-label="选择生理系统">
+            <button class="system-option" type="button" data-system="anthropometric" aria-pressed="false" aria-controls="systemDetail"><svg class="icon"><use href="#i-measure"/></svg><span><strong>人体测量</strong><small>ANTHROPOMETRIC</small></span><span class="system-index">01</span></button>
+            <button class="system-option" type="button" data-system="cardiovascular" aria-pressed="true" aria-controls="systemDetail"><svg class="icon"><use href="#i-heart"/></svg><span><strong>心血管</strong><small>CARDIOVASCULAR</small></span><span class="system-index">02</span></button>
+            <button class="system-option" type="button" data-system="digestive" aria-pressed="false" aria-controls="systemDetail"><svg class="icon"><use href="#i-digest"/></svg><span><strong>消化</strong><small>DIGESTIVE</small></span><span class="system-index">03</span></button>
+            <button class="system-option" type="button" data-system="electrolyte" aria-pressed="false" aria-controls="systemDetail"><svg class="icon"><use href="#i-ions"/></svg><span><strong>电解质</strong><small>ELECTROLYTE</small></span><span class="system-index">04</span></button>
+            <button class="system-option" type="button" data-system="endocrine" aria-pressed="false" aria-controls="systemDetail"><svg class="icon"><use href="#i-endocrine"/></svg><span><strong>内分泌</strong><small>ENDOCRINE</small></span><span class="system-index">05</span></button>
+            <button class="system-option" type="button" data-system="hematologic" aria-pressed="false" aria-controls="systemDetail"><svg class="icon"><use href="#i-blood"/></svg><span><strong>血液</strong><small>HEMATOLOGIC</small></span><span class="system-index">06</span></button>
+            <button class="system-option" type="button" data-system="immune" aria-pressed="false" aria-controls="systemDetail"><svg class="icon"><use href="#i-immune"/></svg><span><strong>免疫</strong><small>IMMUNE</small></span><span class="system-index">07</span></button>
+            <button class="system-option" type="button" data-system="renal" aria-pressed="false" aria-controls="systemDetail"><svg class="icon"><use href="#i-renal"/></svg><span><strong>肾脏</strong><small>RENAL</small></span><span class="system-index">08</span></button>
+          </div>
+          <div class="system-detail" id="systemDetail" role="region" aria-label="系统研究说明" aria-live="polite" aria-atomic="true"><div class="detail-topline"><span id="systemNumber">02 / 08</span><span id="systemScope">系统相关指标</span></div><h3 id="systemName">心血管系统</h3><p id="systemDescription">探索面部表征与心血管相关临床指标之间的联系，为跨系统健康表型研究提供新的视角。</p><span class="system-note" id="systemNote">研究涉及 HDL-C 等指标；结果来自论文队列评估。</span></div>
+          <a class="inline-link" href="https://doi.org/10.1002/advs.77861" target="_blank" rel="noopener noreferrer">查看论文中的完整指标与验证 <svg class="icon"><use href="#i-external"/></svg></a>
+        </div>
+      </div>
+    </section>
+    <section id="approach" class="approach-section" aria-labelledby="approachTitle">
+      <div class="home-container"><div class="section-topline" data-reveal><div><p class="eyebrow"><span></span> A PROGRESSIVE LEARNING JOURNEY</p><h2 id="approachTitle">从看见图像，<br>到理解临床面部表型。</h2></div><p>三阶段自监督预训练。<br>让视觉表征逐步贴近真实临床场景。</p></div>
+        <ol class="learning-path" data-reveal>
+          <li><div class="learning-art image-mosaic" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div><span class="stage-number">01 / GENERAL VISION</span><h3>学习通用视觉</h3><p>从大规模图像中学习基础视觉表征。</p><div class="dataset"><span>ImageNet-22K</span><strong>1,419 万+ <small>张图像</small></strong></div></li>
+          <li><div class="learning-art face-mosaic" aria-hidden="true"><img src="/ui-assets/assets/face-sculpture.png" alt="" loading="lazy"><span class="scan-line"></span><span class="scan-corner"></span></div><span class="stage-number">02 / FACIAL STRUCTURE</span><h3>聚焦面部结构</h3><p>进一步学习面部结构与局部视觉模式。</p><div class="dataset"><span>VGGFace2-HQ</span><strong>116 万+ <small>张面部图像</small></strong></div></li>
+          <li><div class="learning-art clinical-art" aria-hidden="true"><svg class="icon"><use href="#i-layers"/></svg><div class="clinical-line"><span></span><i></i><i></i><i></i></div><span class="clinical-badge">62 TASKS</span></div><span class="stage-number">03 / CLINICAL PHENOTYPES</span><h3>迁移至临床场景</h3><p>学习临床照片特征，再面向各指标独立微调。</p><div class="dataset"><span>Anzhen clinical photographs</span><strong>88,489 <small>张临床照片</small></strong></div></li>
+        </ol><p class="approach-footnote">Swin-Large 骨干网络 · UM-MAE 自监督预训练 · 逐指标微调</p>
+      </div>
+    </section>
+    <section id="film" class="film-section home-container" aria-labelledby="videoTitle" data-reveal>
+      <div class="film-copy"><p class="eyebrow"><span></span> BEHIND THE SCIENCE</p><h2 id="videoTitle">走近<br>MedicalFaceFound</h2><p>从一个研究问题，到一次真实场景的探索。<br>通过视频，了解我们背后的工作。</p><span class="film-status"><i></i> 项目宣传片</span></div>
+      <div class="video-frame"><video id="researchVideo" controls playsinline preload="metadata" aria-label="MedicalFaceFound 项目宣传视频" hidden>您的浏览器不支持视频播放。</video><div id="videoPlaceholder" class="video-placeholder"><div class="film-wordmark">MedicalFaceFound<span>FROM FACE TO PHENOTYPE</span></div><div class="film-diagram" aria-hidden="true"><svg class="icon"><use href="#i-face"/></svg><span></span><svg class="icon"><use href="#i-layers"/></svg><span></span><svg class="icon"><use href="#i-heart"/></svg></div><span class="video-play-mark" aria-hidden="true"><svg class="icon"><use href="#i-play"/></svg></span><p id="videoStatus">宣传视频 · 即将上线</p><span class="video-corner">THE STORY BEHIND THE SCIENCE</span></div></div>
+    </section>
+    <section id="publication" class="paper-section" aria-labelledby="paperTitle"><div class="home-container">
+      <div class="section-topline" data-reveal><div><p class="eyebrow"><span></span> OUR PUBLICATION</p><h2 id="paperTitle">研究背后的证据。</h2></div><p>方法、验证与发现，<br>都在这篇文章中。</p></div>
+      <article class="paper-card" data-reveal>
+        <figure class="paper-preview"><div class="paper-preview-header"><span>MedicalFaceFound</span><small>METHOD OVERVIEW</small></div><div class="paper-flow"><div><img src="/ui-assets/assets/face-sculpture.png" width="1254" height="1254" alt="面部照片输入的概念示意" loading="lazy"><span>面部输入</span></div><span class="flow-arrow" aria-hidden="true">→</span><div><div class="model-stack" aria-hidden="true"><i></i><i></i><i></i><i></i></div><span>特征表征</span></div><span class="flow-arrow" aria-hidden="true">→</span><div><div class="paper-output"><strong>62</strong><small>BIOMARKERS</small></div><span>指标估计</span></div></div><figcaption>研究流程示意 · 各指标独立微调</figcaption><div class="paper-preview-footer"><svg class="icon"><use href="#i-mobile"/></svg><span>从模型研究，延伸到移动采集场景</span></div></figure>
+        <div class="paper-content"><div class="paper-meta"><span>Advanced Science</span><span>2026 · RESEARCH ARTICLE</span></div><h3>A Facial Foundation Model for Clinical Biomarker Prediction and Real-World Mobile Deployment</h3><p class="paper-authors">Tingfeng Xu, Huixuan Xu, Li Lin, et al.</p><p class="paper-description">研究评估了模型在多个独立队列中的泛化表现，并探索了有限标注数据和智能手机采集场景中的应用。</p><ul class="paper-findings"><li><strong>45 / 62</strong><span>内部评估中优于两种基线的指标</span></li><li><strong>400</strong><span>标注样本下仍保有预测表现</span></li><li><strong>110</strong><span>智能手机验证队列参与者</span></li></ul><div class="paper-links"><a class="home-button solid" href="https://doi.org/10.1002/advs.77861" target="_blank" rel="noopener noreferrer">阅读论文 <svg class="icon"><use href="#i-external"/></svg></a><a class="inline-link" href="https://github.com/1511878618/MedicalFaceFound" target="_blank" rel="noopener noreferrer">研究代码 <span aria-hidden="true">↗</span></a></div><p class="paper-doi">DOI: 10.1002/advs.77861 · 数字来自论文所报告的评估设置</p></div>
+      </article>
+    </div></section>
+    <section id="institutions" class="institutions-section home-container" aria-labelledby="institutionsTitle" data-reveal>
+      <div class="section-topline"><div><p class="eyebrow"><span></span> RESEARCH COLLABORATION</p><h2 id="institutionsTitle">让跨学科协作，<br>推动研究向前。</h2></div><p>连接人工智能、生物信息学与临床医学。</p></div>
+      <div id="institutionGrid" class="institution-grid">
+        <a class="institution" data-logo-style="wide" href="https://big.cas.cn/" target="_blank" rel="noopener noreferrer" aria-label="中国科学院北京基因组研究所官方网站（在新标签页打开）"><span class="institution-logo"><img src="/ui-assets/assets/logos/big-cncb.png" alt="中国科学院北京基因组研究所" loading="lazy" decoding="async"></span><strong>中国科学院北京基因组研究所</strong><small>国家生物信息中心</small></a>
+        <a class="institution" data-logo-style="wordmark" href="https://ict.cas.cn/" target="_blank" rel="noopener noreferrer" aria-label="中国科学院计算技术研究所官方网站（在新标签页打开）"><span class="institution-logo"><img src="/ui-assets/assets/logos/ict.png" alt="中国科学院计算技术研究所" loading="lazy" decoding="async"></span><strong>中国科学院计算技术研究所</strong><small>Institute of Computing Technology</small></a>
+        <a class="institution" data-logo-style="wordmark" href="https://www.ucas.ac.cn/" target="_blank" rel="noopener noreferrer" aria-label="中国科学院大学官方网站（在新标签页打开）"><span class="institution-logo"><img src="/ui-assets/assets/logos/ucas.png" alt="中国科学院大学" loading="lazy" decoding="async"></span><strong>中国科学院大学</strong><small>University of Chinese Academy of Sciences</small></a>
+        <a class="institution" data-logo-style="seal" href="https://www.anzhen.org/" target="_blank" rel="noopener noreferrer" aria-label="首都医科大学附属北京安贞医院官方网站（在新标签页打开）"><span class="institution-logo"><img src="/ui-assets/assets/logos/anzhen.jpg" alt="首都医科大学附属北京安贞医院" loading="lazy" decoding="async"></span><strong>首都医科大学附属北京安贞医院</strong><small>Beijing Anzhen Hospital</small></a>
+      </div>
+    </section>
+    <section id="experience" class="faq-section home-container" aria-labelledby="experienceTitle"><p class="eyebrow">参与研究体验</p><h2 id="experienceTitle">从照片到研究记录，三个步骤。</h2><div class="flow-intro"><article><span>01 / 检查照片</span><h3>拍摄清晰正面照</h3><p>检查单人脸、取景、光线和清晰度，查看完整原图与模型使用的人脸区域。</p></article><article><span>02 / 确认资料</span><h3>由您确认保存</h3><p>填写基本信息，阅读资料用途说明；选择仅保存资料，或分析已开放的研究指标。</p></article><article><span>03 / 查看记录</span><h3>下载研究报告</h3><p>查看中文指标、单位与分析时间，下载报告；未完成的分析可以单独重试。</p></article></div><details><summary>论文中的 62 项指标，现在都可以体验吗？</summary><p>62 项是论文研究范围。目前网站开放年龄估计、HDL-C 与血红蛋白，具体可用项目以采集页为准。</p></details><details><summary>检查照片时会保存我的照片吗？</summary><p>点击检查会临时上传照片进行检测，不写入采集数据库。只有阅读用途说明、勾选同意并提交后，系统才保存完整原图、人脸图和基本信息。</p></details><details><summary>这些结果能代替医院检查吗？</summary><p>不能。这里展示研究性模型估计，不用于诊断或治疗，也不代表实际检验结果。自动照片检查不能保证模型预测准确性。</p></details><details><summary>保存后如何申请删除？</summary><p>在结果区点击“申请删除资料”，或留存采集编号并联系研究团队。详细处理方式见 <a href="/ui-assets/privacy.html">资料用途说明</a>。</p></details></section>
+    <section class="start-section home-container" data-reveal><div><p class="eyebrow">EXPLORE WITH US</p><h2>下一步，从一次采集开始。</h2><p>准备一张清晰的正面照片，进入信息采集页面。</p></div><a class="home-button solid" href="/ui-assets/capture.html">进入采集页面 <svg class="icon"><use href="#i-arrow"/></svg></a></section>
+  </main>
+  <footer class="home-footer home-container"><div><strong>MedicalFaceFound</strong><p>用于科研探索，不用于诊断或治疗。</p></div><div><a href="mailto:xutingfeng@big.ac.cn">研究合作与联系 ↗</a><a href="/ui-assets/privacy.html">资料用途说明</a><span>© 2026 MedicalFaceFound · CC BY-NC 4.0（代码）</span></div></footer>
+</body>
+</html>

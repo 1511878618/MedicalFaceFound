@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f6f8fc">
+  <meta name="description" content="拍摄或上传面部照片，完善基本信息，轻松完成 MedicalFaceFound 信息采集。">
+  <title>面部照片采集 · MedicalFaceFound</title>
+  <link rel="stylesheet" href="/ui-assets/theme.css?v=20261106-clinical-blue">
+  <link rel="stylesheet" href="/ui-assets/style.css?v=20261110-norm1">
+  <link rel="stylesheet" href="/ui-assets/capture-modern.css?v=20261110-clothes">
+  <link rel="stylesheet" href="/ui-assets/research-flow.css?v=20261108">
+</head>
+<body class="capture-page">
+  <svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-camera" viewBox="0 0 24 24"><path d="M8 5l1.5-2h5L16 5h3a2 2 0 0 1 2 2v12H3V7a2 2 0 0 1 2-2z"/><circle cx="12" cy="12" r="4"/></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V3m-5 5 5-5 5 5M4 15v5h16v-5"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6z"/><path d="m8.5 11.5 2.5 2.5 4.5-5"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-face" viewBox="0 0 24 24"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5M8 9v2m8-2v2m-8 4c2 2 6 2 8 0"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5z"/></symbol>
+  </svg>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="/" aria-label="MedicalFaceFound 首页"><span class="brand-mark"><svg class="icon"><use href="#i-face"/></svg></span><span class="brand-wordmark">Medical<span>Face</span>Found<small>面部信息采集平台</small></span></a>
+      <div class="header-actions"><span class="privacy-hint"><svg class="icon"><use href="#i-shield"/></svg>由您确认上传</span><div id="serviceStatus" class="status" role="status"><i></i><span>正在连接服务</span></div></div>
+    </div>
+  </header>
+  <main class="shell">
+    <section class="hero" aria-labelledby="pageTitle">
+      <div><p class="eyebrow"><span></span> FACE CAPTURE</p><h1 id="pageTitle">面部照片采集<span class="title-dot">.</span></h1><p class="hero-description">从一张清晰的照片开始。拍摄或上传正面照片，完善信息后即可提交。</p></div>
+      <div class="hero-note"><svg class="icon"><use href="#i-shield"/></svg><p>由您掌握每一步<small>照片检查不入库，确认提交才保存</small></p></div>
+    </section>
+    <ol class="workflow" aria-label="采集进度">
+      <li id="photoStep" class="step active" aria-current="step"><span class="step-number">01</span><span><strong>采集照片</strong><small>拍摄并检查照片</small></span><svg class="icon step-check"><use href="#i-check"/></svg></li>
+      <li id="profileStep" class="step"><span class="step-number">02</span><span><strong>完善信息</strong><small>填写基本资料</small></span><svg class="icon step-check"><use href="#i-check"/></svg></li>
+      <li id="submitStep" class="step"><span class="step-number">03</span><span><strong>确认提交</strong><small>查看采集结果</small></span><svg class="icon step-check"><use href="#i-check"/></svg></li>
+    </ol>
+    <div class="workspace">
+      <section class="capture-panel card" aria-labelledby="captureTitle">
+        <div class="panel-heading"><div><span class="section-kicker">PHOTO CAPTURE</span><h2 id="captureTitle">采集面部照片</h2></div><span id="photoStatus" class="subtle-badge">等待采集</span></div>
+        <div class="mode-tabs" role="tablist" aria-label="照片来源">
+          <button id="cameraTab" class="tab active" type="button" role="tab" aria-controls="cameraPane" aria-selected="true"><svg class="icon"><use href="#i-camera"/></svg>相机拍摄</button>
+          <button id="uploadTab" class="tab" type="button" role="tab" aria-controls="uploadPane" aria-selected="false" tabindex="-1"><svg class="icon"><use href="#i-upload"/></svg>本地上传</button>
+        </div>
+        <div class="camera-toolbar">
+          <label for="backgroundMode" class="camera-toolbar-label"><svg class="icon"><use href="#i-spark"/></svg>背景处理</label>
+          <select id="backgroundMode" class="background-select">
+            <option value="original">原图</option>
+            <option value="white">纯白背景</option>
+            <option value="clothes">去衣物白底</option>
+          </select>
+        </div>
+        <div id="cameraPane" class="pane active" role="tabpanel" aria-labelledby="cameraTab">
+          <div id="cameraStage" class="camera-stage">
+            <video id="camera" autoplay muted playsinline aria-label="相机实时预览"></video>
+            <div id="cameraPlaceholder" class="camera-placeholder">
+              <span class="preview-label"><i></i> CAMERA PREVIEW</span>
+              <div class="face-illustration" aria-hidden="true"><img src="/ui-assets/assets/face-sculpture.png" width="1254" height="1254" alt=""><span class="capture-portrait-frame"></span></div>
+              <strong>准备好，留下清晰的正面照</strong><span>启用相机，让面部自然居中</span>
+              <div class="preview-tags"><span>正面平视</span><b>·</b><span>自然表情</span><b>·</b><span>光线均匀</span></div>
+            </div>
+            <div class="shade top"></div><div class="shade right"></div><div class="shade bottom"></div><div class="shade left"></div>
+            <div id="faceGuide" class="face-guide" aria-hidden="true"><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span><div class="face-oval"></div><p>眼睛平视 · 面部居中</p></div>
+          </div>
+          <div class="camera-actions">
+            <button id="startCamera" class="button secondary" type="button"><svg class="icon"><use href="#i-camera"/></svg><span>启用相机</span></button>
+            <button id="capturePhoto" class="shutter" type="button" disabled aria-label="拍照"><span></span></button>
+            <button id="switchCamera" class="button ghost" type="button" disabled>切换镜头</button>
+          </div>
+          <p class="capture-note"><svg class="icon"><use href="#i-shield"/></svg>相机画面仅在本机预览，拍摄后可重新选择</p><canvas id="captureCanvas" hidden></canvas>
+        </div>
+        <div id="uploadPane" class="pane" role="tabpanel" aria-labelledby="uploadTab" hidden>
+          <label id="dropZone" class="drop-zone" for="fileInput">
+            <input id="fileInput" type="file" accept="image/jpeg,image/png,image/webp">
+            <span class="upload-art" aria-hidden="true"><svg class="icon"><use href="#i-upload"/></svg></span>
+            <strong>将照片拖到这里</strong><span>或点击选择一张清晰的正面照片</span><span class="upload-cta">选择本地照片 <svg class="icon"><use href="#i-arrow"/></svg></span><small>JPEG / PNG / WEBP · 最大 10 MB</small>
+          </label><p class="capture-note"><svg class="icon"><use href="#i-shield"/></svg>照片仅在您确认提交后上传</p>
+        </div>
+        <div id="photoReview" class="photo-review" hidden>
+          <div class="review-head"><div><span>照片已就绪</span><strong id="photoMeta">—</strong></div><button id="retakePhoto" class="text-button" type="button">重新选择 <span aria-hidden="true">↗</span></button></div>
+          <div class="review-images"><figure><img id="photoPreview" alt="将保存的完整照片"><figcaption>将保存的完整照片</figcaption></figure><figure id="cropFigure" hidden><img id="cropPreview" alt="将用于模型分析的裁剪图"><figcaption>模型使用的人脸图 · 256 × 256</figcaption></figure></div>
+          <div class="quality-review"><button id="checkPhoto" class="button secondary" type="button">检查照片</button><p class="field-hint">点击后临时上传照片，检查单人脸、取景、光线与清晰度；这一步不会保存到数据库。</p><ul id="qualityResults" class="quality-results" aria-live="polite"></ul><p id="qualityNote" class="field-hint"></p></div>
+        </div>
+        <div class="quality-card">
+          <div class="quality-heading"><h3>好照片，从这三个细节开始</h3><span>拍摄建议</span></div>
+          <ul>
+            <li><span class="tip-icon"><svg class="icon"><use href="#i-face"/></svg></span><div><strong>正面完整</strong><span>平视镜头，露出额头与下巴</span></div></li>
+            <li><span class="tip-icon"><svg class="icon"><use href="#i-sun"/></svg></span><div><strong>均匀光线</strong><span>避免逆光、过曝和阴影</span></div></li>
+            <li><span class="tip-icon"><svg class="icon"><use href="#i-eye"/></svg></span><div><strong>面部无遮挡</strong><span>移开口罩、墨镜与碎发</span></div></li>
+          </ul>
+        </div>
+      </section>
+      <aside class="control-column">
+        <section class="control-panel card" aria-labelledby="profileTitle">
+          <div class="panel-heading"><div><span class="section-kicker">YOUR INFORMATION</span><h2 id="profileTitle">完善基本信息</h2></div><span class="required-label">以下信息均为必填</span></div>
+          <form id="inferenceForm">
+            <fieldset class="profile-fields">
+              <legend class="visually-hidden">基本信息</legend>
+              <label class="field"><span>年龄</span><span class="input-wrap"><input id="age" name="age" type="number" min="0" max="120" step="1" inputmode="numeric" placeholder="请输入" required><span class="input-unit">岁</span></span></label>
+              <label class="field"><span>性别</span><select id="gender" name="gender" required><option value="">请选择</option><option value="male">男</option><option value="female">女</option><option value="other">其他</option><option value="unspecified">不愿透露</option></select></label>
+              <label class="field"><span>身高</span><span class="input-wrap"><input id="heightCm" name="height_cm" type="number" min="30" max="250" step="0.1" inputmode="decimal" placeholder="请输入" required><span class="input-unit">cm</span></span></label>
+              <label class="field"><span>体重</span><span class="input-wrap"><input id="weightKg" name="weight_kg" type="number" min="1" max="500" step="0.1" inputmode="decimal" placeholder="请输入" required><span class="input-unit">kg</span></span></label>
+            </fieldset>
+            <div class="analysis-options">
+              <div class="option-heading"><svg class="icon"><use href="#i-spark"/></svg><h3>模型分析</h3><span>可选</span></div>
+              <label class="field model-field"><span class="visually-hidden">推理模型</span><select id="modelSelect" disabled><option value="">正在获取模型…</option></select></label><p id="modelHint" class="field-hint">您也可以仅保存照片与基本信息。</p><label class="gradcam-option"><input id="gradcamOption" type="checkbox"><span>同时生成热力图 <small id="gradcamHint">正在读取热图设置…</small></span></label>
+              <p class="field-hint">使用检查后预览的人脸区域进行分析。可选择单项，或分析全部已上线指标。</p>
+            </div>
+            <div class="consent-card"><div class="consent-title"><svg class="icon"><use href="#i-shield"/></svg><strong>关于您的采集资料</strong></div><p class="storage-note">提交后保存完整照片、人脸裁剪图、基本信息及分析结果，用于科研调研。<a href="/ui-assets/privacy.html" target="_blank" rel="noopener">阅读资料用途说明</a>。保存后可申请删除；离开页面前请下载报告并留存采集编号。</p><label class="consent-field"><input id="storageConsent" type="checkbox" required><span>我已阅读资料用途说明，同意保存上述资料用于科研调研</span></label></div>
+            <button id="submitPhoto" class="button primary" type="submit" disabled><span>保存采集资料</span><svg class="icon submit-arrow"><use href="#i-arrow"/></svg><i></i></button><p id="formMessage" class="form-message" role="status" aria-live="polite">拍摄或选择照片后即可提交。</p>
+          </form>
+        </section>
+        <section id="resultPanel" class="result-panel card" aria-labelledby="resultTitle" hidden>
+          <div class="result-title"><div><svg class="icon"><use href="#i-check"/></svg><h2 id="resultTitle">采集已完成</h2></div><button id="copyResult" class="text-button" type="button">复制数据</button></div><dl id="resultSummary" class="result-summary"></dl><div id="predictionCards" class="prediction-cards"></div><p class="research-disclaimer">以下是研究性模型估计，不用于诊断或治疗，不能替代实际检验。</p><div class="result-actions"><button id="retryAnalysis" class="button secondary" type="button" hidden>仅重试失败分析</button><button id="downloadReport" class="button secondary" type="button">下载研究报告</button><button id="deleteRequest" class="text-button" type="button">申请删除资料</button></div><details class="result-details"><summary>查看完整数据</summary><pre id="resultOutput"></pre></details>
+        </section>
+      </aside>
+    </div>
+    <footer class="footer"><span>MedicalFaceFound <span class="footer-separator">/</span> 用心记录每一份信息</span><span><svg class="icon"><use href="#i-shield"/></svg>预览 · 确认 · 提交</span></footer>
+  </main>
+  <script src="/ui-assets/app.js?v=20261110-fill-exposure" defer></script>
+</body>
+</html>

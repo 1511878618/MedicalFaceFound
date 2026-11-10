@@ -1,0 +1,10 @@
+Generated with the built-in image_gen tool. Transparent PNG.
+Conceptual artwork only; not a real prediction or patient image.
+
+Use case: stylized-concept.
+Asset type: production hero artwork for a polished medical AI research website, MedicalFaceFound. Generate a completely new artwork, not a diagram or a UI mockup.
+Subject: a refined, anatomically natural human head and short neck/upper-shoulder bust, gender neutral adult, elegant three-quarter angle turned slightly toward the viewer's left. Beautiful calm facial proportions, softly closed eyes, no hair, no makeup. Sculptural white opalescent glass with a very subtle translucent mint-jade tint, realistic volumetric form, soft subsurface scattering and precise highlights. The face should be recognisably human and harmonious, not a robot, alien, mask, or wireframe. A sparse cluster of tiny luminous teal data particles gently dissolves from the far right temple/back of head, creating a restrained computational imaging cue.
+Style: premium contemporary 3D medical science editorial, high-end studio CGI render, sophisticated museum glass sculpture. Understated, serene, tactile. Broad soft key light from upper left, gentle ambient fill, soft jade rim lighting, no harsh contrast or neon.
+Composition: single centered bust, square canvas, entire head and a short shoulder base visible, head takes about 65 percent of image height, generous breathing room around head and particles, isolated on a truly transparent background for compositing into a pale sage website. No floor, pedestal, scenery, borders, circular frames or interface widgets.
+Palette: pearl white, misty mint, muted jade, tiny deep-teal accents. Excellent clarity and detailed surface lighting.
+No text, typography, labels, numerical overlays, watermarks, arrows, scanning brackets, connected landmark mesh, polygon outlines, anatomical organs, circuitry, cyberpunk effects, or illustrated linework.

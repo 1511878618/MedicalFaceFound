@@ -1,0 +1,25 @@
+*{box-sizing:border-box}body{margin:0;background:var(--page-bg);color:var(--ink);font:15px/1.7 system-ui}header{display:flex;align-items:center;gap:24px;padding:20px max(24px,calc((100vw - 1200px)/2));border-bottom:1px solid var(--line);background:var(--surface)}header a{font-size:20px;font-weight:700;text-decoration:none;color:var(--ink)}header span{color:var(--muted)}header button{margin-left:auto}main{max-width:1200px;margin:42px auto;padding:0 24px 80px}h1{font-size:32px;margin:8px 0}h2{font-size:24px}.eyebrow{color:var(--accent);letter-spacing:2px;font-size:11px;font-weight:700}.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:28px;margin-bottom:24px}.login-panel{max-width:540px;margin:70px auto}.login-panel form{display:grid;gap:12px;margin:28px 0}.muted,p{color:var(--muted)}.muted{font-size:12px}.heading{display:flex;justify-content:space-between;align-items:center;gap:24px;margin-bottom:24px}.actions{display:flex;gap:12px;flex-wrap:wrap}button{font:inherit;border:1px solid var(--line);background:var(--surface);border-radius:8px;color:var(--ink);padding:10px 16px;cursor:pointer;min-height:44px}button:hover{border-color:var(--accent)}button:disabled{opacity:.5;cursor:default}.primary{background:var(--accent);color:white;border-color:var(--accent)}input,select{font:inherit;display:block;width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;min-height:44px;background:var(--surface);color:var(--ink)}input:focus,button:focus-visible,select:focus{outline:2px solid var(--accent);outline-offset:3px}label{font-size:13px}.filter-form{display:flex;align-items:end;gap:16px;flex-wrap:wrap}.filter-form label{flex:1;min-width:160px}.table-scroll{overflow-x:auto}table{border-collapse:collapse;width:100%}th,td{text-align:left;padding:18px 12px;border-bottom:1px solid var(--line);font-size:13px}th{color:var(--muted);font-weight:500}td small{display:block;color:var(--muted)}.pagination{display:flex;align-items:center;gap:12px;margin-top:24px}.pagination span{margin-right:auto}.image-pair{display:grid;grid-template-columns:1fr 1fr;gap:24px}.image-pair figure{margin:16px 0}.image-pair img{width:100%;height:320px;object-fit:contain;background:var(--surface-muted);border-radius:12px}.image-pair figcaption{color:var(--muted);font-size:12px;margin-top:8px}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:var(--surface-muted);padding:18px;border-radius:10px;font-size:12px}.delete-area{border-top:1px solid var(--line);margin-top:28px;padding-top:20px}.delete-area label{display:block;max-width:520px}.delete-area button{margin-top:16px}.danger{color:#a02f2f;border-color:#dfbebe}.error{color:#a02f2f!important}#recordDetails{overflow-wrap:anywhere}#analysisDetails article{border:1px solid var(--line);background:var(--surface-muted);border-radius:10px;padding:16px;margin:12px 0}#analysisDetails strong{color:var(--accent);font-size:23px}#analysisDetails small{display:block;overflow-wrap:anywhere;color:var(--muted)}[hidden]{display:none!important}@media(max-width:640px){header{padding:16px;gap:12px}header a{font-size:16px}header span{display:none}main{padding:0 16px;margin-top:24px}.panel{padding:20px}.heading{align-items:start;flex-direction:column}h1{font-size:27px}.image-pair{gap:12px}.image-pair img{height:190px}.login-panel{margin-top:30px}}
+
+/* Research annotation: age edit + tags */
+.tag{display:inline-block;padding:3px 9px;border-radius:999px;background:var(--surface-muted);border:1px solid var(--line);font-size:12px;line-height:1.6;margin:2px 4px 2px 0}
+.edit-area{border-top:1px solid var(--line);margin-top:28px;padding-top:20px}
+.edit-area h2{font-size:20px;margin:6px 0 14px}
+.inline-form{display:flex;align-items:end;gap:12px;flex-wrap:wrap;margin:10px 0}
+.inline-form label{flex:1;min-width:200px}
+.tag-area{margin:18px 0 8px}
+.tag-area>p{margin:0 0 6px}
+.tag-chips{display:flex;flex-wrap:wrap;gap:6px;min-height:8px;margin:6px 0}
+.tag-chip{display:inline-flex;align-items:center;gap:4px;padding:5px 8px 5px 10px;border-radius:999px;background:var(--surface-muted);border:1px solid var(--line);font-size:13px}
+.tag-chip button{border:0;background:none;padding:0 2px;min-height:auto;line-height:1;font-size:16px;color:var(--muted);cursor:pointer}
+.tag-chip button:hover{color:#a02f2f}
+#editMeta{margin-top:8px}
+
+/* Grad-CAM inside admin analysis cards */
+#analysisDetails .explanation{margin:12px 0 0}
+#analysisDetails .cam-comparison{display:grid;grid-template-columns:repeat(2,minmax(0,256px));gap:12px}
+.cam-controls{align-items:center}
+.cam-controls label{display:flex;align-items:center;gap:8px}
+.cam-controls input{width:16px;min-height:16px;padding:0;accent-color:var(--accent)}
+.cam-road li{font-size:13px;color:var(--muted)}
+#analysisDetails .explanation img{width:100%;max-width:256px;border-radius:10px;display:block;background:var(--surface-muted)}
+#analysisDetails .explanation figcaption{font-size:11px;color:var(--muted);margin-top:6px}

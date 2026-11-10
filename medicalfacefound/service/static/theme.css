@@ -1,0 +1,24 @@
+/* Clinical blue: shared palette for the research homepage and capture flow. */
+:root {
+  --page-bg: #f6f8fc;
+  --surface: #ffffff;
+  --surface-muted: #f0f4fa;
+  --ink: #142c48;
+  --muted: #596b80;
+  --line: #dde5f0;
+  --line-strong: #bfd0ea;
+  --accent: #2563eb;
+  --accent-dark: #1d4ed8;
+  --soft: #eaf1ff;
+  --soft-strong: #dbe7ff;
+  --accent-border: #a9c3f6;
+  --accent-art: #85a8e8;
+  --media-bg: #12243d;
+  --success: #1b7c5b;
+  --success-soft: #eef8f2;
+  --success-line: #cfe9dd;
+  --warning: #967028;
+  --error: #a14035;
+  --error-soft: #fff5f2;
+  --concept-saturation: .28;
+}

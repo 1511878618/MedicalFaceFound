@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="560" viewBox="0 0 560 560" fill="none">
+<defs><radialGradient id="halo"><stop stop-color="#d0e9dc"/><stop offset="1" stop-color="#edf5ef" stop-opacity="0"/></radialGradient><linearGradient id="face" x1="180" y1="120" x2="365" y2="430" gradientUnits="userSpaceOnUse"><stop stop-color="#fcfffd"/><stop offset="1" stop-color="#c5e0d0"/></linearGradient><pattern id="dots" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".8" fill="#719b87" opacity=".25"/></pattern></defs>
+<circle cx="280" cy="280" r="270" fill="url(#halo)"/><circle cx="280" cy="280" r="226" stroke="#afceba" stroke-opacity=".4"/><circle cx="280" cy="280" r="185" stroke="#afceba" stroke-opacity=".45" stroke-dasharray="2 8"/><circle cx="280" cy="280" r="143" fill="url(#dots)"/>
+<path d="M180 212c-1-79 35-123 100-123s101 44 100 123l-12 110c-8 62-57 117-88 117s-80-55-88-117z" fill="url(#face)" stroke="#679680" stroke-width="1.2"/>
+<g stroke="#7fa38e" stroke-width="1" opacity=".5"><path d="M182 207q98-42 196 0M181 230q99-30 198 0M184 254q96-18 192 0M187 278q93-7 186 0M190 302q90 8 180 0M195 326q85 21 170 0M204 350q76 27 152 0M218 374q62 29 124 0M235 398q45 27 90 0"/><path d="M280 90q-105 150-26 338M280 90q-60 155-13 345M280 90q60 155 13 345M280 90q105 150 26 338M280 90v347"/></g>
+<g stroke="#467f68" stroke-width="1.6" stroke-linecap="round"><path d="M207 246q23-17 48-1m50 0q25-16 48 1M211 255q19 12 38-1m62 0q19 13 38 1M277 259l-13 56q16 11 32 0m-42 39q26-9 52 0-26 20-52 0"/><path d="M239 422v30c-67 12-98 30-112 65m194-95v30c67 12 98 30 112 65" opacity=".45"/></g>
+<path d="M156 143v-26h26m196 0h26v26M156 389v26h26m196 0h26v-26" stroke="#307e62" stroke-width="2" stroke-linecap="round"/>
+<path d="m231 254 49 61 49-61m-75 100 26-39 26 39m-75-100 23 100m75-100-23 100" stroke="#397d5f" stroke-width=".8" opacity=".5"/>
+<g fill="#2d8062"><circle cx="231" cy="254" r="3"/><circle cx="329" cy="254" r="3"/><circle cx="280" cy="315" r="3"/><circle cx="254" cy="354" r="2.5"/><circle cx="306" cy="354" r="2.5"/><circle cx="280" cy="409" r="2.5"/></g>
+<g stroke="#7fa38e" stroke-width=".8"><path d="M231 254H90l-23-23M329 254h141l23-23M280 409v52h141"/><circle cx="65" cy="229" r="3"/><circle cx="495" cy="229" r="3"/><circle cx="423" cy="461" r="3"/></g>
+</svg>

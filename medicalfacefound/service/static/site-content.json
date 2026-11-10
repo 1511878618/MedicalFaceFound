@@ -1,0 +1,38 @@
+{
+  "video": {
+    "src": "/ui-assets/assets/video/medicalfacefound-introduction.mp4",
+    "poster": "/ui-assets/assets/video/medicalfacefound-poster.jpg",
+    "captions": "",
+    "title": "走近 MedicalFaceFound"
+  },
+  "institutions": [
+    {
+      "name": "中国科学院北京基因组研究所",
+      "subtitle": "国家生物信息中心",
+      "logo": "/ui-assets/assets/logos/big-cncb.png",
+      "url": "https://big.cas.cn/",
+      "logoStyle": "wide"
+    },
+    {
+      "name": "中国科学院计算技术研究所",
+      "subtitle": "Institute of Computing Technology",
+      "logo": "/ui-assets/assets/logos/ict.png",
+      "url": "https://ict.cas.cn/",
+      "logoStyle": "wordmark"
+    },
+    {
+      "name": "中国科学院大学",
+      "subtitle": "University of Chinese Academy of Sciences",
+      "logo": "/ui-assets/assets/logos/ucas.png",
+      "url": "https://www.ucas.ac.cn/",
+      "logoStyle": "wordmark"
+    },
+    {
+      "name": "首都医科大学附属北京安贞医院",
+      "subtitle": "Beijing Anzhen Hospital",
+      "logo": "/ui-assets/assets/logos/anzhen.jpg",
+      "url": "https://www.anzhen.org/",
+      "logoStyle": "seal"
+    }
+  ]
+}

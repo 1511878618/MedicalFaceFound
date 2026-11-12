@@ -1,4 +1,7 @@
-# 本地研究采集网站与模型 API
+# 研究采集网站与模型 API
+
+本文介绍研究网站的部署、配置和数据管理。模型方法、推理和训练说明见
+[项目 README](README.md)。下文命令均从仓库根目录执行。
 
 网站服务代码位于 `medicalfacefound/service/`，直接复用本仓库
 `medicalfacefound/inference/face.py` 与 `predict.py`。人脸检测为 RetinaFace，
@@ -8,23 +11,30 @@
 照片真实性、所有姿态或临床适用性。这些启发式阈值仍需根据项目采集样本评估。
 
 前端页面位于 `medicalfacefound/service/static/`，随本仓库一起分发；默认无需设置
-`MFF_FRONTEND_DIR`。数据库仍可使用 `MedicalFaceFound_api/data/medicalface.sqlite3`，
-`MedicalFaceFound_api/start_service.sh` 仍会把页面、后端和数据库连接到同一个服务。
-本次没有改动图片压缩、视频字幕、部署拆分或并发策略。
+`MFF_FRONTEND_DIR`。默认数据库为 `data/medicalface.sqlite3`，运行数据和模型权重
+独立于版本控制，需在部署环境中准备。
 
 ## conda 环境
 
-仅通过 conda 安装依赖：
+可使用提供的 conda 配置安装服务依赖：
 
 ```bash
+cd /path/to/MedicalFaceFound
 conda env create -f environment-service.yml
-# 已有环境可用 conda env update -n MedicalFaceFound_api -f environment-service.yml
-conda activate MedicalFaceFound_api
+conda activate MedicalFaceFound
+```
+
+更新已创建的环境可运行 `conda env update -n MedicalFaceFound -f environment-service.yml`。
+启动脚本优先使用 `MFF_PYTHON` 指定的解释器，其次是已激活的非 `base` conda 环境，
+再查找默认 Miniforge 环境和 PATH 中的 Python。使用自定义环境时，建议显式激活或指定：
+
+```bash
+MFF_PYTHON=/path/to/environment/bin/python bash start_service.sh
 ```
 
 RetinaFace 官方权重 `retinaface.pth` 放在
 `weights/retinaface-cache/.deepface/weights/retinaface.pth`，来源：
-https://github.com/serengil/deepface_models/releases/download/v1.0/retinaface.pth 。
+[官方权重下载](https://github.com/serengil/deepface_models/releases/download/v1.0/retinaface.pth)。
 服务默认设置 `DEEPFACE_HOME=weights/retinaface-cache` 和
 `DEEPFACE_BACKEND_ENGINE=pytorch`。可以显式设置环境变量覆盖，前提是安装对应后端依赖。
 首次部署应提前准备检测器权重，避免在用户请求中下载。指标权重仍为
@@ -33,19 +43,58 @@ https://github.com/serengil/deepface_models/releases/download/v1.0/retinaface.pt
 ## 启动与管理
 
 ```bash
-python -m medicalfacefound.service \
-  --database "$HOME/Desktop/MedicalFaceFound_api/data/medicalface.sqlite3"
+cd /path/to/MedicalFaceFound
+bash start_service.sh
+
+# 也可在已配置好依赖的环境中直接启动
+python -m medicalfacefound.service
+
+# 自定义监听地址、端口或数据库（命令行参数优先于环境变量）
+bash start_service.sh --host 127.0.0.1 --port 8000 --database /path/to/medicalface.sqlite3
 ```
 
-也可运行 `MedicalFaceFound_api/start_service.sh`。默认地址 http://127.0.0.1:8000 。
-`MFF_FRONTEND_DIR` 可覆盖默认页面目录；`MFF_WEIGHTS_DIR`、`MFF_TASKS`、`MFF_DEVICE`
-继续控制指标目录、开放任务、运行设备。
+默认地址 [http://127.0.0.1:8000](http://127.0.0.1:8000)。启动脚本以自身位置确定仓库，
+可从其他目录使用绝对路径调用；直接使用 Python 模块时应在仓库根目录运行，或先安装本包。
 模型仍串行调用，最多缓存一个指标模型。
 
+- 首页：`/`
 - 采集：`/ui-assets/capture.html`
 - 内部管理：`/admin`
 - 用途说明：`/ui-assets/privacy.html`
 - API：`/docs`
+
+后台启动与检查（从仓库根目录运行，先确保端口没有其他服务占用）：
+
+```bash
+mkdir -p data
+chmod 700 data
+umask 077
+nohup bash start_service.sh > data/server.log 2>&1 &
+echo $! > data/server.pid
+curl --noproxy '*' http://127.0.0.1:8000/health
+curl --noproxy '*' http://127.0.0.1:8000/ready
+tail -f data/server.log
+```
+
+停止前先用 `ps -p "$(cat data/server.pid)" -o command=` 确认是本服务，
+再运行 `kill "$(cat data/server.pid)"`，等待退出后重启。
+前台启动则使用 Ctrl+C；前台模式的日志默认输出到终端。
+`/health` 返回 `ok` 只表示 HTTP 服务可用；`/ready` 的 `quality_ready`、
+`inference_ready`、`available_models`、`missing_dependencies` 和 `load_errors`
+用于进一步检查依赖与模型目录。实际加载权重发生在首次推理时。
+
+| 环境变量 | 默认值 / 用途 |
+| --- | --- |
+| `MFF_PYTHON` | 覆盖启动脚本使用的 Python |
+| `MFF_BACKEND_DIR` | 启动脚本所在仓库；仅启动脚本使用 |
+| `MEDICALFACE_DB_PATH` | `<仓库>/data/medicalface.sqlite3` |
+| `MFF_FRONTEND_DIR` | `<仓库>/medicalfacefound/service/static` |
+| `MFF_WEIGHTS_DIR` | `<仓库>/weights` |
+| `MFF_TASKS` | 默认发现完整模型目录；可用 `Age,HDLC,Hb` 限定 |
+| `MFF_DEVICE` | `cpu`，可显式设为环境支持的设备 |
+| `MFF_ADMIN_TOKEN` | 可选，至少 32 字符；否则读取或生成本地密钥 |
+| `MFF_ENABLE_FAHR_FACEAGE` | 启动脚本中设为 `1` 后配置可选年龄对照 |
+| `MFF_ENABLE_CAM_COMPARISON` | 设为 `1` 启用管理端热图方法对照 |
 
 管理员密钥默认在数据库旁的 `admin-access.key` 中自动生成（权限 0600），
 **不会显示在服务日志、公开页面或 API 中**。由获授权人员从本机读取后登录。
@@ -70,6 +119,21 @@ CSV 导出与手动备份。所有管理 API 均检查 Bearer 密钥。
 原始照片可能含 EXIF 信息；管理预览会重新编码，但数据库保留用户提交的原始文件。
 
 ## 数据库与备份
+
+默认数据目录为仓库根目录下的 `data/`：
+
+- `medicalface.sqlite3`：采集资料、原图、裁剪图、预测、已保存热图和管理设置。
+- `admin-access.key`：首次启动时生成的管理员访问密钥。
+- `backups/`：启动前与管理端手动生成的数据库备份。
+- `server.log`：使用本文后台启动命令时写入的服务日志。
+
+这些文件以及 `weights/`、`external/` 已加入 `.gitignore`。数据库、密钥和备份保存在部署环境中，
+不要加入版本控制。若使用 `--database` 或 `MEDICALFACE_DB_PATH`，密钥和备份也会随数据库位置改变。
+
+后续迁移应先停止写入服务，再使用 SQLite backup API 或管理端备份，
+并核对 `PRAGMA integrity_check`、记录数及图片/预测内容；服务运行时不要只复制 `.sqlite3`
+主文件，未 checkpoint 的事务可能还在 `-wal` 中。恢复时先停止服务，保留当前数据库，
+使用备份替换数据库并一并保留管理员密钥，再重启验证。
 
 旧 `captures` 表通过增加可空字段迁移，旧照片和资料保留；不伪造旧记录的同意版本、
 质量结果或分析输入。旧记录仍能在管理页面查看，不能直接用缺失的裁剪图发起新分析。
@@ -103,4 +167,25 @@ CSV 导出与手动备份。所有管理 API 均检查 Bearer 密钥。
 并双线性插值为 448×448 PNG 预览（`overlay`）。预览采用当前页面的配色与叠加方式，
 论文的队列平均和标准人脸投影属于另一步分析。
 结果随响应返回，数据库不保存这项临时对照。启动脚本默认复用 `fahr-face` conda 环境、
-本地 `external/FAHR-Face` 源码和桌面的 `fahr_faceage.pth`。
+本仓库 `external/FAHR-Face` 源码及 `weights/fahr-face/fahr_faceage.pth`。
+三者均需提前准备，可用 `MFF_FAHR_FACEAGE_PYTHON`、`MFF_FAHR_FACEAGE_SOURCE`、
+`MFF_FAHR_FACEAGE_CHECKPOINT` 覆盖。新克隆仓库不包含这些本地资产。
+
+```bash
+# 启用可选的年龄与热图方法对照
+MFF_ENABLE_FAHR_FACEAGE=1 MFF_ENABLE_CAM_COMPARISON=1 bash start_service.sh
+```
+
+## 前端维护与验证
+
+首页配置为 `medicalfacefound/service/static/site-content.json`，公共配色为 `theme.css`。
+视频、Logo、概念图与页面操作说明见 [README-ui.md](README-ui.md)。静态文件修改后刷新浏览器；
+Python 代码或环境变量修改后重启服务。
+
+```bash
+# 使用配置好服务依赖的 Python；测试使用临时数据库，不写入本地采集库
+python -m unittest discover -s tests -p 'test_service.py' -v
+python -m unittest discover -s tests -p 'test_quality.py' -v
+```
+
+接口测试替换了部分检测/推理实现，验证采集、权限和数据保存流程，不证明真实模型预测性能。

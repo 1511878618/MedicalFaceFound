@@ -1,10 +1,17 @@
 # MedicalFaceFound
 
-[![Code license: CC BY-NC 4.0](https://img.shields.io/badge/code-CC%20BY--NC%204.0-lightgrey.svg)](LICENSE)
-[![Python](https://img.shields.io/badge/python-3.9%2B-brightgreen.svg)]()
-<!-- [![pip](https://img.shields.io/badge/pip%20install-medicalfacefound-blue.svg)]() -->
+**A Facial Foundation Model for Clinical Biomarker Prediction and Real-World Mobile Deployment**
 
-## 🔬 Overview
+Official implementation accompanying the article in *Advanced Science* (2026).
+
+[![Paper](https://img.shields.io/badge/DOI-10.1002%2Fadvs.77861-blue)](https://doi.org/10.1002/advs.77861)
+[![Code license: CC BY-NC 4.0](https://img.shields.io/badge/code-CC%20BY--NC%204.0-lightgrey.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/python-3.9%2B-brightgreen.svg)](pyproject.toml)
+
+[Paper](https://doi.org/10.1002/advs.77861) · [Installation](#installation) ·
+[Inference](#inference) · [Fine-tuning](#fine-tuning) · [Citation](#citation)
+
+## Overview
 
 **MedicalFaceFound** is a facial foundation model that estimates clinical biomarkers
 from a single frontal photograph, without blood sampling. It targets **62 biomarkers
@@ -24,21 +31,7 @@ autoencoding (UM-MAE) through a **three-stage general-to-clinical curriculum**:
 For each biomarker the encoder is fine-tuned independently with a task-specific head
 (62 models), and predictions are returned in clinical units.
 
-## 📄 Abstract
-
-> Most clinical biomarkers require invasive sampling and laboratory testing, limiting
-> accessibility for large-scale screening and continuous monitoring. We developed
-> MedicalFaceFound, a facial foundation model pretrained on over 10 million images and
-> evaluated across 62 biomarkers spanning eight physiological systems. It performed
-> best among Swin-Large and ResNet18 for 45 (73%) biomarkers and generalised across
-> independent external cohorts (median Pearson's r = 0.172), with strong performance
-> for RBC, eGFR and HDL-C (median r = 0.478, 0.442 and 0.430). It outperformed
-> polygenic risk score models for 14 of 26 biomarkers, and face-estimated
-> cardiovascular biomarkers were associated with coronary stenosis (AUC = 0.66). The
-> model retained predictive performance with 400 labelled samples and was deployable
-> as a smartphone application.
-
-## ✨ Results at a glance
+## Results
 
 | Finding | Number |
 | :-- | :-- |
@@ -64,60 +57,46 @@ Per-system median Pearson's r (internal / external):
 | Renal | 0.277 | 0.315 |
 | Electrolytes | 0.141 | 0.030 |
 
-These are the cohort-level numbers reported in the paper. Per-image metrics computed
-from the released checkpoints on the internal test split differ (e.g. median
-Pearson's r ≈ 0.20); per-biomarker values are reported in the paper.
+These results are reported at the cohort level in the paper. See the article and
+supplementary materials for the evaluation protocols and per-biomarker results.
 
-## 📦 Installation
+## Installation
+
+Clone the repository and install the package in a Python 3.9+ environment:
 
 ```bash
 git clone https://github.com/1511878618/MedicalFaceFound.git
 cd MedicalFaceFound
-
-pip install .            # installs the package (`mff` CLI, Python API, training entry points)
-# or: pip install -e .
+python -m pip install -e .
 ```
 
-Python 3.9 or newer is required. Everything is installed by default, including face
-detection with RetinaFace (`retina-face`, which brings OpenCV / ONNX Runtime). No
-optional extras are needed.
-The same list is in `requirements.txt`; `pyproject.toml` stays the source of truth.
+This installs the `mff` inference CLI, Python API and training dependencies.
+Dependencies are declared in [pyproject.toml](pyproject.toml); `timm` is pinned to
+`0.9.16` for compatibility with the model implementation. Install a compatible
+PyTorch / torchvision build for your CPU or CUDA environment.
 
-| Dependency | Used for |
-| :-- | :-- |
-| `torch`, `torchvision` | model, training loop |
-| `timm==0.9.16` | `timm.models.layers` used by the Swin / MAE blocks |
-| `einops` | `rearrange` in the MAE encoder and the mask transform |
-| `numpy`, `pillow` | image IO and preprocessing |
-| `retina-face` | face detection (pulls OpenCV, ONNX Runtime, TensorFlow) |
-| `safetensors`, `huggingface_hub` | weight download and loading |
-| `pandas` | reading the `--statistics` CSV in `--eval` / `--predict` |
-| `torchmetrics` | evaluation metrics |
-| `tensorboard`, `tqdm` | logging and progress bars |
-| `early-stopping-pytorch` | early stopping during fine-tuning |
+For the optional research web application, install the service dependencies:
 
 ```bash
-pip install -r requirements.txt   # alternative to `pip install .`
+python -m pip install -e '.[service]'
 ```
 
-Install `torch` / `torchvision` from the matching CUDA index before the rest if you
-need a specific build.
-
-The training entry points and the inference tools are all package modules, so after
-`pip install .` everything runs from anywhere:
+A conda configuration is also provided in
+[environment-service.yml](environment-service.yml). See the
+[service guide](README-service.md) for detector setup and deployment.
 
 ```bash
-python -m medicalfacefound.main_finetune --help     # fine-tuning
-python -m medicalfacefound.main_pretrain --help     # pretraining
-mff --help                                          # inference
+mff --help
+python -m medicalfacefound.main_finetune --help
+python -m medicalfacefound.main_pretrain --help
 ```
 
-`timm` is pinned to `0.9.16` automatically: the model definition imports
-`timm.models.layers`, which moved in timm 1.x.
+## Model checkpoints
 
-## 🤗 Weights
-
-Weights will be released on Hugging Face: **release soon**.
+Model checkpoints are distributed separately from the source code. The planned
+release includes the pretrained backbone and 62 biomarker-specific checkpoints.
+Hugging Face download instructions will be available with the checkpoint release.
+The inference examples below use checkpoints stored in a local `weights/` directory.
 
 | Path | Contents | Size |
 | :-- | :-- | --: |
@@ -129,85 +108,67 @@ Each `tasks/<name>/config.json` stores the unit and the `target_mean` / `target_
 used for de-normalisation. The checkpoints do not carry per-task metrics; performance
 is reported in the paper.
 
-```bash
-# once released
-hf download MedicalFaceFound/medicalfacefound --include "tasks/Age/*" --local-dir weights
+```text
+weights/
+├── backbone/
+│   ├── config.json
+│   └── model.safetensors
+├── tasks/
+│   └── Age/
+│       ├── config.json
+│       └── model.safetensors
+└── tasks.json
 ```
 
-## 🗂 Repository layout
+Each task can be used independently. `--all-tasks` reads the task list from
+`tasks.json` and requires the corresponding checkpoint directories.
 
-```
-MedicalFaceFound/
-├── medicalfacefound/                 # the package
-│   ├── __init__.py                   #   FaceCropper, load_task, predict_values
-│   ├── inference/
-│   │   ├── face.py                   #   RetinaFace detect + square crop + normalise
-│   │   ├── predict.py                #   load weights from Hugging Face, batch predict
-│   │   └── cli.py                    #   `mff crop` / `mff predict`
-│   ├── utils/
-│   │   ├── models_swin.py            #   Swin-L definition shared by training and inference
-│   │   ├── models_mae_swin.py        #   UM-MAE blocks / decoder
-│   │   ├── datasets.py               #   dataset + preprocessing
-│   │   └── ...                       #   schedulers, checkpoint utils, PVT/ViT variants
-│   ├── main_pretrain.py              #   UM-MAE pretraining (original training script)
-│   ├── main_finetune.py              #   biomarker fine-tuning (original training script)
-│   ├── engine_pretrain.py, engine_finetune.py, mask_transform.py
-│   └── scripts/
-│       ├── pretrain.sh               #   pretraining launcher (8 GPUs)
-│       └── finetune.sh               #   fine-tuning launcher
-├── analysis/                         # paper analysis (not installed)
-│   ├── config.py, utils.py
-│   └── 01-Table1.ipynb ... 07-SupplementaryTable.ipynb
-├── weights/                          # optional local copy of the HF weights (not tracked)
-│   ├── backbone/{config.json, model.safetensors}
-│   ├── tasks/<name>/{config.json, model.safetensors}
-│   └── tasks.json                    # 62-task index
-├── pyproject.toml
-├── requirements.txt                  # runtime dependencies (mirrors pyproject)
-├── requirements-analysis.txt
-├── LICENSE                           # CC BY-NC 4.0 (code)
-└── THIRD_PARTY_NOTICES.md
-```
-
-## 🚀 Inference
-
-For the existing capture frontend and HTTP API, see [the service guide](README-service.md).
-The service supports capture-only operation before model weights are installed.
+## Inference
 
 ### Command line
 
 ```bash
-mff crop selfie.jpg --out face.jpg           # RetinaFace -> 256x256 RGB crop
+# Predict one biomarker from a photograph; face detection runs automatically.
+mff predict --input selfie.jpg --task Age --local-dir weights --out predictions.csv
 
-mff predict --input face.jpg --task Age      # one biomarker
-mff predict --input photos/ --all-tasks --out predictions.csv
-mff predict --input photos/ --task HDLC --local-dir weights   # offline
+# Predict all tasks listed in weights/tasks.json for a directory of photographs.
+mff predict --input photos/ --all-tasks --local-dir weights --out predictions.csv
+
+# Crop separately, then skip detection for the prepared crop.
+mff crop selfie.jpg --out face.jpg
+mff predict --input face.jpg --no-crop --task HDLC --local-dir weights
 ```
 
-Once released, weights are downloaded from Hugging Face on first use and cached.
+Use `--device cpu` or `--device cuda` to select the inference device. Predictions
+are written to CSV with the image path, task name, predicted value and unit.
 
 ### Python
 
 ```python
 from medicalfacefound import FaceCropper, load_task, predict_values
 
-crop = FaceCropper().crop_path("selfie.jpg")        # RGB uint8 (256, 256, 3)
+crop = FaceCropper().crop_path("selfie.jpg")  # RGB uint8, shape (256, 256, 3)
+if crop is None:
+    raise ValueError("No face detected in the input image")
 
-model, cfg = load_task("Age")                       # weights from the Hub
-print(predict_values(model, cfg, [crop]))           # [{'task': 'Age', 'value': 54.3, 'unit': 'year'}]
+model, config = load_task("Age", local_dir="weights", device="cpu")
+predictions = predict_values(model, config, [crop], device="cpu")
+print(predictions)  # Each result contains task, value and unit.
 ```
 
 Regression models return values in clinical units: the package applies
 `value = output * target_std + target_mean` using `tasks/<name>/config.json`.
-The 62 released biomarkers are regression tasks; the classification wrapper is used
+The 62 biomarkers evaluated in the paper are regression tasks; the classification wrapper is used
 for the additional models (sex, smoking, etc.) that are not part of this release.
 
 ### Input requirements
 
 A 256 × 256 RGB frontal face crop, ImageNet-normalised. `FaceCropper` performs the
 RetinaFace detection, expands the box to a square (margin ratio 1.2), pads out-of-frame
-faces with edge pixels and resizes with bicubic interpolation. Faces that are heavily
-rotated, occluded or very low-resolution are dropped (`no face`).
+faces with edge pixels and resizes with bicubic interpolation. If multiple faces
+are detected, the inference cropper selects the detection with the highest confidence;
+if none is detected, it returns `None`. The web application applies additional
+single-face and image-quality checks, described in the [service guide](README-service.md).
 
 ### Resource requirements
 
@@ -219,18 +180,18 @@ Measured with the released weights (fp32) on a single RTX 4060:
 | CPU, `--batch-size 8` | ≈316 ms / image | — |
 | One model on disk | — | 780 MB (194.9 M parameters) |
 
-`--all-tasks` loads the 62 models sequentially (each biomarker has its own fine-tuned
-backbone), so the run time scales linearly with the number of tasks, not with the
-number of images.
+`--all-tasks` loads models sequentially; each biomarker has its own fine-tuned
+backbone. Runtime therefore depends on both the number of tasks and the number
+of image batches processed.
 
-## 🧩 Fine-tuning
+## Fine-tuning
 
-Fine-tuning is the intended use of this repository: take the released backbone, attach
-a new head (`fc_norm` + `linear`) and train on your own cohort. Each released biomarker
-was produced exactly this way.
+To adapt MedicalFaceFound to a new cohort or target, initialise the encoder from
+the pretrained backbone and fine-tune it with a task-specific prediction head.
+The repository supports full-network fine-tuning and training the prediction head
+with a frozen encoder.
 
-> **Status of this release.** Inference is complete. For fine-tuning, the
-> cohort-specific annotation reader (`SingleTaskDataset._load_annotations` in
+> **Dataset adaptation required.** The cohort-specific annotation reader (`SingleTaskDataset._load_annotations` in
 > `medicalfacefound/utils/datasets.py`) ships as a stub: fill it in for your CSV
 > (filter by `type`, drop rows with a missing target, compute the train-split
 > mean/std) before `main_finetune` can build a dataset.
@@ -283,8 +244,8 @@ state = load_file("backbone/model.safetensors")
 torch.save({"model": state}, "backbone.pth")
 ```
 
-Then `--finetune backbone.pth`. Only `fc_norm.*` and `head.*` are missing from the
-checkpoint, and they are re-initialised for your task:
+Pass the converted checkpoint with `--finetune backbone.pth`. The task-specific
+`fc_norm.*` and `head.*` parameters are initialised for the new target:
 
 ```python
 model.load_state_dict(state, strict=False)   # missing: fc_norm, head
@@ -295,7 +256,7 @@ This is the same starting point used for the 62 released models.
 
 ### Command
 
-One biomarker, one GPU — the same command we used, with the paths replaced:
+Example configuration for a single biomarker on one GPU:
 
 ```bash
 python -m medicalfacefound.main_finetune \
@@ -365,7 +326,7 @@ python -m medicalfacefound.main_finetune \
   --output_dir runs/Height-mlp
 ```
 
-## 🏋️ Pretraining (background)
+## Pretraining
 
 The released backbone is a Swin-L (patch 4, stride-16 tokens, 75 % uniform masking,
 base lr 1e-4) pre-trained with UM-MAE in three stages — ImageNet-22K → VGGFace2-HQ →
@@ -379,7 +340,7 @@ this repository after editing the paths:
 bash medicalfacefound/scripts/pretrain.sh
 ```
 
-## 📊 Analysis
+## Evaluation and analysis
 
 `analysis/` holds the notebooks used for the paper's tables, figures and supplementary
 tables. They are **not** part of the installed package and depend on the internal
@@ -396,7 +357,61 @@ tables. They are **not** part of the installed package and depend on the interna
 | `06.1`–`06.5` `Plot-Part*.ipynb` | Main and supplementary figures |
 | `07-SupplementaryTable.ipynb` | Supplementary tables |
 
-## 📦 Data access
+### External robustness evaluation
+
+The `medicalfacefound/robustness/` module evaluates paired photographs under
+changes in acquisition conditions. See [ROBUSTNESS.md](ROBUSTNESS.md) for dataset
+preparation, protocols and commands. This workflow is documented separately from
+the notebooks used for the paper's main analyses.
+
+## Research web application
+
+The repository includes an optional web interface and FastAPI service for photo
+collection, biomarker inference and heatmap visualisation. The service reuses the
+same face-cropping and prediction functions as the Python API.
+
+After installing the service dependencies and preparing the RetinaFace and
+biomarker checkpoints, run from the repository root:
+
+```bash
+bash start_service.sh --host 127.0.0.1 --port 8000
+```
+
+Open [http://127.0.0.1:8000](http://127.0.0.1:8000) for the web application;
+interactive API documentation is available at `/docs`. See the
+[service guide](README-service.md) for configuration, data storage, access control
+and backups, and the [frontend guide](README-ui.md) for page and asset customisation.
+
+## Repository structure
+
+```text
+MedicalFaceFound/
+├── medicalfacefound/
+│   ├── inference/              # Face preprocessing, checkpoint loading and CLI
+│   ├── utils/                  # Model architectures, datasets and training utilities
+│   ├── main_pretrain.py         # Self-supervised pretraining
+│   ├── main_finetune.py         # Task-specific fine-tuning
+│   ├── scripts/                # Training launchers
+│   ├── robustness/             # Paired external-data evaluation
+│   └── service/                # Research web application and HTTP API
+│       └── static/             # Frontend pages, scripts, styles and assets
+├── analysis/                   # Paper analysis notebooks
+├── configs/                    # Evaluation configurations
+├── tests/                      # Service and evaluation tests
+├── weights/                    # Local checkpoints (not tracked)
+├── data/                       # Local research data and service state (not tracked)
+├── start_service.sh             # Web application launcher
+├── run_robustness.sh            # Robustness evaluation launcher
+├── environment-service.yml     # Conda environment for the web application
+├── pyproject.toml              # Package metadata and dependencies
+├── README-service.md           # Service deployment and API documentation
+├── README-ui.md                # Frontend maintenance
+├── ROBUSTNESS.md               # External evaluation protocol
+├── LICENSE
+└── THIRD_PARTY_NOTICES.md
+```
+
+## Data access
 
 The training data (facial photographs, clinical records, genotypes) are **not**
 distributed. To replicate the paper, request access by email to
@@ -404,7 +419,9 @@ distributed. To replicate the paper, request access by email to
 affiliation, intended use and the files you need. Data are shared only in compliance
 with the applicable ethics approvals and data-use agreements.
 
-## 📚 Citation
+## Citation
+
+If you use MedicalFaceFound in your research, please cite:
 
 ```bibtex
 @article{xu2026medicalfacefound,
@@ -417,7 +434,7 @@ with the applicable ethics approvals and data-use agreements.
 }
 ```
 
-## 🧾 License
+## License
 
 - **Code** (this package, including the training loop adapted from UM-MAE):
   **CC BY-NC 4.0** — non-commercial use, share and modify with attribution. See
@@ -429,6 +446,6 @@ with the applicable ethics approvals and data-use agreements.
 The weights are **not a medical device** and must not be used for diagnosis,
 treatment, surveillance or re-identification.
 
-## 📨 Contact
+## Contact
 
 Questions and collaboration: **[xutingfeng@big.ac.cn](mailto:xutingfeng@big.ac.cn)**

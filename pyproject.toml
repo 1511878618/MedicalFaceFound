@@ -56,4 +56,4 @@ include = ["medicalfacefound*"]
 namespaces = false
 
 [tool.setuptools.package-data]
-"medicalfacefound.service" = ["static/*", "static/**/*"]
+"medicalfacefound.service" = ["static/*", "static/**/*", "model_catalog.json", "reference_ranges.json"]

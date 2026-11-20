@@ -1,0 +1,4937 @@
+[
+  {
+    "id": "Age",
+    "paper_name": "Age",
+    "label": "年龄估计",
+    "unit": "岁",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.87063479,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Age",
+    "system": "Anthropometrics",
+    "paper_unit": "year",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.87063479,
+        "mae": 2.816460825,
+        "n": 480,
+        "pearson_r": 0.934,
+        "pearson_ci": [
+          0.922,
+          0.945
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0.859241412,
+        "mae": 2.813749221,
+        "n": 1498,
+        "pearson_r": 0.929,
+        "pearson_ci": [
+          0.922,
+          0.936
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0.835085588,
+        "mae": 3.093524737,
+        "n": 2247,
+        "pearson_r": 0.918,
+        "pearson_ci": [
+          0.911,
+          0.924
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": 0.812706572,
+        "mae": 3.244555492,
+        "n": 206,
+        "pearson_r": 0.905,
+        "pearson_ci": [
+          0.877,
+          0.927
+        ]
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": 0.777707749,
+        "mae": 3.657503032,
+        "n": 900,
+        "pearson_r": 0.888,
+        "pearson_ci": [
+          0.874,
+          0.901
+        ]
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A3:D3",
+      "performance_row": "Supplementary Table 5!A10:BX10",
+      "correlation_row": "Supplementary Table 6!A4:U4"
+    }
+  },
+  {
+    "id": "BMI",
+    "paper_name": "BMI",
+    "label": "体重指数",
+    "unit": "kg/m²",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.347603425,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Body Mass Index",
+    "system": "Anthropometrics",
+    "paper_unit": "kg/m²",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.347603425,
+        "mae": 2.025016473,
+        "n": 401,
+        "pearson_r": 0.624,
+        "pearson_ci": [
+          0.56,
+          0.68
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0.390629162,
+        "mae": 1.865916483,
+        "n": 1456,
+        "pearson_r": 0.635,
+        "pearson_ci": [
+          0.604,
+          0.665
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0.458330141,
+        "mae": 1.903045312,
+        "n": 1836,
+        "pearson_r": 0.681,
+        "pearson_ci": [
+          0.656,
+          0.705
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": 0.429818072,
+        "mae": 2.121718,
+        "n": 33,
+        "pearson_r": 0.695,
+        "pearson_ci": [
+          0.461,
+          0.838
+        ]
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": 0.271858401,
+        "mae": 2.425509951,
+        "n": 798,
+        "pearson_r": 0.534,
+        "pearson_ci": [
+          0.482,
+          0.581
+        ]
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A4:D4",
+      "performance_row": "Supplementary Table 5!A12:BX12",
+      "correlation_row": "Supplementary Table 6!A11:U11"
+    }
+  },
+  {
+    "id": "Height",
+    "paper_name": "Height",
+    "label": "身高",
+    "unit": "cm",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.591344635,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Height",
+    "system": "Anthropometrics",
+    "paper_unit": "cm",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.591344635,
+        "mae": 4.00976416,
+        "n": 401,
+        "pearson_r": 0.772,
+        "pearson_ci": [
+          0.73,
+          0.809
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0.526796137,
+        "mae": 4.322222729,
+        "n": 1456,
+        "pearson_r": 0.734,
+        "pearson_ci": [
+          0.71,
+          0.757
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0.51838939,
+        "mae": 4.357649326,
+        "n": 1836,
+        "pearson_r": 0.734,
+        "pearson_ci": [
+          0.712,
+          0.755
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": 0.528393856,
+        "mae": 4.060739691,
+        "n": 33,
+        "pearson_r": 0.762,
+        "pearson_ci": [
+          0.568,
+          0.876
+        ]
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": 0.294399469,
+        "mae": 5.35825305,
+        "n": 798,
+        "pearson_r": 0.63,
+        "pearson_ci": [
+          0.586,
+          0.67
+        ]
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A5:D5",
+      "performance_row": "Supplementary Table 5!A32:BX32",
+      "correlation_row": "Supplementary Table 6!A32:U32"
+    }
+  },
+  {
+    "id": "Weight",
+    "paper_name": "Weight",
+    "label": "体重",
+    "unit": "kg",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.250617277,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Weight",
+    "system": "Anthropometrics",
+    "paper_unit": "kg",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.250617277,
+        "mae": 8.344697838,
+        "n": 415,
+        "pearson_r": 0.527,
+        "pearson_ci": [
+          0.454,
+          0.594
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0.295879539,
+        "mae": 7.383118695,
+        "n": 1481,
+        "pearson_r": 0.545,
+        "pearson_ci": [
+          0.508,
+          0.58
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0.479063371,
+        "mae": 6.759743806,
+        "n": 1841,
+        "pearson_r": 0.709,
+        "pearson_ci": [
+          0.685,
+          0.731
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": 0.409596937,
+        "mae": 7.680450671,
+        "n": 33,
+        "pearson_r": 0.642,
+        "pearson_ci": [
+          0.383,
+          0.808
+        ]
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": 0.293738745,
+        "mae": 8.268905021,
+        "n": 800,
+        "pearson_r": 0.677,
+        "pearson_ci": [
+          0.637,
+          0.713
+        ]
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A6:D6",
+      "performance_row": "Supplementary Table 5!A61:BX61",
+      "correlation_row": "Supplementary Table 6!A61:U61"
+    }
+  },
+  {
+    "id": "BNP",
+    "paper_name": "BNP",
+    "label": "B型利钠肽",
+    "unit": "pg/mL",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.042673145,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "B-type Natriuretic Peptide",
+    "system": "Cardiovascular",
+    "paper_unit": "pg/mL",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.042673145,
+        "mae": 68.19068174,
+        "n": 472,
+        "pearson_r": 0.253,
+        "pearson_ci": [
+          0.167,
+          0.336
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0.037360114,
+        "mae": 72.66489143,
+        "n": 1482,
+        "pearson_r": 0.206,
+        "pearson_ci": [
+          0.156,
+          0.254
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0.028067738,
+        "mae": 68.50932745,
+        "n": 2151,
+        "pearson_r": 0.188,
+        "pearson_ci": [
+          0.147,
+          0.228
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": 0,
+        "mae": 62.91845211,
+        "n": 199,
+        "pearson_r": 0.199,
+        "pearson_ci": [
+          0.061,
+          0.329
+        ]
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": 0.000995852,
+        "mae": 92.82729958,
+        "n": 871,
+        "pearson_r": 0.098,
+        "pearson_ci": [
+          0.031,
+          0.163
+        ]
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A7:D7",
+      "performance_row": "Supplementary Table 5!A13:BX13",
+      "correlation_row": "Supplementary Table 6!A12:U12"
+    }
+  },
+  {
+    "id": "CK",
+    "paper_name": "CK",
+    "label": "肌酸激酶",
+    "unit": "U/L",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Creatine Kinase",
+    "system": "Cardiovascular",
+    "paper_unit": "U/L",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0,
+        "mae": 43.6931202,
+        "n": 471,
+        "pearson_r": 0.068,
+        "pearson_ci": [
+          -0.023,
+          0.157
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0.015811181,
+        "mae": 38.17007533,
+        "n": 1490,
+        "pearson_r": 0.146,
+        "pearson_ci": [
+          0.096,
+          0.196
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0.001113093,
+        "mae": 46.41443655,
+        "n": 2240,
+        "pearson_r": 0.04,
+        "pearson_ci": [
+          -0.001,
+          0.081
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": 0.002942435,
+        "mae": 45.33633138,
+        "n": 203,
+        "pearson_r": 0.073,
+        "pearson_ci": [
+          -0.066,
+          0.208
+        ]
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": 0.016686946,
+        "mae": 40.62546496,
+        "n": 895,
+        "pearson_r": 0.137,
+        "pearson_ci": [
+          0.072,
+          0.201
+        ]
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A8:D8",
+      "performance_row": "Supplementary Table 5!A15:BX15",
+      "correlation_row": "Supplementary Table 6!A15:U15"
+    }
+  },
+  {
+    "id": "CK-MB",
+    "paper_name": "CK-MB",
+    "label": "肌酸激酶同工酶",
+    "unit": "ng/mL",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Creatine Kinase-MB",
+    "system": "Cardiovascular",
+    "paper_unit": "ng/mL",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0,
+        "mae": 0.984103142,
+        "n": 473,
+        "pearson_r": 0.046,
+        "pearson_ci": [
+          -0.044,
+          0.136
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0.001261685,
+        "mae": 0.898413184,
+        "n": 1492,
+        "pearson_r": 0.054,
+        "pearson_ci": [
+          0.003,
+          0.104
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0.001412323,
+        "mae": 1.015859522,
+        "n": 2241,
+        "pearson_r": 0.059,
+        "pearson_ci": [
+          0.018,
+          0.1
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": 0,
+        "mae": 1.700480942,
+        "n": 203,
+        "pearson_r": -0.049,
+        "pearson_ci": [
+          -0.185,
+          0.09
+        ]
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": null,
+        "mae": null,
+        "n": null,
+        "pearson_r": null,
+        "pearson_ci": null
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A9:D9",
+      "performance_row": "Supplementary Table 5!A16:BX16",
+      "correlation_row": "Supplementary Table 6!A16:U16"
+    }
+  },
+  {
+    "id": "Hcy",
+    "paper_name": "Hcy",
+    "label": "同型半胱氨酸",
+    "unit": "μmol/L",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.103372504,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Homocysteine",
+    "system": "Cardiovascular",
+    "paper_unit": "μmol/L",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.103372504,
+        "mae": 5.06127694,
+        "n": 462,
+        "pearson_r": 0.346,
+        "pearson_ci": [
+          0.263,
+          0.424
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0.022540972,
+        "mae": 4.944669977,
+        "n": 1141,
+        "pearson_r": 0.244,
+        "pearson_ci": [
+          0.189,
+          0.298
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0,
+        "mae": 4.863615532,
+        "n": 972,
+        "pearson_r": 0.173,
+        "pearson_ci": [
+          0.111,
+          0.233
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": 0.100242991,
+        "mae": 4.817450647,
+        "n": 114,
+        "pearson_r": 0.343,
+        "pearson_ci": [
+          0.17,
+          0.496
+        ]
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": 0.072952638,
+        "mae": 4.652066978,
+        "n": 685,
+        "pearson_r": 0.292,
+        "pearson_ci": [
+          0.222,
+          0.359
+        ]
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A10:D10",
+      "performance_row": "Supplementary Table 5!A31:BX31",
+      "correlation_row": "Supplementary Table 6!A31:U31"
+    }
+  },
+  {
+    "id": "HDLC",
+    "paper_name": "HDL-C",
+    "label": "高密度脂蛋白胆固醇",
+    "unit": "mmol/L",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.201831904,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "High-density Lipoprotein Cholesterol",
+    "system": "Cardiovascular",
+    "paper_unit": "mmol/L",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.201831904,
+        "mae": 0.186609972,
+        "n": 473,
+        "pearson_r": 0.462,
+        "pearson_ci": [
+          0.388,
+          0.53
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0.151147806,
+        "mae": 0.190535629,
+        "n": 1491,
+        "pearson_r": 0.435,
+        "pearson_ci": [
+          0.392,
+          0.475
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0.161347836,
+        "mae": 0.197145624,
+        "n": 2244,
+        "pearson_r": 0.425,
+        "pearson_ci": [
+          0.391,
+          0.458
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": 0.176392429,
+        "mae": 0.185978378,
+        "n": 204,
+        "pearson_r": 0.448,
+        "pearson_ci": [
+          0.331,
+          0.551
+        ]
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": 0.10897283,
+        "mae": 0.201329961,
+        "n": 891,
+        "pearson_r": 0.342,
+        "pearson_ci": [
+          0.283,
+          0.399
+        ]
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A11:D11",
+      "performance_row": "Supplementary Table 5!A28:BX28",
+      "correlation_row": "Supplementary Table 6!A28:U28"
+    }
+  },
+  {
+    "id": "hsTnI",
+    "paper_name": "hsTnI",
+    "label": "高敏肌钙蛋白I",
+    "unit": "ng/L",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "High-sensitivity Troponin I",
+    "system": "Cardiovascular",
+    "paper_unit": "ng/L",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0,
+        "mae": 128.0691823,
+        "n": 473,
+        "pearson_r": 0.075,
+        "pearson_ci": [
+          -0.015,
+          0.164
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0,
+        "mae": 100.648263,
+        "n": 1476,
+        "pearson_r": 0.034,
+        "pearson_ci": [
+          -0.017,
+          0.085
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0,
+        "mae": 115.0963887,
+        "n": 2231,
+        "pearson_r": 0.034,
+        "pearson_ci": [
+          -0.007,
+          0.076
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": 0,
+        "mae": 212.2619704,
+        "n": 144,
+        "pearson_r": 0.043,
+        "pearson_ci": [
+          -0.121,
+          0.205
+        ]
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": null,
+        "mae": null,
+        "n": null,
+        "pearson_r": null,
+        "pearson_ci": null
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A12:D12",
+      "performance_row": "Supplementary Table 5!A64:BX64",
+      "correlation_row": "Supplementary Table 6!A63:U63"
+    }
+  },
+  {
+    "id": "LDLC",
+    "paper_name": "LDL-C",
+    "label": "低密度脂蛋白胆固醇",
+    "unit": "mmol/L",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.011330697,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Low-density Lipoprotein Cholesterol",
+    "system": "Cardiovascular",
+    "paper_unit": "mmol/L",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.011330697,
+        "mae": 0.675680756,
+        "n": 473,
+        "pearson_r": 0.116,
+        "pearson_ci": [
+          0.026,
+          0.204
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0.007194132,
+        "mae": 0.686916279,
+        "n": 1491,
+        "pearson_r": 0.112,
+        "pearson_ci": [
+          0.062,
+          0.162
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0.007460476,
+        "mae": 0.675142817,
+        "n": 2244,
+        "pearson_r": 0.119,
+        "pearson_ci": [
+          0.078,
+          0.16
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": 0,
+        "mae": 0.572716137,
+        "n": 204,
+        "pearson_r": 0.049,
+        "pearson_ci": [
+          -0.089,
+          0.185
+        ]
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": 0,
+        "mae": 0.732389391,
+        "n": 792,
+        "pearson_r": 0.074,
+        "pearson_ci": [
+          0.005,
+          0.143
+        ]
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A13:D13",
+      "performance_row": "Supplementary Table 5!A37:BX37",
+      "correlation_row": "Supplementary Table 6!A37:U37"
+    }
+  },
+  {
+    "id": "LPa",
+    "paper_name": "LPa",
+    "label": "脂蛋白(a)",
+    "unit": "nmol/L",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.00788011,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Lipoprotein(a)",
+    "system": "Cardiovascular",
+    "paper_unit": "nmol/L",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.00788011,
+        "mae": 51.02471171,
+        "n": 376,
+        "pearson_r": 0.098,
+        "pearson_ci": [
+          -0.003,
+          0.197
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0,
+        "mae": 46.49304114,
+        "n": 961,
+        "pearson_r": 0.046,
+        "pearson_ci": [
+          -0.017,
+          0.109
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0,
+        "mae": 46.54574203,
+        "n": 837,
+        "pearson_r": 0.083,
+        "pearson_ci": [
+          0.015,
+          0.149
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": 0,
+        "mae": 57.15237507,
+        "n": 89,
+        "pearson_r": -0.186,
+        "pearson_ci": [
+          -0.38,
+          0.023
+        ]
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": null,
+        "mae": null,
+        "n": null,
+        "pearson_r": null,
+        "pearson_ci": null
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A14:D14",
+      "performance_row": "Supplementary Table 5!A38:BX38",
+      "correlation_row": "Supplementary Table 6!A38:U38"
+    }
+  },
+  {
+    "id": "nonHDL",
+    "paper_name": "nonHDL",
+    "label": "非高密度脂蛋白胆固醇",
+    "unit": "mmol/L",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.035666395,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Non-high-density Lipoprotein Cholesterol",
+    "system": "Cardiovascular",
+    "paper_unit": "mmol/L",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.035666395,
+        "mae": 0.78698525,
+        "n": 473,
+        "pearson_r": 0.194,
+        "pearson_ci": [
+          0.106,
+          0.28
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0.008880683,
+        "mae": 0.800630671,
+        "n": 1444,
+        "pearson_r": 0.188,
+        "pearson_ci": [
+          0.138,
+          0.238
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0,
+        "mae": 0.83984038,
+        "n": 2103,
+        "pearson_r": 0.15,
+        "pearson_ci": [
+          0.108,
+          0.192
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": null,
+        "mae": null,
+        "n": null,
+        "pearson_r": null,
+        "pearson_ci": null
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": null,
+        "mae": null,
+        "n": null,
+        "pearson_r": null,
+        "pearson_ci": null
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A15:D15",
+      "performance_row": "Supplementary Table 5!A65:BX65",
+      "correlation_row": "Supplementary Table 6!A64:U64"
+    }
+  },
+  {
+    "id": "sdLDL",
+    "paper_name": "sdLDL",
+    "label": "小而密低密度脂蛋白胆固醇",
+    "unit": "mmol/L",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.02322358,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Small Dense LDL Cholesterol",
+    "system": "Cardiovascular",
+    "paper_unit": "mmol/L",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.02322358,
+        "mae": 0.279771561,
+        "n": 387,
+        "pearson_r": 0.191,
+        "pearson_ci": [
+          0.093,
+          0.285
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0.039384834,
+        "mae": 0.280888994,
+        "n": 1014,
+        "pearson_r": 0.205,
+        "pearson_ci": [
+          0.146,
+          0.264
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0.042469551,
+        "mae": 0.282925663,
+        "n": 875,
+        "pearson_r": 0.207,
+        "pearson_ci": [
+          0.143,
+          0.27
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": 0,
+        "mae": 0.322827411,
+        "n": 91,
+        "pearson_r": 0.241,
+        "pearson_ci": [
+          0.037,
+          0.426
+        ]
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": null,
+        "mae": null,
+        "n": null,
+        "pearson_r": null,
+        "pearson_ci": null
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A16:D16",
+      "performance_row": "Supplementary Table 5!A66:BX66",
+      "correlation_row": "Supplementary Table 6!A65:U65"
+    }
+  },
+  {
+    "id": "TC",
+    "paper_name": "TC",
+    "label": "总胆固醇",
+    "unit": "mmol/L",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.042032046,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Total Cholesterol",
+    "system": "Cardiovascular",
+    "paper_unit": "mmol/L",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.042032046,
+        "mae": 0.801431914,
+        "n": 473,
+        "pearson_r": 0.206,
+        "pearson_ci": [
+          0.118,
+          0.291
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0,
+        "mae": 0.843666958,
+        "n": 1491,
+        "pearson_r": 0.172,
+        "pearson_ci": [
+          0.122,
+          0.22
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0,
+        "mae": 0.854122355,
+        "n": 2244,
+        "pearson_r": 0.176,
+        "pearson_ci": [
+          0.136,
+          0.216
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": 0,
+        "mae": 0.838545631,
+        "n": 204,
+        "pearson_r": 0.163,
+        "pearson_ci": [
+          0.026,
+          0.293
+        ]
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": 0,
+        "mae": 0.92516826,
+        "n": 894,
+        "pearson_r": 0.081,
+        "pearson_ci": [
+          0.016,
+          0.146
+        ]
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A17:D17",
+      "performance_row": "Supplementary Table 5!A54:BX54",
+      "correlation_row": "Supplementary Table 6!A54:U54"
+    }
+  },
+  {
+    "id": "TG",
+    "paper_name": "TG",
+    "label": "甘油三酯",
+    "unit": "mmol/L",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.053322949,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Triglycerides",
+    "system": "Cardiovascular",
+    "paper_unit": "mmol/L",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.053322949,
+        "mae": 0.74552691,
+        "n": 473,
+        "pearson_r": 0.239,
+        "pearson_ci": [
+          0.152,
+          0.322
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0.085654847,
+        "mae": 0.74489583,
+        "n": 1491,
+        "pearson_r": 0.33,
+        "pearson_ci": [
+          0.284,
+          0.375
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0.056129865,
+        "mae": 0.763351742,
+        "n": 2244,
+        "pearson_r": 0.258,
+        "pearson_ci": [
+          0.219,
+          0.296
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": 0.074711809,
+        "mae": 0.782298733,
+        "n": 204,
+        "pearson_r": 0.303,
+        "pearson_ci": [
+          0.173,
+          0.423
+        ]
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": 0,
+        "mae": 0.69612171,
+        "n": 894,
+        "pearson_r": 0.221,
+        "pearson_ci": [
+          0.158,
+          0.283
+        ]
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A18:D18",
+      "performance_row": "Supplementary Table 5!A55:BX55",
+      "correlation_row": "Supplementary Table 6!A55:U55"
+    }
+  },
+  {
+    "id": "AG",
+    "paper_name": "AG",
+    "label": "白蛋白/球蛋白比值",
+    "unit": "无量纲",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Albumin/Globulin Ratio",
+    "system": "Digestive",
+    "paper_unit": "ratio",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0,
+        "mae": 14.82325554,
+        "n": 462,
+        "pearson_r": 0.025,
+        "pearson_ci": [
+          -0.067,
+          0.116
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0,
+        "mae": 14.51441953,
+        "n": 1474,
+        "pearson_r": -0.043,
+        "pearson_ci": [
+          -0.094,
+          0.008
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0,
+        "mae": 14.72689584,
+        "n": 2141,
+        "pearson_r": 0.028,
+        "pearson_ci": [
+          -0.014,
+          0.07
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": null,
+        "mae": null,
+        "n": null,
+        "pearson_r": null,
+        "pearson_ci": null
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": null,
+        "mae": null,
+        "n": null,
+        "pearson_r": null,
+        "pearson_ci": null
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A19:D19",
+      "performance_row": "Supplementary Table 5!A5:BX5",
+      "correlation_row": "Supplementary Table 6!A5:U5"
+    }
+  },
+  {
+    "id": "Alb",
+    "paper_name": "Alb",
+    "label": "白蛋白",
+    "unit": "g/L",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.099945358,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Albumin",
+    "system": "Digestive",
+    "paper_unit": "g/L",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.099945358,
+        "mae": 2.639149776,
+        "n": 462,
+        "pearson_r": 0.321,
+        "pearson_ci": [
+          0.237,
+          0.401
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0,
+        "mae": 3.385880912,
+        "n": 1140,
+        "pearson_r": 0.29,
+        "pearson_ci": [
+          0.236,
+          0.343
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0,
+        "mae": 3.0660727,
+        "n": 971,
+        "pearson_r": 0.269,
+        "pearson_ci": [
+          0.21,
+          0.327
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": 0,
+        "mae": 3.341192369,
+        "n": 114,
+        "pearson_r": 0.215,
+        "pearson_ci": [
+          0.032,
+          0.384
+        ]
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": 0,
+        "mae": 4.791400764,
+        "n": 895,
+        "pearson_r": 0.23,
+        "pearson_ci": [
+          0.167,
+          0.291
+        ]
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A20:D20",
+      "performance_row": "Supplementary Table 5!A11:BX11",
+      "correlation_row": "Supplementary Table 6!A10:U10"
+    }
+  },
+  {
+    "id": "ALP",
+    "paper_name": "ALP",
+    "label": "碱性磷酸酶",
+    "unit": "U/L",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.000720122,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Alkaline Phosphatase",
+    "system": "Digestive",
+    "paper_unit": "U/L",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.000720122,
+        "mae": 16.88035538,
+        "n": 462,
+        "pearson_r": 0.1,
+        "pearson_ci": [
+          0.009,
+          0.189
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0.021610479,
+        "mae": 17.20410412,
+        "n": 1152,
+        "pearson_r": 0.161,
+        "pearson_ci": [
+          0.104,
+          0.217
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0.004964555,
+        "mae": 17.74168895,
+        "n": 1012,
+        "pearson_r": 0.081,
+        "pearson_ci": [
+          0.019,
+          0.142
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": 0.067955058,
+        "mae": 17.66637469,
+        "n": 116,
+        "pearson_r": 0.293,
+        "pearson_ci": [
+          0.117,
+          0.451
+        ]
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": 0.000129797,
+        "mae": 17.89274422,
+        "n": 895,
+        "pearson_r": 0.096,
+        "pearson_ci": [
+          0.031,
+          0.161
+        ]
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A21:D21",
+      "performance_row": "Supplementary Table 5!A6:BX6",
+      "correlation_row": "Supplementary Table 6!A6:U6"
+    }
+  },
+  {
+    "id": "ALT",
+    "paper_name": "ALT",
+    "label": "丙氨酸氨基转移酶",
+    "unit": "U/L",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.064632219,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Alanine Aminotransferase",
+    "system": "Digestive",
+    "paper_unit": "U/L",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.064632219,
+        "mae": 10.49638293,
+        "n": 462,
+        "pearson_r": 0.274,
+        "pearson_ci": [
+          0.188,
+          0.356
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0.010996767,
+        "mae": 11.43326769,
+        "n": 1495,
+        "pearson_r": 0.198,
+        "pearson_ci": [
+          0.149,
+          0.246
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0.002706509,
+        "mae": 11.2141936,
+        "n": 2247,
+        "pearson_r": 0.19,
+        "pearson_ci": [
+          0.149,
+          0.229
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": 0.001812659,
+        "mae": 10.51026551,
+        "n": 206,
+        "pearson_r": 0.265,
+        "pearson_ci": [
+          0.133,
+          0.388
+        ]
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": 0.038761107,
+        "mae": 9.077157621,
+        "n": 895,
+        "pearson_r": 0.266,
+        "pearson_ci": [
+          0.204,
+          0.326
+        ]
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A22:D22",
+      "performance_row": "Supplementary Table 5!A7:BX7",
+      "correlation_row": "Supplementary Table 6!A7:U7"
+    }
+  },
+  {
+    "id": "AST",
+    "paper_name": "AST",
+    "label": "天门冬氨酸氨基转移酶",
+    "unit": "U/L",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.002330471,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Aspartate Aminotransferase",
+    "system": "Digestive",
+    "paper_unit": "U/L",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.002330471,
+        "mae": 5.801039584,
+        "n": 462,
+        "pearson_r": 0.058,
+        "pearson_ci": [
+          -0.033,
+          0.149
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0,
+        "mae": 6.7463918,
+        "n": 1495,
+        "pearson_r": 0.015,
+        "pearson_ci": [
+          -0.036,
+          0.066
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0,
+        "mae": 6.879584869,
+        "n": 2247,
+        "pearson_r": 0.041,
+        "pearson_ci": [
+          -0.0,
+          0.082
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": 0,
+        "mae": 6.262357327,
+        "n": 206,
+        "pearson_r": 0.177,
+        "pearson_ci": [
+          0.041,
+          0.306
+        ]
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": 0,
+        "mae": 6.199803075,
+        "n": 895,
+        "pearson_r": 0.049,
+        "pearson_ci": [
+          -0.016,
+          0.114
+        ]
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A23:D23",
+      "performance_row": "Supplementary Table 5!A9:BX9",
+      "correlation_row": "Supplementary Table 6!A9:U9"
+    }
+  },
+  {
+    "id": "D-Bil",
+    "paper_name": "D-Bil",
+    "label": "直接胆红素",
+    "unit": "μmol/L",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.075505859,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Direct Bilirubin",
+    "system": "Digestive",
+    "paper_unit": "μmol/L",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.075505859,
+        "mae": 1.264692792,
+        "n": 462,
+        "pearson_r": 0.279,
+        "pearson_ci": [
+          0.193,
+          0.361
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0.018196743,
+        "mae": 1.546699964,
+        "n": 1492,
+        "pearson_r": 0.193,
+        "pearson_ci": [
+          0.144,
+          0.242
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0,
+        "mae": 1.723270281,
+        "n": 2245,
+        "pearson_r": 0.126,
+        "pearson_ci": [
+          0.085,
+          0.166
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": 0,
+        "mae": 1.502280714,
+        "n": 204,
+        "pearson_r": 0.186,
+        "pearson_ci": [
+          0.05,
+          0.315
+        ]
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": 0,
+        "mae": 2.006806918,
+        "n": 895,
+        "pearson_r": 0.071,
+        "pearson_ci": [
+          0.005,
+          0.136
+        ]
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A24:D24",
+      "performance_row": "Supplementary Table 5!A19:BX19",
+      "correlation_row": "Supplementary Table 6!A18:U18"
+    }
+  },
+  {
+    "id": "GGT",
+    "paper_name": "GGT",
+    "label": "γ-谷氨酰转移酶",
+    "unit": "U/L",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.017581238,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Gamma-glutamyl Transferase",
+    "system": "Digestive",
+    "paper_unit": "U/L",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.017581238,
+        "mae": 15.67189841,
+        "n": 462,
+        "pearson_r": 0.156,
+        "pearson_ci": [
+          0.066,
+          0.244
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0.00871301,
+        "mae": 16.08852761,
+        "n": 1152,
+        "pearson_r": 0.204,
+        "pearson_ci": [
+          0.148,
+          0.259
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0.007225866,
+        "mae": 18.13855761,
+        "n": 1012,
+        "pearson_r": 0.185,
+        "pearson_ci": [
+          0.125,
+          0.244
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": 0,
+        "mae": 23.87462817,
+        "n": 116,
+        "pearson_r": -0.023,
+        "pearson_ci": [
+          -0.204,
+          0.16
+        ]
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": 0,
+        "mae": 15.46685292,
+        "n": 790,
+        "pearson_r": 0.261,
+        "pearson_ci": [
+          0.195,
+          0.325
+        ]
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A25:D25",
+      "performance_row": "Supplementary Table 5!A25:BX25",
+      "correlation_row": "Supplementary Table 6!A25:U25"
+    }
+  },
+  {
+    "id": "T-Bil",
+    "paper_name": "T-Bil",
+    "label": "总胆红素",
+    "unit": "μmol/L",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.059804484,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Total Bilirubin",
+    "system": "Digestive",
+    "paper_unit": "μmol/L",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.059804484,
+        "mae": 3.664161842,
+        "n": 462,
+        "pearson_r": 0.245,
+        "pearson_ci": [
+          0.157,
+          0.329
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0.015035848,
+        "mae": 4.009069181,
+        "n": 1492,
+        "pearson_r": 0.187,
+        "pearson_ci": [
+          0.137,
+          0.235
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0,
+        "mae": 4.564497471,
+        "n": 2245,
+        "pearson_r": 0.172,
+        "pearson_ci": [
+          0.132,
+          0.212
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": 0,
+        "mae": 3.70790721,
+        "n": 205,
+        "pearson_r": 0.137,
+        "pearson_ci": [
+          0.0,
+          0.269
+        ]
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": 0,
+        "mae": 4.384481273,
+        "n": 895,
+        "pearson_r": 0.166,
+        "pearson_ci": [
+          0.101,
+          0.229
+        ]
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A26:D26",
+      "performance_row": "Supplementary Table 5!A51:BX51",
+      "correlation_row": "Supplementary Table 6!A51:U51"
+    }
+  },
+  {
+    "id": "TP",
+    "paper_name": "TP",
+    "label": "总蛋白",
+    "unit": "g/L",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.018981147,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Total Protein",
+    "system": "Digestive",
+    "paper_unit": "g/L",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.018981147,
+        "mae": 3.952650627,
+        "n": 462,
+        "pearson_r": 0.153,
+        "pearson_ci": [
+          0.063,
+          0.241
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0.017629434,
+        "mae": 4.220866154,
+        "n": 1495,
+        "pearson_r": 0.204,
+        "pearson_ci": [
+          0.155,
+          0.252
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0,
+        "mae": 4.053426911,
+        "n": 2247,
+        "pearson_r": 0.16,
+        "pearson_ci": [
+          0.12,
+          0.2
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": 0,
+        "mae": 4.234717867,
+        "n": 206,
+        "pearson_r": 0.1,
+        "pearson_ci": [
+          -0.037,
+          0.234
+        ]
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": null,
+        "mae": null,
+        "n": null,
+        "pearson_r": null,
+        "pearson_ci": null
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A27:D27",
+      "performance_row": "Supplementary Table 5!A56:BX56",
+      "correlation_row": "Supplementary Table 6!A56:U56"
+    }
+  },
+  {
+    "id": "LDH",
+    "paper_name": "LDH",
+    "label": "乳酸脱氢酶",
+    "unit": "U/L",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.03948912,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Lactate Dehydrogenase",
+    "system": "Digestive, Cardiovascular",
+    "paper_unit": "U/L",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.03948912,
+        "mae": 24.75731902,
+        "n": 471,
+        "pearson_r": 0.213,
+        "pearson_ci": [
+          0.125,
+          0.298
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0.004860311,
+        "mae": 28.12763755,
+        "n": 1490,
+        "pearson_r": 0.133,
+        "pearson_ci": [
+          0.083,
+          0.183
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0,
+        "mae": 29.58005014,
+        "n": 2239,
+        "pearson_r": 0.135,
+        "pearson_ci": [
+          0.094,
+          0.175
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": 0,
+        "mae": 28.21910335,
+        "n": 203,
+        "pearson_r": -0.002,
+        "pearson_ci": [
+          -0.14,
+          0.136
+        ]
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": 0,
+        "mae": 42.27088151,
+        "n": 895,
+        "pearson_r": 0.049,
+        "pearson_ci": [
+          -0.016,
+          0.114
+        ]
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A28:D28",
+      "performance_row": "Supplementary Table 5!A36:BX36",
+      "correlation_row": "Supplementary Table 6!A36:U36"
+    }
+  },
+  {
+    "id": "Cl",
+    "paper_name": "Cl",
+    "label": "氯",
+    "unit": "mmol/L",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.019590242,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Chloride",
+    "system": "Electrolytes",
+    "paper_unit": "mmol/L",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.019590242,
+        "mae": 2.018547896,
+        "n": 462,
+        "pearson_r": 0.141,
+        "pearson_ci": [
+          0.051,
+          0.229
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0,
+        "mae": 2.824360254,
+        "n": 1474,
+        "pearson_r": 0.015,
+        "pearson_ci": [
+          -0.036,
+          0.066
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0,
+        "mae": 2.372083228,
+        "n": 2141,
+        "pearson_r": 0.03,
+        "pearson_ci": [
+          -0.012,
+          0.072
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": null,
+        "mae": null,
+        "n": null,
+        "pearson_r": null,
+        "pearson_ci": null
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": null,
+        "mae": null,
+        "n": null,
+        "pearson_r": null,
+        "pearson_ci": null
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A29:D29",
+      "performance_row": "Supplementary Table 5!A17:BX17",
+      "correlation_row": "Supplementary Table 6!A14:U14"
+    }
+  },
+  {
+    "id": "K",
+    "paper_name": "K",
+    "label": "钾",
+    "unit": "mmol/L",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.003820202,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "K",
+    "system": "Electrolytes",
+    "paper_unit": "mmol/L",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.003820202,
+        "mae": 0.277653455,
+        "n": 462,
+        "pearson_r": 0.075,
+        "pearson_ci": [
+          -0.016,
+          0.166
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0.001551881,
+        "mae": 0.369585303,
+        "n": 1478,
+        "pearson_r": 0.083,
+        "pearson_ci": [
+          0.032,
+          0.134
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0,
+        "mae": 0.380952021,
+        "n": 2142,
+        "pearson_r": 0.005,
+        "pearson_ci": [
+          -0.037,
+          0.048
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": null,
+        "mae": null,
+        "n": null,
+        "pearson_r": null,
+        "pearson_ci": null
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": null,
+        "mae": null,
+        "n": null,
+        "pearson_r": null,
+        "pearson_ci": null
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A30:D30",
+      "performance_row": "Supplementary Table 5!A35:BX35",
+      "correlation_row": "Supplementary Table 6!A35:U35"
+    }
+  },
+  {
+    "id": "Na",
+    "paper_name": "Na",
+    "label": "钠",
+    "unit": "mmol/L",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.044454283,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Sodium",
+    "system": "Electrolytes",
+    "paper_unit": "mmol/L",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.044454283,
+        "mae": 1.89498201,
+        "n": 88,
+        "pearson_r": 0.228,
+        "pearson_ci": [
+          0.02,
+          0.418
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0,
+        "mae": 2.541370783,
+        "n": 1480,
+        "pearson_r": 0.08,
+        "pearson_ci": [
+          0.03,
+          0.131
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0,
+        "mae": 3.014118702,
+        "n": 2144,
+        "pearson_r": 0.033,
+        "pearson_ci": [
+          -0.01,
+          0.075
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": null,
+        "mae": null,
+        "n": null,
+        "pearson_r": null,
+        "pearson_ci": null
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": null,
+        "mae": null,
+        "n": null,
+        "pearson_r": null,
+        "pearson_ci": null
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A31:D31",
+      "performance_row": "Supplementary Table 5!A47:BX47",
+      "correlation_row": "Supplementary Table 6!A47:U47"
+    }
+  },
+  {
+    "id": "FFA",
+    "paper_name": "FFA",
+    "label": "游离脂肪酸",
+    "unit": "mmol/L",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.037819321,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Free Fatty Acids",
+    "system": "Endocrine",
+    "paper_unit": "mmol/L",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.037819321,
+        "mae": 0.208406378,
+        "n": 387,
+        "pearson_r": 0.2,
+        "pearson_ci": [
+          0.102,
+          0.294
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0.044575042,
+        "mae": 0.213477656,
+        "n": 1013,
+        "pearson_r": 0.248,
+        "pearson_ci": [
+          0.189,
+          0.305
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0,
+        "mae": 0.221271338,
+        "n": 875,
+        "pearson_r": 0.044,
+        "pearson_ci": [
+          -0.022,
+          0.11
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": 0.124442621,
+        "mae": 0.209442649,
+        "n": 91,
+        "pearson_r": 0.383,
+        "pearson_ci": [
+          0.192,
+          0.546
+        ]
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": null,
+        "mae": null,
+        "n": null,
+        "pearson_r": null,
+        "pearson_ci": null
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A32:D32",
+      "performance_row": "Supplementary Table 5!A22:BX22",
+      "correlation_row": "Supplementary Table 6!A22:U22"
+    }
+  },
+  {
+    "id": "FT3",
+    "paper_name": "FT3",
+    "label": "游离三碘甲状腺原氨酸",
+    "unit": "pmol/L",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.058468525,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Free Triiodothyronine",
+    "system": "Endocrine",
+    "paper_unit": "pmol/L",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.058468525,
+        "mae": 0.507413655,
+        "n": 365,
+        "pearson_r": 0.25,
+        "pearson_ci": [
+          0.151,
+          0.344
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0.019526904,
+        "mae": 0.493704295,
+        "n": 1489,
+        "pearson_r": 0.178,
+        "pearson_ci": [
+          0.128,
+          0.227
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0,
+        "mae": 0.514009684,
+        "n": 2234,
+        "pearson_r": 0.131,
+        "pearson_ci": [
+          0.09,
+          0.172
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": 0,
+        "mae": 0.458647787,
+        "n": 204,
+        "pearson_r": 0.28,
+        "pearson_ci": [
+          0.148,
+          0.402
+        ]
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": 0.003058095,
+        "mae": 0.50099574,
+        "n": 876,
+        "pearson_r": 0.24,
+        "pearson_ci": [
+          0.176,
+          0.301
+        ]
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A33:D33",
+      "performance_row": "Supplementary Table 5!A23:BX23",
+      "correlation_row": "Supplementary Table 6!A23:U23"
+    }
+  },
+  {
+    "id": "FT4",
+    "paper_name": "FT4",
+    "label": "游离甲状腺素",
+    "unit": "pmol/L",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Free Thyroxine",
+    "system": "Endocrine",
+    "paper_unit": "pmol/L",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0,
+        "mae": 1.497577408,
+        "n": 365,
+        "pearson_r": 0.042,
+        "pearson_ci": [
+          -0.061,
+          0.144
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0,
+        "mae": 1.587502906,
+        "n": 1489,
+        "pearson_r": 0.059,
+        "pearson_ci": [
+          0.008,
+          0.109
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0,
+        "mae": 1.57749183,
+        "n": 2234,
+        "pearson_r": 0.006,
+        "pearson_ci": [
+          -0.035,
+          0.048
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": 0,
+        "mae": 1.543391776,
+        "n": 204,
+        "pearson_r": 0.003,
+        "pearson_ci": [
+          -0.135,
+          0.14
+        ]
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": 0,
+        "mae": 1.744785754,
+        "n": 876,
+        "pearson_r": -0.011,
+        "pearson_ci": [
+          -0.077,
+          0.055
+        ]
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A34:D34",
+      "performance_row": "Supplementary Table 5!A24:BX24",
+      "correlation_row": "Supplementary Table 6!A24:U24"
+    }
+  },
+  {
+    "id": "Glu",
+    "paper_name": "Glu",
+    "label": "葡萄糖",
+    "unit": "mmol/L",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.054517065,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Glucose",
+    "system": "Endocrine",
+    "paper_unit": "mmol/L",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.054517065,
+        "mae": 1.884162972,
+        "n": 464,
+        "pearson_r": 0.246,
+        "pearson_ci": [
+          0.159,
+          0.33
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0.038037463,
+        "mae": 1.789385018,
+        "n": 1496,
+        "pearson_r": 0.217,
+        "pearson_ci": [
+          0.168,
+          0.264
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0.02577916,
+        "mae": 1.671631609,
+        "n": 2247,
+        "pearson_r": 0.166,
+        "pearson_ci": [
+          0.125,
+          0.206
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": 0,
+        "mae": 1.904453143,
+        "n": 206,
+        "pearson_r": 0.108,
+        "pearson_ci": [
+          -0.03,
+          0.241
+        ]
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": 0.032040828,
+        "mae": 1.367422925,
+        "n": 894,
+        "pearson_r": 0.193,
+        "pearson_ci": [
+          0.129,
+          0.255
+        ]
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A35:D35",
+      "performance_row": "Supplementary Table 5!A26:BX26",
+      "correlation_row": "Supplementary Table 6!A26:U26"
+    }
+  },
+  {
+    "id": "HbA1C",
+    "paper_name": "HbA1c",
+    "label": "糖化血红蛋白",
+    "unit": "%",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.113038842,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Glycated Hemoglobin",
+    "system": "Endocrine",
+    "paper_unit": "%",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.113038842,
+        "mae": 0.931253627,
+        "n": 448,
+        "pearson_r": 0.353,
+        "pearson_ci": [
+          0.269,
+          0.431
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0.142755805,
+        "mae": 0.853774189,
+        "n": 1468,
+        "pearson_r": 0.384,
+        "pearson_ci": [
+          0.34,
+          0.427
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0.031365827,
+        "mae": 0.884780967,
+        "n": 2218,
+        "pearson_r": 0.246,
+        "pearson_ci": [
+          0.207,
+          0.285
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": 0.014970028,
+        "mae": 0.981022492,
+        "n": 202,
+        "pearson_r": 0.211,
+        "pearson_ci": [
+          0.075,
+          0.339
+        ]
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": 0,
+        "mae": 0.953820611,
+        "n": 455,
+        "pearson_r": 0.263,
+        "pearson_ci": [
+          0.175,
+          0.346
+        ]
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A36:D36",
+      "performance_row": "Supplementary Table 5!A30:BX30",
+      "correlation_row": "Supplementary Table 6!A30:U30"
+    }
+  },
+  {
+    "id": "Isn",
+    "paper_name": "Isn",
+    "label": "胰岛素",
+    "unit": "μU/ml",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Insulin",
+    "system": "Endocrine",
+    "paper_unit": "μU/ml",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0,
+        "mae": 21.14743814,
+        "n": 164,
+        "pearson_r": 0.08,
+        "pearson_ci": [
+          -0.075,
+          0.23
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0,
+        "mae": 18.26350504,
+        "n": 556,
+        "pearson_r": 0.129,
+        "pearson_ci": [
+          0.047,
+          0.21
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0,
+        "mae": 19.14901606,
+        "n": 614,
+        "pearson_r": 0.054,
+        "pearson_ci": [
+          -0.025,
+          0.132
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": 0.000321238,
+        "mae": 21.46005582,
+        "n": 72,
+        "pearson_r": 0.083,
+        "pearson_ci": [
+          -0.151,
+          0.309
+        ]
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": null,
+        "mae": null,
+        "n": null,
+        "pearson_r": null,
+        "pearson_ci": null
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A37:D37",
+      "performance_row": "Supplementary Table 5!A34:BX34",
+      "correlation_row": "Supplementary Table 6!A34:U34"
+    }
+  },
+  {
+    "id": "T3",
+    "paper_name": "TT3",
+    "label": "三碘甲状腺原氨酸",
+    "unit": "nmol/L",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Total Triiodothyronine",
+    "system": "Endocrine",
+    "paper_unit": "nmol/L",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0,
+        "mae": 0.7855132,
+        "n": 365,
+        "pearson_r": 0.103,
+        "pearson_ci": [
+          0.001,
+          0.204
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0,
+        "mae": 0.226723423,
+        "n": 1489,
+        "pearson_r": 0.011,
+        "pearson_ci": [
+          -0.04,
+          0.062
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0,
+        "mae": 0.253173908,
+        "n": 2234,
+        "pearson_r": -0.046,
+        "pearson_ci": [
+          -0.088,
+          -0.005
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": 0,
+        "mae": 0.22120794,
+        "n": 204,
+        "pearson_r": 0.071,
+        "pearson_ci": [
+          -0.067,
+          0.206
+        ]
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": 0,
+        "mae": 0.283666509,
+        "n": 876,
+        "pearson_r": 0.017,
+        "pearson_ci": [
+          -0.05,
+          0.083
+        ]
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A38:D38",
+      "performance_row": "Supplementary Table 5!A52:BX52",
+      "correlation_row": "Supplementary Table 6!A52:U52"
+    }
+  },
+  {
+    "id": "T4",
+    "paper_name": "TT4",
+    "label": "甲状腺素",
+    "unit": "nmol/L",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.004596716,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Total Thyroxine",
+    "system": "Endocrine",
+    "paper_unit": "nmol/L",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.004596716,
+        "mae": 18.37249811,
+        "n": 365,
+        "pearson_r": 0.085,
+        "pearson_ci": [
+          -0.018,
+          0.186
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0,
+        "mae": 18.03382624,
+        "n": 1489,
+        "pearson_r": 0.151,
+        "pearson_ci": [
+          0.101,
+          0.2
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0,
+        "mae": 20.67268138,
+        "n": 2234,
+        "pearson_r": 0.096,
+        "pearson_ci": [
+          0.055,
+          0.137
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": 0,
+        "mae": 20.60221332,
+        "n": 204,
+        "pearson_r": 0.188,
+        "pearson_ci": [
+          0.052,
+          0.317
+        ]
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": 0,
+        "mae": 18.76813293,
+        "n": 876,
+        "pearson_r": 0.062,
+        "pearson_ci": [
+          -0.004,
+          0.128
+        ]
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A39:D39",
+      "performance_row": "Supplementary Table 5!A53:BX53",
+      "correlation_row": "Supplementary Table 6!A53:U53"
+    }
+  },
+  {
+    "id": "TSH",
+    "paper_name": "TSH",
+    "label": "促甲状腺激素",
+    "unit": "mIU/L",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.001323186,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Thyroid Stimulating Hormone",
+    "system": "Endocrine",
+    "paper_unit": "mIU/L",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.001323186,
+        "mae": 1.035691419,
+        "n": 365,
+        "pearson_r": 0.044,
+        "pearson_ci": [
+          -0.059,
+          0.146
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0.000278173,
+        "mae": 1.10907506,
+        "n": 1489,
+        "pearson_r": 0.05,
+        "pearson_ci": [
+          -0.001,
+          0.101
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0,
+        "mae": 1.035871497,
+        "n": 2234,
+        "pearson_r": 0.039,
+        "pearson_ci": [
+          -0.002,
+          0.08
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": 0,
+        "mae": 1.241909654,
+        "n": 204,
+        "pearson_r": -0.054,
+        "pearson_ci": [
+          -0.19,
+          0.084
+        ]
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": 0,
+        "mae": 1.318544746,
+        "n": 876,
+        "pearson_r": 0.01,
+        "pearson_ci": [
+          -0.056,
+          0.076
+        ]
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A40:D40",
+      "performance_row": "Supplementary Table 5!A57:BX57",
+      "correlation_row": "Supplementary Table 6!A57:U57"
+    }
+  },
+  {
+    "id": "APTT",
+    "paper_name": "APTT",
+    "label": "活化部分凝血活酶时间",
+    "unit": "Seconds",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.003087432,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Activated Partial Thromboplastin Time",
+    "system": "Hematology",
+    "paper_unit": "Seconds",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.003087432,
+        "mae": 2.52150926,
+        "n": 471,
+        "pearson_r": 0.066,
+        "pearson_ci": [
+          -0.025,
+          0.155
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0,
+        "mae": 2.3526458,
+        "n": 1495,
+        "pearson_r": 0.13,
+        "pearson_ci": [
+          0.08,
+          0.18
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0,
+        "mae": 2.359135152,
+        "n": 2242,
+        "pearson_r": 0.073,
+        "pearson_ci": [
+          0.031,
+          0.114
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": 0,
+        "mae": 5.467435297,
+        "n": 205,
+        "pearson_r": 0.044,
+        "pearson_ci": [
+          -0.094,
+          0.18
+        ]
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": 0,
+        "mae": 2.695006365,
+        "n": 876,
+        "pearson_r": 0.072,
+        "pearson_ci": [
+          0.006,
+          0.137
+        ]
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A41:D41",
+      "performance_row": "Supplementary Table 5!A8:BX8",
+      "correlation_row": "Supplementary Table 6!A8:U8"
+    }
+  },
+  {
+    "id": "FBG",
+    "paper_name": "FBG",
+    "label": "纤维蛋白原",
+    "unit": "g/L",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.035903782,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Fibrinogen",
+    "system": "Hematology",
+    "paper_unit": "g/L",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.035903782,
+        "mae": 0.441373633,
+        "n": 471,
+        "pearson_r": 0.192,
+        "pearson_ci": [
+          0.104,
+          0.278
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": null,
+        "mae": null,
+        "n": null,
+        "pearson_r": null,
+        "pearson_ci": null
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": null,
+        "mae": null,
+        "n": null,
+        "pearson_r": null,
+        "pearson_ci": null
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": null,
+        "mae": null,
+        "n": null,
+        "pearson_r": null,
+        "pearson_ci": null
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": 0,
+        "mae": 0.567070127,
+        "n": 869,
+        "pearson_r": 0.089,
+        "pearson_ci": [
+          0.023,
+          0.155
+        ]
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A42:D42",
+      "performance_row": "Supplementary Table 5!A21:BX21",
+      "correlation_row": "Supplementary Table 6!A21:U21"
+    }
+  },
+  {
+    "id": "Hb",
+    "paper_name": "Hb",
+    "label": "血红蛋白",
+    "unit": "g/L",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.400470999,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Hemoglobin",
+    "system": "Hematology",
+    "paper_unit": "g/L",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.400470999,
+        "mae": 9.285279133,
+        "n": 406,
+        "pearson_r": 0.637,
+        "pearson_ci": [
+          0.575,
+          0.691
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0.313114502,
+        "mae": 9.626958687,
+        "n": 1493,
+        "pearson_r": 0.584,
+        "pearson_ci": [
+          0.549,
+          0.616
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0.310851949,
+        "mae": 9.402868108,
+        "n": 2245,
+        "pearson_r": 0.57,
+        "pearson_ci": [
+          0.541,
+          0.597
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": 0.374892989,
+        "mae": 9.189631453,
+        "n": 206,
+        "pearson_r": 0.617,
+        "pearson_ci": [
+          0.524,
+          0.695
+        ]
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": 0.189632138,
+        "mae": 10.89569367,
+        "n": 437,
+        "pearson_r": 0.526,
+        "pearson_ci": [
+          0.454,
+          0.59
+        ]
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A43:D43",
+      "performance_row": "Supplementary Table 5!A29:BX29",
+      "correlation_row": "Supplementary Table 6!A29:U29"
+    }
+  },
+  {
+    "id": "HCT",
+    "paper_name": "HCT",
+    "label": "红细胞压积",
+    "unit": "%",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.366181704,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Hematocrit",
+    "system": "Hematology",
+    "paper_unit": "%",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.366181704,
+        "mae": 2.626945195,
+        "n": 406,
+        "pearson_r": 0.615,
+        "pearson_ci": [
+          0.55,
+          0.672
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0.201586258,
+        "mae": 2.932576866,
+        "n": 1493,
+        "pearson_r": 0.474,
+        "pearson_ci": [
+          0.434,
+          0.513
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0.233991953,
+        "mae": 2.825695696,
+        "n": 2245,
+        "pearson_r": 0.542,
+        "pearson_ci": [
+          0.512,
+          0.57
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": 0.251600773,
+        "mae": 2.855141501,
+        "n": 206,
+        "pearson_r": 0.59,
+        "pearson_ci": [
+          0.493,
+          0.673
+        ]
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": 0,
+        "mae": 4.316541985,
+        "n": 893,
+        "pearson_r": 0.367,
+        "pearson_ci": [
+          0.309,
+          0.423
+        ]
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A44:D44",
+      "performance_row": "Supplementary Table 5!A27:BX27",
+      "correlation_row": "Supplementary Table 6!A27:U27"
+    }
+  },
+  {
+    "id": "INR",
+    "paper_name": "INR",
+    "label": "国际标准化比值",
+    "unit": "无量纲",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.0019834,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "International Normalized Ratio",
+    "system": "Hematology",
+    "paper_unit": "\\",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.0019834,
+        "mae": 0.064803039,
+        "n": 471,
+        "pearson_r": 0.089,
+        "pearson_ci": [
+          -0.001,
+          0.178
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0,
+        "mae": 0.05505936,
+        "n": 1495,
+        "pearson_r": 0.121,
+        "pearson_ci": [
+          0.071,
+          0.17
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0,
+        "mae": 0.057455568,
+        "n": 2242,
+        "pearson_r": 0.1,
+        "pearson_ci": [
+          0.059,
+          0.141
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": 0,
+        "mae": 0.069597475,
+        "n": 205,
+        "pearson_r": 0.153,
+        "pearson_ci": [
+          0.017,
+          0.284
+        ]
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": 0.001688947,
+        "mae": 0.064134097,
+        "n": 861,
+        "pearson_r": 0.069,
+        "pearson_ci": [
+          0.002,
+          0.135
+        ]
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A45:D45",
+      "performance_row": "Supplementary Table 5!A33:BX33",
+      "correlation_row": "Supplementary Table 6!A33:U33"
+    }
+  },
+  {
+    "id": "MCH",
+    "paper_name": "MCH",
+    "label": "平均红细胞血红蛋白量",
+    "unit": "pg",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.065074845,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Mean Corpuscular Hemoglobin",
+    "system": "Hematology",
+    "paper_unit": "pg",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.065074845,
+        "mae": 1.130128089,
+        "n": 406,
+        "pearson_r": 0.269,
+        "pearson_ci": [
+          0.176,
+          0.357
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0,
+        "mae": 1.572849827,
+        "n": 1473,
+        "pearson_r": 0.086,
+        "pearson_ci": [
+          0.035,
+          0.136
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0,
+        "mae": 1.626956384,
+        "n": 2140,
+        "pearson_r": 0.048,
+        "pearson_ci": [
+          0.006,
+          0.09
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": null,
+        "mae": null,
+        "n": null,
+        "pearson_r": null,
+        "pearson_ci": null
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": null,
+        "mae": null,
+        "n": null,
+        "pearson_r": null,
+        "pearson_ci": null
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A46:D46",
+      "performance_row": "Supplementary Table 5!A41:BX41",
+      "correlation_row": "Supplementary Table 6!A41:U41"
+    }
+  },
+  {
+    "id": "MCHC",
+    "paper_name": "MCHC",
+    "label": "平均红细胞血红蛋白浓度",
+    "unit": "g/L",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.129597384,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Mean Corpuscular Hemoglobin Concentration",
+    "system": "Hematology",
+    "paper_unit": "g/L",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.129597384,
+        "mae": 6.157644578,
+        "n": 406,
+        "pearson_r": 0.363,
+        "pearson_ci": [
+          0.275,
+          0.445
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0,
+        "mae": 7.664118556,
+        "n": 1455,
+        "pearson_r": 0.087,
+        "pearson_ci": [
+          0.036,
+          0.138
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0.000444921,
+        "mae": 7.899927245,
+        "n": 2123,
+        "pearson_r": 0.079,
+        "pearson_ci": [
+          0.036,
+          0.121
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": null,
+        "mae": null,
+        "n": null,
+        "pearson_r": null,
+        "pearson_ci": null
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": null,
+        "mae": null,
+        "n": null,
+        "pearson_r": null,
+        "pearson_ci": null
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A47:D47",
+      "performance_row": "Supplementary Table 5!A42:BX42",
+      "correlation_row": "Supplementary Table 6!A42:U42"
+    }
+  },
+  {
+    "id": "MCV",
+    "paper_name": "MCV",
+    "label": "平均红细胞体积",
+    "unit": "fL",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.01768122,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Mean Corpuscular Volume",
+    "system": "Hematology",
+    "paper_unit": "fL",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.01768122,
+        "mae": 3.148907977,
+        "n": 406,
+        "pearson_r": 0.166,
+        "pearson_ci": [
+          0.07,
+          0.259
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0,
+        "mae": 4.127020357,
+        "n": 1474,
+        "pearson_r": 0.076,
+        "pearson_ci": [
+          0.025,
+          0.127
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0,
+        "mae": 4.608183434,
+        "n": 2141,
+        "pearson_r": 0.086,
+        "pearson_ci": [
+          0.044,
+          0.128
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": null,
+        "mae": null,
+        "n": null,
+        "pearson_r": null,
+        "pearson_ci": null
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": null,
+        "mae": null,
+        "n": null,
+        "pearson_r": null,
+        "pearson_ci": null
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A48:D48",
+      "performance_row": "Supplementary Table 5!A43:BX43",
+      "correlation_row": "Supplementary Table 6!A43:U43"
+    }
+  },
+  {
+    "id": "MPV",
+    "paper_name": "MPV",
+    "label": "平均血小板体积",
+    "unit": "fL",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Mean Platelet Volume",
+    "system": "Hematology",
+    "paper_unit": "fL",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0,
+        "mae": 0.798436551,
+        "n": 405,
+        "pearson_r": 0.125,
+        "pearson_ci": [
+          0.028,
+          0.22
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0,
+        "mae": 0.928459148,
+        "n": 1493,
+        "pearson_r": 0.071,
+        "pearson_ci": [
+          0.02,
+          0.121
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0,
+        "mae": 0.911962679,
+        "n": 2245,
+        "pearson_r": 0.04,
+        "pearson_ci": [
+          -0.002,
+          0.081
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": 0,
+        "mae": 0.974803195,
+        "n": 206,
+        "pearson_r": 0.016,
+        "pearson_ci": [
+          -0.121,
+          0.153
+        ]
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": 0,
+        "mae": 0.893059145,
+        "n": 892,
+        "pearson_r": -0.024,
+        "pearson_ci": [
+          -0.089,
+          0.042
+        ]
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A49:D49",
+      "performance_row": "Supplementary Table 5!A44:BX44",
+      "correlation_row": "Supplementary Table 6!A44:U44"
+    }
+  },
+  {
+    "id": "PLT",
+    "paper_name": "PLT",
+    "label": "血小板计数",
+    "unit": "10^9/L",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.019434202,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Platelet Count",
+    "system": "Hematology",
+    "paper_unit": "10^9/L",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.019434202,
+        "mae": 41.14588296,
+        "n": 406,
+        "pearson_r": 0.187,
+        "pearson_ci": [
+          0.092,
+          0.28
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0.004768005,
+        "mae": 44.38049254,
+        "n": 1492,
+        "pearson_r": 0.212,
+        "pearson_ci": [
+          0.163,
+          0.26
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0.020970687,
+        "mae": 42.54362331,
+        "n": 2245,
+        "pearson_r": 0.208,
+        "pearson_ci": [
+          0.168,
+          0.247
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": 0,
+        "mae": 43.03631966,
+        "n": 206,
+        "pearson_r": 0.168,
+        "pearson_ci": [
+          0.032,
+          0.298
+        ]
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": 0.024087111,
+        "mae": 42.38384323,
+        "n": 893,
+        "pearson_r": 0.17,
+        "pearson_ci": [
+          0.105,
+          0.233
+        ]
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A50:D50",
+      "performance_row": "Supplementary Table 5!A49:BX49",
+      "correlation_row": "Supplementary Table 6!A49:U49"
+    }
+  },
+  {
+    "id": "RBC",
+    "paper_name": "RBC",
+    "label": "红细胞计数",
+    "unit": "10^12/L",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.260666249,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Red Blood Cell Count",
+    "system": "Hematology",
+    "paper_unit": "10^12/L",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.260666249,
+        "mae": 0.334655158,
+        "n": 406,
+        "pearson_r": 0.534,
+        "pearson_ci": [
+          0.46,
+          0.6
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0.226395396,
+        "mae": 0.322468207,
+        "n": 1493,
+        "pearson_r": 0.503,
+        "pearson_ci": [
+          0.465,
+          0.54
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0.198119256,
+        "mae": 0.336537026,
+        "n": 2245,
+        "pearson_r": 0.491,
+        "pearson_ci": [
+          0.459,
+          0.522
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": 0.157515766,
+        "mae": 0.358236276,
+        "n": 206,
+        "pearson_r": 0.464,
+        "pearson_ci": [
+          0.349,
+          0.565
+        ]
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": 0.092526582,
+        "mae": 0.402160026,
+        "n": 893,
+        "pearson_r": 0.397,
+        "pearson_ci": [
+          0.34,
+          0.451
+        ]
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A51:D51",
+      "performance_row": "Supplementary Table 5!A50:BX50",
+      "correlation_row": "Supplementary Table 6!A50:U50"
+    }
+  },
+  {
+    "id": "D-Dimer",
+    "paper_name": "D-Dimer",
+    "label": "D-二聚体",
+    "unit": "ng/mL",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.032496373,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "D-dimer",
+    "system": "Hematology, Cardiovascular",
+    "paper_unit": "ng/mL",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.032496373,
+        "mae": 71.6403782,
+        "n": 471,
+        "pearson_r": 0.19,
+        "pearson_ci": [
+          0.102,
+          0.276
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0.023967079,
+        "mae": 87.43346881,
+        "n": 1495,
+        "pearson_r": 0.16,
+        "pearson_ci": [
+          0.11,
+          0.209
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0.00354435,
+        "mae": 82.68101192,
+        "n": 2237,
+        "pearson_r": 0.154,
+        "pearson_ci": [
+          0.113,
+          0.194
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": null,
+        "mae": null,
+        "n": null,
+        "pearson_r": null,
+        "pearson_ci": null
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": null,
+        "mae": null,
+        "n": null,
+        "pearson_r": null,
+        "pearson_ci": null
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A52:D52",
+      "performance_row": "Supplementary Table 5!A20:BX20",
+      "correlation_row": "Supplementary Table 6!A19:U19"
+    }
+  },
+  {
+    "id": "C1q",
+    "paper_name": "C1q",
+    "label": "补体 C1q",
+    "unit": "mg/L",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.055677188,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Complement Component 1q",
+    "system": "Immune",
+    "paper_unit": "mg/L",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.055677188,
+        "mae": 27.66915721,
+        "n": 387,
+        "pearson_r": 0.26,
+        "pearson_ci": [
+          0.165,
+          0.351
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0.038727719,
+        "mae": 34.42875802,
+        "n": 1002,
+        "pearson_r": 0.222,
+        "pearson_ci": [
+          0.162,
+          0.28
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0.037310097,
+        "mae": 32.10757114,
+        "n": 298,
+        "pearson_r": 0.248,
+        "pearson_ci": [
+          0.139,
+          0.352
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": null,
+        "mae": null,
+        "n": null,
+        "pearson_r": null,
+        "pearson_ci": null
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": 0,
+        "mae": 24.62550458,
+        "n": 567,
+        "pearson_r": 0.141,
+        "pearson_ci": [
+          0.059,
+          0.221
+        ]
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A53:D53",
+      "performance_row": "Supplementary Table 5!A14:BX14",
+      "correlation_row": "Supplementary Table 6!A13:U13"
+    }
+  },
+  {
+    "id": "LYM",
+    "paper_name": "LYM",
+    "label": "淋巴细胞计数",
+    "unit": "10^9/L",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.10887351,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Lymphocyte Count",
+    "system": "Immune",
+    "paper_unit": "10^9/L",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.10887351,
+        "mae": 0.415202618,
+        "n": 406,
+        "pearson_r": 0.333,
+        "pearson_ci": [
+          0.243,
+          0.416
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0.067570336,
+        "mae": 0.387709524,
+        "n": 1493,
+        "pearson_r": 0.289,
+        "pearson_ci": [
+          0.242,
+          0.335
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0.048144501,
+        "mae": 0.41998309,
+        "n": 2245,
+        "pearson_r": 0.231,
+        "pearson_ci": [
+          0.192,
+          0.27
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": 0,
+        "mae": 0.454654393,
+        "n": 206,
+        "pearson_r": 0.102,
+        "pearson_ci": [
+          -0.035,
+          0.235
+        ]
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": 0,
+        "mae": 0.538810033,
+        "n": 893,
+        "pearson_r": 0.157,
+        "pearson_ci": [
+          0.092,
+          0.22
+        ]
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A54:D54",
+      "performance_row": "Supplementary Table 5!A39:BX39",
+      "correlation_row": "Supplementary Table 6!A39:U39"
+    }
+  },
+  {
+    "id": "LYM_percent",
+    "paper_name": "LYM%",
+    "label": "淋巴细胞百分比",
+    "unit": "%",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.067203812,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Lymphocyte Percentage",
+    "system": "Immune",
+    "paper_unit": "%",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.067203812,
+        "mae": 6.106153446,
+        "n": 165,
+        "pearson_r": 0.295,
+        "pearson_ci": [
+          0.148,
+          0.428
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0.045390835,
+        "mae": 5.930935574,
+        "n": 1452,
+        "pearson_r": 0.228,
+        "pearson_ci": [
+          0.178,
+          0.276
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0.026290249,
+        "mae": 5.944249031,
+        "n": 2119,
+        "pearson_r": 0.202,
+        "pearson_ci": [
+          0.161,
+          0.242
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": null,
+        "mae": null,
+        "n": null,
+        "pearson_r": null,
+        "pearson_ci": null
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": null,
+        "mae": null,
+        "n": null,
+        "pearson_r": null,
+        "pearson_ci": null
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A55:D55",
+      "performance_row": "Supplementary Table 5!A40:BX40",
+      "correlation_row": "Supplementary Table 6!A40:U40"
+    }
+  },
+  {
+    "id": "NE",
+    "paper_name": "NE",
+    "label": "中性粒细胞计数",
+    "unit": "10^9/L",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.010927739,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Neutrophil Count",
+    "system": "Immune",
+    "paper_unit": "10^9/L",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.010927739,
+        "mae": 1.101125349,
+        "n": 406,
+        "pearson_r": 0.106,
+        "pearson_ci": [
+          0.009,
+          0.201
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0.017915912,
+        "mae": 1.053990568,
+        "n": 1493,
+        "pearson_r": 0.183,
+        "pearson_ci": [
+          0.134,
+          0.232
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0.011345579,
+        "mae": 1.093436967,
+        "n": 2245,
+        "pearson_r": 0.131,
+        "pearson_ci": [
+          0.09,
+          0.172
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": 0,
+        "mae": 1.183747112,
+        "n": 206,
+        "pearson_r": 0.125,
+        "pearson_ci": [
+          -0.012,
+          0.257
+        ]
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": 0.020992827,
+        "mae": 1.126177227,
+        "n": 893,
+        "pearson_r": 0.145,
+        "pearson_ci": [
+          0.08,
+          0.209
+        ]
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A56:D56",
+      "performance_row": "Supplementary Table 5!A45:BX45",
+      "correlation_row": "Supplementary Table 6!A45:U45"
+    }
+  },
+  {
+    "id": "NE_percent",
+    "paper_name": "NE%",
+    "label": "中性粒细胞百分比",
+    "unit": "%",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.039831766,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Neutrophil Percentage",
+    "system": "Immune",
+    "paper_unit": "%",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.039831766,
+        "mae": 6.580175183,
+        "n": 406,
+        "pearson_r": 0.201,
+        "pearson_ci": [
+          0.105,
+          0.292
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0.041380991,
+        "mae": 6.533310461,
+        "n": 1452,
+        "pearson_r": 0.221,
+        "pearson_ci": [
+          0.171,
+          0.269
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0.014761871,
+        "mae": 6.645346548,
+        "n": 2119,
+        "pearson_r": 0.165,
+        "pearson_ci": [
+          0.123,
+          0.206
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": null,
+        "mae": null,
+        "n": null,
+        "pearson_r": null,
+        "pearson_ci": null
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": null,
+        "mae": null,
+        "n": null,
+        "pearson_r": null,
+        "pearson_ci": null
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A57:D57",
+      "performance_row": "Supplementary Table 5!A46:BX46",
+      "correlation_row": "Supplementary Table 6!A46:U46"
+    }
+  },
+  {
+    "id": "PCT",
+    "paper_name": "PCT",
+    "label": "降钙素原",
+    "unit": "",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.01135782,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Procalcitonin",
+    "system": "Immune",
+    "paper_unit": "10^9/L",
+    "unit_note": "补充表 S1 原列单位为 10^9/L，与指标名称疑似不一致，待作者核对；实测值请按检验报告填写。",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.01135782,
+        "mae": 0.038256146,
+        "n": 405,
+        "pearson_r": 0.162,
+        "pearson_ci": [
+          0.065,
+          0.255
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0.056425813,
+        "mae": 0.03943418,
+        "n": 1492,
+        "pearson_r": 0.277,
+        "pearson_ci": [
+          0.229,
+          0.323
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0.063101923,
+        "mae": 0.037641203,
+        "n": 2245,
+        "pearson_r": 0.255,
+        "pearson_ci": [
+          0.215,
+          0.293
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": 0.045739591,
+        "mae": 0.0371253,
+        "n": 206,
+        "pearson_r": 0.237,
+        "pearson_ci": [
+          0.104,
+          0.362
+        ]
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": 0.048339956,
+        "mae": 0.03867185,
+        "n": 892,
+        "pearson_r": 0.25,
+        "pearson_ci": [
+          0.187,
+          0.31
+        ]
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A58:D58",
+      "performance_row": "Supplementary Table 5!A48:BX48",
+      "correlation_row": "Supplementary Table 6!A48:U48"
+    }
+  },
+  {
+    "id": "WBC",
+    "paper_name": "WBC",
+    "label": "白细胞计数",
+    "unit": "",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.028381914,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "White Blood Cell Count",
+    "system": "Immune",
+    "paper_unit": "mmol/L",
+    "unit_note": "补充表 S1 原列单位为 mmol/L，与指标名称疑似不一致，待作者核对；实测值请按检验报告填写。",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.028381914,
+        "mae": 1.316032139,
+        "n": 406,
+        "pearson_r": 0.169,
+        "pearson_ci": [
+          0.072,
+          0.262
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0.029197855,
+        "mae": 1.26773328,
+        "n": 1493,
+        "pearson_r": 0.209,
+        "pearson_ci": [
+          0.16,
+          0.257
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0.025629839,
+        "mae": 1.319817902,
+        "n": 2245,
+        "pearson_r": 0.172,
+        "pearson_ci": [
+          0.131,
+          0.212
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": 0,
+        "mae": 1.390377005,
+        "n": 206,
+        "pearson_r": 0.111,
+        "pearson_ci": [
+          -0.026,
+          0.244
+        ]
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": 0,
+        "mae": 1.387968576,
+        "n": 893,
+        "pearson_r": 0.14,
+        "pearson_ci": [
+          0.075,
+          0.203
+        ]
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A59:D59",
+      "performance_row": "Supplementary Table 5!A60:BX60",
+      "correlation_row": "Supplementary Table 6!A60:U60"
+    }
+  },
+  {
+    "id": "hs-CRP",
+    "paper_name": "hs-CRP",
+    "label": "超敏C反应蛋白",
+    "unit": "mg/L",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.010309558,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "High-sensitivity C-reactive Protein",
+    "system": "Immune, Cardiovascular",
+    "paper_unit": "mg/L",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.010309558,
+        "mae": 1.797149087,
+        "n": 455,
+        "pearson_r": 0.103,
+        "pearson_ci": [
+          0.011,
+          0.193
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0,
+        "mae": 1.670943127,
+        "n": 1121,
+        "pearson_r": 0.117,
+        "pearson_ci": [
+          0.059,
+          0.175
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0,
+        "mae": 1.695655928,
+        "n": 964,
+        "pearson_r": 0.104,
+        "pearson_ci": [
+          0.041,
+          0.166
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": 0,
+        "mae": 1.607417066,
+        "n": 114,
+        "pearson_r": 0.104,
+        "pearson_ci": [
+          -0.082,
+          0.282
+        ]
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": 0,
+        "mae": 3.62519597,
+        "n": 569,
+        "pearson_r": 0.023,
+        "pearson_ci": [
+          -0.06,
+          0.105
+        ]
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A60:D60",
+      "performance_row": "Supplementary Table 5!A63:BX63",
+      "correlation_row": "Supplementary Table 6!A62:U62"
+    }
+  },
+  {
+    "id": "Cr",
+    "paper_name": "Cr",
+    "label": "肌酐",
+    "unit": "μmol/L",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.042511215,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Creatinine",
+    "system": "Renal",
+    "paper_unit": "μmol/L",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.042511215,
+        "mae": 13.22983759,
+        "n": 462,
+        "pearson_r": 0.211,
+        "pearson_ci": [
+          0.122,
+          0.296
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0.015719202,
+        "mae": 13.84279804,
+        "n": 1490,
+        "pearson_r": 0.151,
+        "pearson_ci": [
+          0.101,
+          0.2
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0.020040279,
+        "mae": 13.13753859,
+        "n": 2244,
+        "pearson_r": 0.168,
+        "pearson_ci": [
+          0.127,
+          0.208
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": 0,
+        "mae": 13.6977286,
+        "n": 46,
+        "pearson_r": 0.248,
+        "pearson_ci": [
+          -0.045,
+          0.502
+        ]
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": 0,
+        "mae": 15.55486666,
+        "n": 895,
+        "pearson_r": 0.432,
+        "pearson_ci": [
+          0.377,
+          0.484
+        ]
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A61:D61",
+      "performance_row": "Supplementary Table 5!A18:BX18",
+      "correlation_row": "Supplementary Table 6!A17:U17"
+    }
+  },
+  {
+    "id": "eGFR",
+    "paper_name": "eGFR(CKD-EPI)",
+    "label": "估算肾小球滤过率",
+    "unit": "mL/min/1.73m²",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.287482738,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Estimated Glomerular Filtration Rate",
+    "system": "Renal",
+    "paper_unit": "mL/min/1.73m²",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.287482738,
+        "mae": 11.10088825,
+        "n": 462,
+        "pearson_r": 0.537,
+        "pearson_ci": [
+          0.469,
+          0.599
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0.195867916,
+        "mae": 10.975404,
+        "n": 1490,
+        "pearson_r": 0.456,
+        "pearson_ci": [
+          0.415,
+          0.495
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0.178972426,
+        "mae": 11.11499905,
+        "n": 2244,
+        "pearson_r": 0.429,
+        "pearson_ci": [
+          0.395,
+          0.462
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": 0.353447417,
+        "mae": 11.68251756,
+        "n": 46,
+        "pearson_r": 0.645,
+        "pearson_ci": [
+          0.437,
+          0.788
+        ]
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": 0,
+        "mae": 13.69069379,
+        "n": 895,
+        "pearson_r": 0.429,
+        "pearson_ci": [
+          0.374,
+          0.481
+        ]
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A62:D62",
+      "performance_row": "Supplementary Table 5!A62:BX62",
+      "correlation_row": "Supplementary Table 6!A20:U20"
+    }
+  },
+  {
+    "id": "UA",
+    "paper_name": "UA",
+    "label": "尿酸",
+    "unit": "μmol/L",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.118076278,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Uric Acid",
+    "system": "Renal",
+    "paper_unit": "μmol/L",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.118076278,
+        "mae": 65.75520507,
+        "n": 462,
+        "pearson_r": 0.344,
+        "pearson_ci": [
+          0.261,
+          0.422
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0.128320478,
+        "mae": 64.95132002,
+        "n": 1496,
+        "pearson_r": 0.371,
+        "pearson_ci": [
+          0.326,
+          0.414
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0.10189505,
+        "mae": 69.45327729,
+        "n": 2247,
+        "pearson_r": 0.333,
+        "pearson_ci": [
+          0.296,
+          0.37
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": 0.085435291,
+        "mae": 67.64596306,
+        "n": 206,
+        "pearson_r": 0.362,
+        "pearson_ci": [
+          0.237,
+          0.475
+        ]
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": 0.086690877,
+        "mae": 66.70421796,
+        "n": 895,
+        "pearson_r": 0.298,
+        "pearson_ci": [
+          0.237,
+          0.356
+        ]
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A63:D63",
+      "performance_row": "Supplementary Table 5!A58:BX58",
+      "correlation_row": "Supplementary Table 6!A58:U58"
+    }
+  },
+  {
+    "id": "Urea",
+    "paper_name": "Urea",
+    "label": "尿素",
+    "unit": "mg/dL",
+    "task_type": "regression",
+    "performance": {
+      "metric": "R²",
+      "value": 0.015228644,
+      "cohort": "AZ-TR"
+    },
+    "performance_note": "论文补充表 S5 原值：R² 与 MAE；S6：Pearson r、95% CI 和对应样本量。各队列分别列出，缺失值不填零；这是研究队列表现，不是个人预测准确率。",
+    "source": "https://doi.org/10.1002/advs.77861",
+    "english_name": "Urea",
+    "system": "Renal",
+    "paper_unit": "mg/dL",
+    "validation": [
+      {
+        "cohort": "AZ-TR",
+        "r2": 0.015228644,
+        "mae": 1.357539772,
+        "n": 462,
+        "pearson_r": 0.135,
+        "pearson_ci": [
+          0.044,
+          0.223
+        ]
+      },
+      {
+        "cohort": "AZ-EV1",
+        "r2": 0.022369479,
+        "mae": 1.258628972,
+        "n": 1496,
+        "pearson_r": 0.155,
+        "pearson_ci": [
+          0.105,
+          0.204
+        ]
+      },
+      {
+        "cohort": "AZ-EV2",
+        "r2": 0.007553678,
+        "mae": 1.327910975,
+        "n": 2247,
+        "pearson_r": 0.189,
+        "pearson_ci": [
+          0.149,
+          0.228
+        ]
+      },
+      {
+        "cohort": "AZTZ-EV",
+        "r2": 0.029153692,
+        "mae": 1.266678033,
+        "n": 206,
+        "pearson_r": 0.229,
+        "pearson_ci": [
+          0.096,
+          0.355
+        ]
+      },
+      {
+        "cohort": "DX-EV",
+        "r2": 0,
+        "mae": 1.297931661,
+        "n": 895,
+        "pearson_r": 0.193,
+        "pearson_ci": [
+          0.13,
+          0.256
+        ]
+      }
+    ],
+    "provenance": {
+      "workbook": "advs77861-sup-0002-suppmat.xlsx",
+      "sha256": "4997f6c566d5da97e79c87ee9c9d659465975329d0478d6bcf1d5cb4fbb8386a",
+      "metadata_row": "Supplementary Table 1!A64:D64",
+      "performance_row": "Supplementary Table 5!A59:BX59",
+      "correlation_row": "Supplementary Table 6!A59:U59"
+    }
+  },
+  {
+    "id": "CAD",
+    "paper_name": "CAD",
+    "label": "冠心病风险",
+    "unit": "",
+    "task_type": "classification",
+    "performance": null,
+    "performance_note": "独立冠心病模型待接入，验证表现待提供；论文的冠脉狭窄组合模型 AUC 不代表本模型。",
+    "source": null
+  }
+]

@@ -85,14 +85,14 @@ async function loadSiteContent() {
 loadSiteContent();
 
 const systems = {
-  anthropometric: { number: "01", name: "人体测量", scope: "systemic", annotation: "人体测量 · 整体表型", description: "从整体形态出发，研究面部表征与人体测量指标之间的关联，建立从外在表型理解健康信息的基础。", note: "此类指标反映整体表型，不对应单一器官。" },
-  cardiovascular: { number: "02", name: "心血管系统", scope: "regional", x: "56%", y: "25%", annotation: "心血管 · 区域示意", description: "探索面部表征与心血管相关临床指标之间的联系，为跨系统健康表型研究提供新的视角。", note: "研究涉及 HDL-C 等指标；结果来自论文队列评估。" },
-  digestive: { number: "03", name: "消化系统", scope: "regional", x: "45%", y: "32%", annotation: "消化 · 区域示意", description: "将研究视角延伸到消化系统相关的临床生物标志物，探索面部表型与这些指标的统计关联。", note: "图中器官用于概念说明，不表示模型直接观察或检查器官。" },
-  electrolyte: { number: "04", name: "电解质", scope: "systemic", annotation: "电解质 · 全身性指标", description: "探索面部表征与电解质相关临床指标之间的关系，将体内平衡相关信息纳入多系统研究。", note: "电解质分布于全身，示意图不将其定位到单一器官。" },
-  endocrine: { number: "05", name: "内分泌系统", scope: "systemic", annotation: "内分泌 · 跨系统联系", description: "研究面部表型与内分泌相关生物标志物的关联，从多个生理系统相互联系的角度开展探索。", note: "内分泌涉及多个器官与组织，这里以全身范围概括表示。" },
-  hematologic: { number: "06", name: "血液系统", scope: "systemic", annotation: "血液 · 全身循环", description: "研究面部表征与血液相关指标之间的联系，进一步理解临床面部照片中蕴含的表型信息。", note: "论文报告了红细胞计数（RBC）等血液指标的预测评估。" },
-  immune: { number: "07", name: "免疫系统", scope: "systemic", annotation: "免疫 · 全身性指标", description: "探索面部表征与免疫相关临床指标的关联，将免疫相关表型纳入八类生理系统的研究框架。", note: "免疫活动涉及多个器官与组织，以全身范围进行概念展示。" },
-  renal: { number: "08", name: "肾脏系统", scope: "regional", x: "56%", y: "35%", annotation: "肾脏 · 区域示意", description: "探索面部表征与肾脏相关临床指标之间的联系，研究面部基础模型在这一系统中的预测表现。", note: "论文报告了估算肾小球滤过率（eGFR）等指标的预测评估。" }
+  anthropometric: { number: "01", name: "人体测量", scope: "systemic", annotation: "人体测量 · 整体表型", description: "研究面部表征与人体测量指标的关联。", note: "此类指标反映整体表型，不对应单一器官。" },
+  cardiovascular: { number: "02", name: "心血管系统", scope: "regional", x: "56%", y: "25%", annotation: "心血管 · 区域示意", description: "研究面部表征与心血管相关临床指标的关联。", note: "研究涉及 HDL-C 等指标；结果来自论文队列评估。" },
+  digestive: { number: "03", name: "消化系统", scope: "regional", x: "45%", y: "32%", annotation: "消化 · 区域示意", description: "研究面部表型与消化系统相关指标的统计关联。", note: "图中器官用于概念说明，不表示模型直接观察或检查器官。" },
+  electrolyte: { number: "04", name: "电解质", scope: "systemic", annotation: "电解质 · 全身性指标", description: "研究面部表征与电解质相关指标的关联。", note: "电解质分布于全身，示意图不将其定位到单一器官。" },
+  endocrine: { number: "05", name: "内分泌系统", scope: "systemic", annotation: "内分泌 · 跨系统联系", description: "研究面部表型与内分泌相关指标的关联。", note: "内分泌涉及多个器官与组织，这里以全身范围概括表示。" },
+  hematologic: { number: "06", name: "血液系统", scope: "systemic", annotation: "血液 · 全身循环", description: "研究面部表征与血液相关指标的关联。", note: "论文报告了红细胞计数（RBC）等血液指标的预测评估。" },
+  immune: { number: "07", name: "免疫系统", scope: "systemic", annotation: "免疫 · 全身性指标", description: "研究面部表征与免疫相关指标的关联。", note: "免疫活动涉及多个器官与组织，以全身范围进行概念展示。" },
+  renal: { number: "08", name: "肾脏系统", scope: "regional", x: "56%", y: "35%", annotation: "肾脏 · 区域示意", description: "研究面部表征与肾脏相关指标的关联。", note: "论文报告了估算肾小球滤过率（eGFR）等指标的预测评估。" }
 };
 
 document.querySelectorAll("[data-system]").forEach((button) => {
@@ -178,5 +178,5 @@ if ("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: re
 // Reflect currently deployed tasks without conflating them with the paper's scope.
 fetch('/ready').then(response => { if (!response.ok) throw new Error('unavailable'); return response.json(); }).then(state => {
  const target=document.getElementById('liveModelSummary');
- if(target) target.textContent=state.models?.length && state.inference_ready && state.quality_ready ? `当前体验开放：${state.models.map(model=>model.label).join('、')}。` : (state.capture_ready ? '当前可保存采集资料，模型分析暂未就绪。' : '当前采集服务暂未就绪，请稍后重试。');
-}).catch(()=>{ const target=document.getElementById('liveModelSummary'); if(target) target.textContent='在线功能状态暂时无法获取，请进入采集页查看。'; });
+ if(target) target.textContent=state.models?.length && state.inference_ready && state.quality_ready ? `当前可预测 ${state.models.filter(model=>model.available).length} 项，具体见采集页。` : (state.capture_ready ? '当前可保存采集资料，模型分析暂未就绪。' : '当前采集服务暂未就绪，请稍后重试。');
+}).catch(()=>{ const target=document.getElementById('liveModelSummary'); if(target) target.textContent='暂时无法获取模型状态，请进入采集页查看。'; });

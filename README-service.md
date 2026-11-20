@@ -59,6 +59,7 @@ bash start_service.sh --host 127.0.0.1 --port 8000 --database /path/to/medicalfa
 
 - 首页：`/`
 - 采集：`/ui-assets/capture.html`
+- 个人账号与历史记录：`/ui-assets/records.html`
 - 内部管理：`/admin`
 - 用途说明：`/ui-assets/privacy.html`
 - API：`/docs`
@@ -189,3 +190,65 @@ python -m unittest discover -s tests -p 'test_quality.py' -v
 ```
 
 接口测试替换了部分检测/推理实现，验证采集、权限和数据保存流程，不证明真实模型预测性能。
+
+
+## 个人记录与科研参与
+
+个人页面支持账号密码注册、登录和退出；账号名为 3–40 位字母、数字、下划线或连字符，
+密码为 10–128 字符。会话使用 HttpOnly、SameSite=Strict Cookie，HTTPS 下设置 Secure，
+有效期为七天。公开部署应使用 HTTPS。当前没有邮件、短信或自助密码找回功能。
+登录后新采集的记录关联当前账号；历史匿名记录不会自动归入账号。
+
+基础服务同意保留，科研参与合并为一条自愿选择，明确涵盖本项目研究、评估及模型开发训练；
+旧记录不自动扩大授权，需主动确认新版科研说明。每条记录可单独修改授权，撤回科研同时撤回训练并删除
+该记录实测值和补充临床信息。撤回后不再进入相应用途的新导出，已导出的副本和历史备份需要研究团队另行处理。
+实测值记录指标、单位、日期和来源，仅在科研同意后接受；页面差值需对应单位一致。
+用户可确认完整采集编号直接删除自己的记录，关联预测、实测值及授权事件同步删除。
+
+结果表列出论文 62 项指标及独立冠心病模型占位，共 63 项。可推理范围以 `/ready` 为准；
+本机已补齐论文 62 项权重；独立冠心病模型仍待接入。待接入项目不产生预测。性能来自补充表 S5/S6，
+不将 Pearson r 的平方替代论文 R²，也不将论文组合模型 AUC 用于独立冠心病模型。
+WBC、PCT 单位仍待核对；FBG 指纤维蛋白原。网站结果仅供模型预测与科研参考。
+
+新增接口：
+
+- `POST /v1/account/register`、`POST /v1/account/login`：JSON 账号密码。
+- `POST /v1/account/logout`、`GET /v1/account/me`：退出及当前用户。
+- `GET /v1/me/captures?offset=0&limit=20`：当前账号历史记录。
+- `PUT /v1/captures/{id}/research-consent`：`research`、`training`、`version`。
+- `PUT /v1/captures/{id}/observations`：`model`、`value`、`unit`、`measured_on`、`source`。
+- `PUT /v1/captures/{id}/clinical-information`：可选病史、用药、家族史、吸烟、饮酒和其他说明，仅在当前版本科研授权后接受。
+- `DELETE /v1/captures/{id}/observations/{model}`：删除实测值。
+- `DELETE /v1/captures/{id}`：JSON `confirmation` 必须等于完整采集编号。
+- `GET /v1/admin/research-export?purpose=evaluation|training`：管理员按当前授权导出。
+
+账号写请求携带 `X-MFF-Request: 1`；个人记录支持会话授权，匿名记录继续使用原记录 Bearer 凭证。
+新增流程测试使用临时数据库：
+
+```bash
+python -m unittest discover -s tests -p 'test_product_workflow.py' -v
+```
+
+参考范围配置位于 `medicalfacefound/service/reference_ranges.json`，逐项保留来源、单位及适用条件。结果和下载报告共用展示逻辑，按成人性别显示；未成年人不套用成人区间。风险阈值与一般参考区间分别注明，模型输出不据此自动标记诊断。单位未确认或没有统一区间的项目仅显示说明。
+
+## 对象档案与纵向记录
+
+账号负责管理记录，测量对象单独保存。本人使用 `self`，未确认旧记录使用 `unknown`；
+其他成员使用归属当前账号的独立 UUID。成员称呼仅用于本账号内管理，不建立跨账号共享或自动代理访问。
+`GET/POST /v1/me/subjects` 列出/建立成员；`PUT /v1/captures/{id}/subject` 更正归属，
+`GET /v1/me/captures?subject_id=...` 按对象分页。更正归属保留记录但重置科研授权。
+历史数据迁移为待确认，不自动纳入本人趋势。记录删除同步更新列表、概览和趋势，历史备份仍独立保留。
+趋势图预测点采用采集时间，实测点采用填写的检验日期；按单位分图，不连跨模型版本，
+缺失值不补零。年龄、身高、体重及计算 BMI 来自每次采集资料。
+
+### 后台按账号与成员浏览
+
+后台保留单次测量详情，并提供账号目录、成员筛选和成员历史趋势。访客记录不自动归入账号；待确认归属的记录不进入成员趋势。管理员浏览不会修改记录归属或科研授权。
+
+- `GET /v1/admin/participants?q=&limit=20&offset=0`：搜索并分页列出账号及记录数量，不返回密码或会话信息。
+- `GET /v1/admin/participants/{id}/subjects`：该账号的本人、待确认及自定义成员与记录数量。
+- 记录列表、普通导出与科研导出共同支持 `participant_id`、`ownership=all|account|guest`、`subject_id`，并保留日期、状态、标签筛选。
+- 自定义成员须指定所属账号；`self` 在账号或访客范围内使用，避免将不同账号的本人数据混合。`unknown` 可用于全站待确认筛选。
+- 科研和训练导出仍受当前有效授权限制，选择账号或成员不会扩大科研用途权限。
+
+以上接口均要求独立管理员 Bearer 密钥；个人账号登录不会获得管理员访问权。

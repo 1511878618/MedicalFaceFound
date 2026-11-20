@@ -112,6 +112,8 @@ def initialize_database(database_path: Path) -> None:
             PRIMARY KEY (capture_id, tag))""")
         connection.execute("CREATE INDEX IF NOT EXISTS idx_capture_tags_tag ON capture_tags(tag)")
         connection.execute("UPDATE predictions SET status='failed', error='服务重启中断了分析，请重试' WHERE status='running'")
+        from medicalfacefound.service.accounts import initialize_schema
+        initialize_schema(connection)
     os.chmod(database_path, 0o600)
 
 
@@ -187,8 +189,9 @@ class RecordConflict(ValueError):
 
 
 def save_verified_capture(path, *, content, decoded, profile, request_id, access_token, consent_version,
-                          quality, processed, mask_content=None):
-    encoded_profile = json.dumps(profile, sort_keys=True)
+                          quality, processed, mask_content=None, participant_id=None, subject_id="self", research_consent=False, training_consent=False):
+    from medicalfacefound.service.catalog import RESEARCH_CONSENT_VERSION
+    encoded_profile = json.dumps({**profile, "participant_id": participant_id, "subject_id":subject_id, "research": research_consent, "training": training_consent}, sort_keys=True)
     hasher = hashlib.sha256(content + encoded_profile.encode() + consent_version.encode() + access_token.encode())
     if mask_content is not None:
         hasher.update(hashlib.sha256(mask_content).digest())
@@ -212,6 +215,11 @@ def save_verified_capture(path, *, content, decoded, profile, request_id, access
              len(content),content,request_id,fingerprint,token_hash(access_token),consent_version,timestamp,
              json.dumps({k:v for k,v in quality.items() if k != "preview"}, ensure_ascii=False),processed,
              json.dumps(quality["crop_box"])))
+        conn.execute("""UPDATE captures SET participant_id=?,subject_id=?,research_consent=?,training_consent=?,
+            research_consent_version=?,research_consented_at=? WHERE id=?""",
+            (participant_id, subject_id, int(research_consent), int(training_consent), RESEARCH_CONSENT_VERSION, timestamp, identity))
+        conn.execute('INSERT INTO consent_events VALUES (?,?,?,?,?,?)',
+            (str(uuid4()), identity, int(research_consent), int(training_consent), RESEARCH_CONSENT_VERSION, timestamp))
         return CaptureRecord(identity, timestamp)
 
 
@@ -224,16 +232,23 @@ def capture_row(path, identity):
 def report(path, identity):
     with connect(path) as conn:
         row = conn.execute("""SELECT id,created_at,updated_at,age,gender,height_cm,weight_kg,capture_source,
-            image_width,image_height,consent_version,consented_at,quality_json,crop_box,deletion_requested_at
+            image_width,image_height,consent_version,consented_at,quality_json,crop_box,deletion_requested_at,
+            participant_id,subject_id,research_consent,training_consent,research_consent_version,research_consented_at
             FROM captures WHERE id=?""", (identity,)).fetchone()
         if not row:
             return None
         result = dict(row)
+        subject=conn.execute('SELECT label FROM subjects WHERE id=? AND participant_id=?',(result['subject_id'],result['participant_id'])).fetchone()
+        result['subject_label']={'self':'本人','unknown':'待确认'}.get(result['subject_id'],subject[0] if subject else '待确认')
         for key in ("quality_json", "crop_box"):
             result[key] = json.loads(result[key]) if result[key] else None
         result["tags"] = [item[0] for item in conn.execute(
             "SELECT tag FROM capture_tags WHERE capture_id=? ORDER BY tag", (identity,))]
         predictions = conn.execute("SELECT * FROM predictions WHERE capture_id=? ORDER BY created_at", (identity,)).fetchall()
+        result["observations"] = [dict(r) for r in conn.execute(
+            'SELECT model,value,unit,measured_on,source,updated_at FROM observations WHERE capture_id=? ORDER BY model', (identity,))]
+        clinical = conn.execute('SELECT information_json FROM clinical_information WHERE capture_id=?', (identity,)).fetchone()
+        result["clinical_information"] = json.loads(clinical[0]) if clinical else {}
         result["predictions"] = []
         for entry in predictions:
             item = dict(entry)
@@ -356,7 +371,7 @@ def list_tags(path):
         return [dict(row) for row in rows]
 
 
-def list_captures(path, start=None, end=None, status="all", tag=None, limit=20, offset=0):
+def capture_conditions(start=None, end=None, status="all", tag=None, participant_id=None, ownership="all", subject_id=None):
     conditions, args = [], []
     if start:
         conditions.append("c.created_at >= ?")
@@ -371,13 +386,35 @@ def list_captures(path, start=None, end=None, status="all", tag=None, limit=20, 
     if tag:
         conditions.append("EXISTS (SELECT 1 FROM capture_tags t WHERE t.capture_id=c.id AND t.tag=?)")
         args.append(tag)
+    if participant_id is not None:
+        conditions.append("c.participant_id = ?")
+        args.append(participant_id)
+    if ownership == "account":
+        conditions.append("c.participant_id IS NOT NULL")
+    elif ownership == "guest":
+        conditions.append("c.participant_id IS NULL")
+    if subject_id is not None:
+        conditions.append("c.subject_id = ?")
+        args.append(subject_id)
+    return conditions, args
+
+
+def list_captures(path, start=None, end=None, status="all", tag=None, limit=20, offset=0,
+                  participant_id=None, ownership="all", subject_id=None):
+    conditions, args = capture_conditions(start, end, status, tag, participant_id, ownership, subject_id)
     where = " WHERE " + " AND ".join(conditions) if conditions else ""
     with connect(path) as conn:
         total = conn.execute("SELECT count(*) FROM captures c"+where,args).fetchone()[0]
         rows = conn.execute("""SELECT c.id,c.created_at,c.updated_at,c.age,c.gender,c.capture_source,c.deletion_requested_at,
             (SELECT count(*) FROM predictions p WHERE p.capture_id=c.id AND p.status='completed') AS completed,
-            (SELECT count(*) FROM predictions p WHERE p.capture_id=c.id AND p.status='failed') AS failed
-            FROM captures c"""+where+" ORDER BY c.created_at DESC LIMIT ? OFFSET ?",[*args,limit,offset]).fetchall()
+            (SELECT count(*) FROM predictions p WHERE p.capture_id=c.id AND p.status='failed') AS failed,
+            (SELECT count(*) FROM predictions p WHERE p.capture_id=c.id AND p.status='running') AS running,
+            (SELECT count(*) FROM observations o WHERE o.capture_id=c.id) AS observation_count,
+            c.participant_id,a.username,c.subject_id,
+            CASE c.subject_id WHEN 'self' THEN '本人' WHEN 'unknown' THEN '待确认' ELSE s.label END AS subject_label,
+            c.research_consent,c.training_consent,c.research_consent_version
+            FROM captures c LEFT JOIN participants a ON a.id=c.participant_id
+            LEFT JOIN subjects s ON s.id=c.subject_id AND s.participant_id=c.participant_id"""+where+" ORDER BY c.created_at DESC,c.id DESC LIMIT ? OFFSET ?",[*args,limit,offset]).fetchall()
         items = [dict(row) for row in rows]
         if items:
             placeholders = ",".join("?" for _ in items)

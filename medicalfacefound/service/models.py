@@ -13,7 +13,13 @@ from medicalfacefound.service.heatmap_settings import PACKAGE_METHODS
 from medicalfacefound.service.settings import Settings
 
 logger = logging.getLogger(__name__)
-TASK_NAME = re.compile(r"[A-Za-z0-9][A-Za-z0-9_.-]*\Z")
+TASK_NAME = re.compile(r"[A-Za-z0-9][A-Za-z0-9_.%\-]*\Z")
+MODEL_FOLDERS = {'BMI':'Bmi','D-Bil':'D-BiI','T-Bil':'T-BiI','HbA1C':'HbA1C%','LYM_percent':'LYM%','NE_percent':'NE%'}
+
+def model_folder(weights_dir, name):
+    canonical = weights_dir / 'tasks' / name
+    return canonical if canonical.is_dir() else weights_dir / 'tasks' / MODEL_FOLDERS.get(name, name)
+
 INFERENCE_MODULES = ("torch", "torchvision", "timm", "einops", "safetensors")
 
 
@@ -31,10 +37,12 @@ class ModelStore:
         names = settings.tasks
         if not names and task_root.is_dir():
             names = tuple(p.name for p in sorted(task_root.iterdir()) if p.is_dir())
+        aliases = {v:k for k,v in MODEL_FOLDERS.items()}
+        names = tuple(dict.fromkeys(aliases.get(n,n) for n in names))
         for name in names:
             if not TASK_NAME.fullmatch(name):
                 raise ValueError(f"Invalid task name: {name}")
-            folder = task_root / name
+            folder = model_folder(settings.weights_dir, name)
             if all((folder / filename).is_file() for filename in ("config.json", "model.safetensors")):
                 self.available.append(name)
             else:
@@ -90,7 +98,7 @@ class ModelStore:
         if self._loaded_name != name:
             self._loaded = None
             self._loaded_name = None
-            self._loaded = load_task(name, local_dir=self.settings.weights_dir, device=self.settings.device)
+            self._loaded = load_task(model_folder(self.settings.weights_dir, name).name, local_dir=self.settings.weights_dir, device=self.settings.device)
             self._loaded_name = name
         return self._loaded
 

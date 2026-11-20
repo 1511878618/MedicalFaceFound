@@ -13,6 +13,8 @@ processed; the stored 256x256 processed image is used as the model input.
 
 from __future__ import annotations
 
+from medicalfacefound.service.models import model_folder
+
 import argparse
 import hashlib
 import json
@@ -31,7 +33,7 @@ logger = logging.getLogger("backfill-explanations")
 
 
 def current_version(weights_dir: Path, model: str) -> str:
-    raw = (weights_dir / "tasks" / model / "config.json").read_bytes()
+    raw = (model_folder(weights_dir, model) / "config.json").read_bytes()
     config = json.loads(raw)
     return f'{config.get("sha256", "unverified")}:{hashlib.sha256(raw).hexdigest()}:{QUALITY_VERSION}'
 

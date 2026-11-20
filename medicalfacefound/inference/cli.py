@@ -7,7 +7,8 @@ import csv
 from pathlib import Path
 
 from medicalfacefound.inference.face import FaceCropper, load_image
-from medicalfacefound.inference.predict import DEFAULT_REPO, load_task, load_tasks_index, predict_values
+from medicalfacefound.inference.predict import (
+    DEFAULT_REPO, TASK_GROUPS, load_task, load_tasks_index, predict_values)
 
 IMAGE_SUFFIXES = {".jpg", ".jpeg", ".png", ".bmp", ".webp", ".tif", ".tiff"}
 
@@ -62,20 +63,25 @@ def cmd_predict(args: argparse.Namespace) -> int:
         images = kept
         print(f"{len(crops)} face(s) detected")
 
-    tasks = args.task or [t["task"] for t in load_tasks_index(args.repo, args.local_dir)["tasks"]]
+    tasks = args.task or [t["task"] for t in load_tasks_index(args.repo, args.local_dir, args.task_group)["tasks"]]
 
     rows = []
     for i, task in enumerate(tasks, 1):
-        model, cfg = load_task(task, args.repo, args.local_dir, args.device, args.half)
+        model, cfg = load_task(task, args.repo, args.local_dir, args.device, args.half, task_group=args.task_group)
         preds = predict_values(model, cfg, crops, args.batch_size, args.device, args.half)
         rows.extend({"file": str(path), **pred} for path, pred in zip(images, preds))
-        print(f"[{i}/{len(tasks)}] {task}: " + ", ".join(f"{p['value']:.2f}" for p in preds[:3]))
+        preview = ", ".join(
+            f"{p['value']:.2f}" + (f" ({p['risk_tier']})" if p.get("risk_tier") else "")
+            for p in preds[:3])
+        print(f"[{i}/{len(tasks)}] {task}: " + preview)
         del model
 
     out = Path(args.out)
     out.parent.mkdir(parents=True, exist_ok=True)
+    # Calibrated score and tier columns appear only when the loaded configs provide them.
+    extras = [k for k in ("value_calibrated", "risk_tier") if any(k in r for r in rows)]
     with out.open("w", newline="", encoding="utf-8") as fh:
-        writer = csv.DictWriter(fh, fieldnames=["file", "task", "value", "unit"])
+        writer = csv.DictWriter(fh, fieldnames=["file", "task", "value", "unit", *extras])
         writer.writeheader()
         writer.writerows(rows)
     print(f"wrote {out} ({len(rows)} rows)")
@@ -99,12 +105,15 @@ def build_parser() -> argparse.ArgumentParser:
     pred.add_argument("--input", nargs="+", required=True, help="image files or directories")
     pred.add_argument("--task", action="append", help="biomarker folder name (repeatable)")
     pred.add_argument("--all-tasks", action="store_true", help="run every task in tasks.json")
+    pred.add_argument("--task-group", choices=list(TASK_GROUPS), default="tasks",
+                      help="release part to load: tasks (default), tasks_binary "
+                           "(calibrated endpoints) or tasks_part3")
     pred.add_argument("--repo", default=DEFAULT_REPO)
     pred.add_argument("--local-dir", type=Path, help="downloaded copy of the weights repository")
     pred.add_argument("--out", type=Path, default=Path("predictions.csv"))
     pred.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
     pred.add_argument("--batch-size", type=int, default=8)
-    pred.add_argument("--half", action="store_true", help="fp16 inference on CUDA")
+    pred.add_argument("--half", action="store_true", help="fp16 for original CUDA models; MLP CUDA always uses autocast with fp32 parameters")
     pred.add_argument("--no-crop", action="store_true", help="images are already 256x256 crops")
     pred.add_argument("--size", type=int, default=256)
     pred.add_argument("--ratio", type=float, default=1.2)

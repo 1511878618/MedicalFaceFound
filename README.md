@@ -1,5 +1,9 @@
 # MedicalFaceFound
 
+Downstream two-layer MLP inference is available as the explicit `tasks_binary` task group
+(moca_mci, ocad, diabetes). See [the MLP release guide](docs/mlp-head-release.md).
+Existing full-model inference remains the default.
+
 [![Code license: CC BY-NC 4.0](https://img.shields.io/badge/code-CC%20BY--NC%204.0-lightgrey.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.9%2B-brightgreen.svg)]()
 <!-- [![pip](https://img.shields.io/badge/pip%20install-medicalfacefound-blue.svg)]() -->
@@ -151,6 +155,7 @@ MedicalFaceFound/
 │   │   └── ...                       #   schedulers, checkpoint utils, PVT/ViT variants
 │   ├── main_pretrain.py              #   UM-MAE pretraining (original training script)
 │   ├── main_finetune.py              #   biomarker fine-tuning (original training script)
+│   ├── predict_folder.py             #   batch predict with a fine-tuned checkpoint
 │   ├── engine_pretrain.py, engine_finetune.py, mask_transform.py
 │   └── scripts/
 │       ├── pretrain.sh               #   pretraining launcher (8 GPUs)
@@ -226,11 +231,11 @@ Fine-tuning is the intended use of this repository: take the released backbone, 
 a new head (`fc_norm` + `linear`) and train on your own cohort. Each released biomarker
 was produced exactly this way.
 
-> **Status of this release.** Inference is complete. For fine-tuning, the
-> cohort-specific annotation reader (`SingleTaskDataset._load_annotations` in
-> `medicalfacefound/utils/datasets.py`) ships as a stub: fill it in for your CSV
-> (filter by `type`, drop rows with a missing target, compute the train-split
-> mean/std) before `main_finetune` can build a dataset.
+> **Status of this release.** Inference is complete. The annotation reader
+> (`SingleTaskDataset._load_annotations` in `medicalfacefound/utils/datasets.py`)
+> accepts `.csv`, `.feather` and `.ftr` tables with the layout below; it filters by
+> `type`, drops rows with a missing target and computes the train-split mean/std.
+> Feather input requires `pyarrow` (`pip install pyarrow`).
 
 ### Data format
 
@@ -247,8 +252,10 @@ face_256/
 └── ...
 ```
 
-`--annotation_path` is a CSV with `eid`, `type` (`train` / `validation` / `test`, split
-**by subject**) and the target column named by `--label`:
+`--annotation_path` is a `.csv`, `.feather` or `.ftr` table with `eid`, `type`
+(`train` / `validation` / `test`, split **by subject**) and the target column named by
+`--label`. Both formats share the same column layout; Feather is read with
+`pandas.read_feather` and requires `pyarrow`:
 
 ```csv
 eid,type,Height,Sex,HDLC
@@ -260,12 +267,14 @@ az_9002,test,175.0,0,1.28
 
 - rows with a missing target are dropped; rows whose `eid` has no folder are reported
   in `log_<split>set.txt`;
+- `eid` is matched against the folder names after conversion to string, so integer
+  identifiers are accepted;
 - regression (`--type regression --nb_classes 1`) z-scores the target with the
   training-split mean/std — the same numbers stored as `target_mean` / `target_std`
   in each released `config.json`;
 - classification (`--type classification --nb_classes 2`) uses integer labels and no
   normalisation;
-- `--predict` mode ignores the CSV targets and scores every image.
+- `--predict` mode ignores the annotation targets and scores every image.
 
 ### Load the backbone
 
@@ -316,7 +325,7 @@ What each flag does:
 | `--finetune backbone.pth` | initialise from the released UM-MAE backbone |
 | `--ft_mode full\|mlp` | full fine-tuning (default) or backbone-frozen, head-only training |
 | `--dataset face256_single` | single-biomarker dataset (`'single'` selects `SingleTaskDataset`) |
-| `--data_path` / `--annotation_path` | image root (one folder per `eid`) / CSV with `eid,type,<label>` |
+| `--data_path` / `--annotation_path` | image root (one folder per `eid`) / CSV or Feather table with `eid,type,<label>` |
 | `--label Height --type regression --nb_classes 1` | target column, task type, output dim |
 | `--blr 5e-3 --layer_decay 0.75` | base lr and layer-wise lr decay |
 | `--early_stop 12` | stop if validation loss does not improve for 12 epochs |
@@ -361,6 +370,38 @@ python -m medicalfacefound.main_finetune \
   --blr 1e-2 --weight_decay 0.05 \
   --output_dir runs/Height-mlp
 ```
+
+## 🔎 External validation with a fine-tuned checkpoint
+
+`python -m medicalfacefound.predict_folder` applies one fine-tuned checkpoint to a folder of
+images. It is the entry point used for external validation: no annotation CSV, dataset class or
+`--statistics` run directory is needed, and predictions are written in clinical units.
+
+```bash
+python -m medicalfacefound.predict_folder \
+  --checkpoint runs/Height/checkpoint-best_val.pth \
+  --input /data/external_cohort/ \
+  --out external_Height.csv
+```
+
+Inputs follow the training layout (`<root>/<eid>/*.jpg`, `eid` = subject folder) or a flat
+directory of images (`eid` = file stem); several files/directories may be passed. Images are
+expected to be 256 × 256 face crops — add `--crop` to detect and crop faces from raw photographs
+with RetinaFace; images without a detected face are skipped and counted.
+
+| `--checkpoint` | Contents | Where the target scaling comes from |
+| :-- | :-- | :-- |
+| `checkpoint-best_val.pth`, `-best_test.pth`, `-<epoch>.pth` | `model` + training `args` + optimizer | `args.target_mean` / `args.target_std`, written by training runs, with the run-directory CSV as fallback |
+| `checkpoint.pth` (early stopping) | bare `state_dict` | `--target-mean/--target-std`, or `<run_dir>/output_validation/epoch_0.csv` |
+| `model.safetensors` + sibling `config.json` | state dict | `config.json` (`num_classes`, `task`, `task_type`, `target_mean`, `target_std`, `unit`) |
+
+The output CSV holds `eid,path,value` (`value` is in clinical units; a probability for binary
+classification) and, with `--with-normed`, an extra `value_normed` column. Rows are flushed batch
+by batch, so an interrupted long run keeps its partial results. Further options:
+`--batch-size`, `--device`, `--half`, `--limit` (first N images, useful for a pilot) and
+`--model/--type/--nb-classes` (only required for bare state_dicts). Model name, task type and
+scaling are otherwise recovered from the checkpoint, its `config.json` or the run directory, with
+explicit flags taking precedence.
 
 ## 🏋️ Pretraining (background)
 

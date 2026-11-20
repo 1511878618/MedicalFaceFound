@@ -2,6 +2,7 @@
 
 from medicalfacefound.inference.face import FaceCropper, crop_square, detect_faces, load_image, square_box, to_model_input
 from medicalfacefound.inference.predict import DEFAULT_REPO, load_task, load_tasks_index, predict_values
+from medicalfacefound.inference.risk import assign_tiers, calibrate_probabilities
 
 __all__ = [
     "DEFAULT_REPO",
@@ -14,4 +15,6 @@ __all__ = [
     "load_task",
     "load_tasks_index",
     "predict_values",
+    "assign_tiers",
+    "calibrate_probabilities",
 ]

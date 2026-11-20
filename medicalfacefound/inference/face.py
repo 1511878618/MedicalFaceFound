@@ -58,7 +58,8 @@ def square_box(box: tuple[int, int, int, int], shape: tuple[int, int], ratio: fl
             int(round(cx + half)), int(round(cy + half)))
 
 
-def crop_square(image: np.ndarray, box: tuple[int, int, int, int], size: int = DEFAULT_SIZE) -> np.ndarray:
+def crop_square(image: np.ndarray, box: tuple[int, int, int, int], size: int = DEFAULT_SIZE,
+                *, resample=None) -> np.ndarray:
     """Crop ``box`` (padding with edge pixels when out of bounds) and resize."""
     from PIL import Image
 
@@ -67,11 +68,14 @@ def crop_square(image: np.ndarray, box: tuple[int, int, int, int], size: int = D
     pad_l, pad_t = max(0, -x1), max(0, -y1)
     pad_r, pad_b = max(0, x2 - w), max(0, y2 - h)
     if any((pad_l, pad_t, pad_r, pad_b)):
-        image = np.pad(image, ((pad_t, pad_b), (pad_l, pad_r), (0, 0)), mode="edge")
+        padding = ((pad_t, pad_b), (pad_l, pad_r)) + ((0, 0),) * (image.ndim - 2)
+        image = np.pad(image, padding, mode="edge")
         x1, y1, x2, y2 = x1 + pad_l, y1 + pad_t, x2 + pad_l, y2 + pad_b
 
     patch = image[y1:y2, x1:x2]
-    return np.asarray(Image.fromarray(patch).resize((size, size), Image.BICUBIC))
+    return np.asarray(Image.fromarray(patch).resize(
+        (size, size), Image.Resampling.BICUBIC if resample is None else resample
+    ))
 
 
 def to_model_input(crop: np.ndarray) -> np.ndarray:

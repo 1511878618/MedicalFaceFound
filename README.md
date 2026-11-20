@@ -11,6 +11,16 @@ Official implementation accompanying the article in *Advanced Science* (2026).
 [Paper](https://doi.org/10.1002/advs.77861) · [Installation](#installation) ·
 [Inference](#inference) · [Fine-tuning](#fine-tuning) · [Citation](#citation)
 
+## Repository scope
+
+This repository contains the paper's original implementation: model, training,
+fine-tuning, inference and the analysis notebooks used for the publication. The **MedicalFaceFoundWeb** website is maintained as a
+separate application that uses the MedicalFaceFound Python package for inference.
+Its web interface, deployment configuration and participant records are managed
+outside this research repository. Subsequent exploratory analyses, including
+external robustness experiments, are maintained separately in
+**MedicalFaceFound_furtherAnalysis**.
+
 ## Overview
 
 **MedicalFaceFound** is a facial foundation model that estimates clinical biomarkers
@@ -74,16 +84,6 @@ This installs the `mff` inference CLI, Python API and training dependencies.
 Dependencies are declared in [pyproject.toml](pyproject.toml); `timm` is pinned to
 `0.9.16` for compatibility with the model implementation. Install a compatible
 PyTorch / torchvision build for your CPU or CUDA environment.
-
-For the optional research web application, install the service dependencies:
-
-```bash
-python -m pip install -e '.[service]'
-```
-
-A conda configuration is also provided in
-[environment-service.yml](environment-service.yml). See the
-[service guide](README-service.md) for detector setup and deployment.
 
 ```bash
 mff --help
@@ -167,8 +167,7 @@ A 256 × 256 RGB frontal face crop, ImageNet-normalised. `FaceCropper` performs 
 RetinaFace detection, expands the box to a square (margin ratio 1.2), pads out-of-frame
 faces with edge pixels and resizes with bicubic interpolation. If multiple faces
 are detected, the inference cropper selects the detection with the highest confidence;
-if none is detected, it returns `None`. The web application applies additional
-single-face and image-quality checks, described in the [service guide](README-service.md).
+if none is detected, it returns `None`.
 
 ### Resource requirements
 
@@ -357,31 +356,6 @@ tables. They are **not** part of the installed package and depend on the interna
 | `06.1`–`06.5` `Plot-Part*.ipynb` | Main and supplementary figures |
 | `07-SupplementaryTable.ipynb` | Supplementary tables |
 
-### External robustness evaluation
-
-The `medicalfacefound/robustness/` module evaluates paired photographs under
-changes in acquisition conditions. See [ROBUSTNESS.md](ROBUSTNESS.md) for dataset
-preparation, protocols and commands. This workflow is documented separately from
-the notebooks used for the paper's main analyses.
-
-## Research web application
-
-The repository includes an optional web interface and FastAPI service for photo
-collection, biomarker inference and heatmap visualisation. The service reuses the
-same face-cropping and prediction functions as the Python API.
-
-After installing the service dependencies and preparing the RetinaFace and
-biomarker checkpoints, run from the repository root:
-
-```bash
-bash start_service.sh --host 127.0.0.1 --port 8000
-```
-
-Open [http://127.0.0.1:8000](http://127.0.0.1:8000) for the web application;
-interactive API documentation is available at `/docs`. See the
-[service guide](README-service.md) for configuration, data storage, access control
-and backups, and the [frontend guide](README-ui.md) for page and asset customisation.
-
 ## Repository structure
 
 ```text
@@ -391,22 +365,11 @@ MedicalFaceFound/
 │   ├── utils/                  # Model architectures, datasets and training utilities
 │   ├── main_pretrain.py         # Self-supervised pretraining
 │   ├── main_finetune.py         # Task-specific fine-tuning
-│   ├── scripts/                # Training launchers
-│   ├── robustness/             # Paired external-data evaluation
-│   └── service/                # Research web application and HTTP API
-│       └── static/             # Frontend pages, scripts, styles and assets
+│   └── scripts/                # Training launchers
 ├── analysis/                   # Paper analysis notebooks
-├── configs/                    # Evaluation configurations
-├── tests/                      # Service and evaluation tests
 ├── weights/                    # Local checkpoints (not tracked)
-├── data/                       # Local research data and service state (not tracked)
-├── start_service.sh             # Web application launcher
-├── run_robustness.sh            # Robustness evaluation launcher
-├── environment-service.yml     # Conda environment for the web application
+├── data/                       # Local research data (not tracked)
 ├── pyproject.toml              # Package metadata and dependencies
-├── README-service.md           # Service deployment and API documentation
-├── README-ui.md                # Frontend maintenance
-├── ROBUSTNESS.md               # External evaluation protocol
 ├── LICENSE
 └── THIRD_PARTY_NOTICES.md
 ```

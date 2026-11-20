@@ -3,6 +3,7 @@ import PIL
 import tqdm
 
 import numpy as np
+import pandas as pd
 
 import torch
 from torchvision import transforms
@@ -63,17 +64,17 @@ class SingleTaskDataset(torch.utils.data.Dataset):
 
     def _load_annotations(self):
         """
-        Load and parse annotations from CSV file.
+        Load and parse annotations from a CSV or Feather file.
         
         Purpose:
-            - Read annotation CSV file with header line
+            - Read the annotation table (CSV or Feather, same column layout)
             - Filter annotations by dataset_type (train/validation/test)
             - Extract target label for each sample (identified by 'eid')
             - Compute statistics (mean/std) for normalization
         
-        CSV Format:
-            - First line: header with column names
-            - Following lines: one annotation per line, comma-separated
+        Format:
+            - Tabular file with a header: `.csv` (comma-separated) or
+              `.feather` / `.ftr` (Arrow, requires pyarrow)
             - Required columns: 'eid' (entity/person ID), 'type' (dataset split)
             - Target column: specified by self.label parameter
         
@@ -88,16 +89,54 @@ class SingleTaskDataset(torch.utils.data.Dataset):
         Special Cases:
             - For dataset_type='predict': Returns (None, 0.0, 1.0)
             - For classification tasks: mean=0.0, std=1.0
-            - For regression tasks: computed from non-NaN values
+            - For regression tasks: computed from non-NaN values of this split
             - Samples with NaN target values are filtered out (except for 'predict' mode)
         
         Example annotation dict: {'eid': '12345', 'Height': 175.5}
         """
         if self.dataset_type == 'predict':
             return None, 0.0, 1.0
-        
-        # TODO: Implement annotation loading logic here
-        # This method should be implemented according to specific dataset requirements
+
+        suffix = os.path.splitext(self.annotations_path)[1].lower()
+        if suffix == '.csv':
+            table = pd.read_csv(self.annotations_path)
+        elif suffix in ('.feather', '.ftr'):
+            try:
+                import pyarrow  # noqa: F401
+            except ImportError as exc:
+                raise ImportError(
+                    f'reading {suffix} annotations requires pyarrow: pip install pyarrow'
+                ) from exc
+            table = pd.read_feather(self.annotations_path)
+        else:
+            raise ValueError(f'unsupported annotation format {suffix!r} '
+                             f'(expected .csv, .feather or .ftr): {self.annotations_path}')
+
+        missing = {'eid', 'type', self.label} - set(table.columns)
+        if missing:
+            raise ValueError(f'{self.annotations_path} is missing columns: {sorted(missing)}')
+
+        table = table[table['type'].astype(str) == self.dataset_type]
+        table = table.dropna(subset=[self.label])
+        annotations = list()
+        for eid, value in zip(table['eid'], table[self.label]):
+            annotations.append({
+                'eid': str(eid),
+                self.label: float(value) if self.type == 'regression' else value,
+            })
+        if len(annotations) == 0:
+            raise ValueError(f"no rows with type='{self.dataset_type}' and a non-missing "
+                             f"'{self.label}' in {self.annotations_path}")
+
+        if self.type == 'regression':
+            values = np.asarray([item[self.label] for item in annotations], dtype=np.float64)
+            mean, std = float(values.mean()), float(values.std())
+            if std == 0:
+                raise ValueError(f"'{self.label}' has zero variance in the "
+                                 f"'{self.dataset_type}' split, cannot normalise")
+        else:
+            mean, std = 0.0, 1.0
+        return annotations, mean, std
     
     def _parse(self):
         """

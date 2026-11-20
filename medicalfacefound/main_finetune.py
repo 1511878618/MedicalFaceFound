@@ -320,6 +320,8 @@ def main(args):
     else:
         dataset_train = build_dataset(is_train=True, args=args)
         mean, std = dataset_train.get_statistics()
+        # carry the de-normalisation constants with the checkpoint (used by predict_folder)
+        args.target_mean, args.target_std = float(mean), float(std)
         dataset_val = build_dataset(is_train=False, args=args)
         dataset_val.update_statistics(mean, std)
         dataset_test = build_dataset(is_train=False, args=args, dataset_type='test')
